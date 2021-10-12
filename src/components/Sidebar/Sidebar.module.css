@@ -1,7 +1,7 @@
 
 .container{
     position: fixed;
-    width: 35%;
+    width: 30%;
     top: 0;
     bottom: 0;
     left: 0;
@@ -13,7 +13,7 @@
 }
 
 .image{
-    width: 400px;
+    width: 60%;
     border-radius: 50%;
 }
 
@@ -35,7 +35,7 @@
     margin: 10px 0;
     display: flex;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 

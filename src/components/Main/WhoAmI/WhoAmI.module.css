@@ -3,16 +3,15 @@
     position: relative;
 }
 
-.container .vLine{
-    position: absolute;
+.vLine{
     border-left: 2px solid var(--secondary-color);
+    position: absolute;
     height: 100%;
-    z-index: 100;
+    left: 110px;
 }
 
-.container .content{
-    position: absolute;
-    left: -20px;
+.parts{
+    padding: 50px 0;
 }
 
 
@@ -21,42 +20,34 @@
     display: flex;
 }
 
-.part .timeEntry{
 
-}
-
-.part .line{
-
-}
-
-.part .heading{
-    width: 100%;
+.time{
     display: flex;
     align-items: center;
+    height: 55px;
 }
 
-
-
-
-
-.headingLine{
-    border-top: 1px solid var(--secondary-color);
-    width: 100px;
-    left: -50px;
+.timeEntry{
 }
 
-.headingTitle{
-    position: absolute;
-    left: 100px;
-    border-left: 4px solid var(--secondary-color);
-    padding:5px  20px;
-    color: var(--secondary-color);
+.timeLine{
+    border-top: 2px solid var(--secondary-color);
+    width: 120px;
+    margin:0 10px;
+}
+
+.part .content{
+}
+
+.title{
+    display: inline-block;
     background-color: var(--secondary-color-10);
+    padding: 2px 15px;
+    border-left: 4px solid var(--secondary-color);
+    font-size: 1.5rem;
 }
 
-.partContent{
-    margin: 50px 50px 0 0 ;
-    padding: 50px 75px 100px 50px;
-    background-color: var(--light-grey);
-
+.body{
+    padding: 10px 0;
 }
+

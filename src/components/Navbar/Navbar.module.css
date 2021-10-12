@@ -17,8 +17,8 @@
 
 .navItem{
     display: block;
-    margin: 0 25px;
-    padding: 20px 30px;
+    margin: 0 10px;
+    padding: 10px 20px;
     cursor: pointer;
     border-radius: 25px;
     color: var(--secondary-color);

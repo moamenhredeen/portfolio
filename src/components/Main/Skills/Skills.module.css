@@ -1,0 +1,74 @@
+
+
+.skill{
+    display: flex;
+    margin: 50px 0 ;
+}
+
+
+.image img{
+    width: 200px;
+}
+
+.content{
+    padding:25px 50px;
+    width: 70%;
+}
+
+.title h3{
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+
+}
+
+
+
+.indicator{
+    height: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    transition: .7s;
+}
+
+.indicator80{
+    width: 80%;
+    background-color: var(--secondary-color);
+}
+
+
+.indicator60{
+    width: 60%;
+    background-color: yellowgreen;
+}
+
+
+.indicator40{
+    width: 40%;
+    background-color: orange;
+}
+
+
+.indicator20{
+    width: 20%;
+    background-color: red;
+}
+
+.level{
+    display: none;
+}
+
+.indicator:hover{
+    transition: .2s;
+    height: 40px;
+}
+
+.indicator:hover .level{
+    transition: .2s;
+    display: block;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.description{
+    margin-top: 15px;
+}

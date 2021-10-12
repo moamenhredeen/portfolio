@@ -5,12 +5,14 @@ import Contact from "./Contact/Contact";
 import React from "react";
 
 import classes from './Main.module.css';
+import Skills from "./Skills/Skills";
 
 const Main = () => {
     return <div className={classes.container}>
         <Switch>
             {/*<Route exact path="/home" component={Home} />*/}
             <Route exact path="/whoami" component={WhoAmI} />
+            <Route exact path="/skills" component={Skills} />
             <Route exact path="/myprojects" component={Projects} />
             <Route exact path="/contactme" component={Contact} />
         </Switch>
