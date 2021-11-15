@@ -8,7 +8,7 @@ const Sidebar = () => {
         <img className={classes.image} src={myImage} alt=""/>
         <div className={classes.infos}>
             <div className={[classes.infoContainer, classes.name].join(' ')}>
-                <h1>Hanan Saad</h1>
+                <h1>Moamen Hraden</h1>
             </div>
             <div className={classes.infoContainer}>
                <MdEmail size={20}/>

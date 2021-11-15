@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Main from "./components/Main/Main";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
@@ -18,6 +18,9 @@ function App() {
                     <Navbar/>
                     <Main/>
                 </>
+                <Route path="*">
+                    <Redirect to="/home" />
+                </Route>
             </Switch>
         </div>
     );
