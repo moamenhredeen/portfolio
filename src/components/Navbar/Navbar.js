@@ -13,7 +13,7 @@ const Navbar = () => {
                 <li><NavLink to="/whoami" className={classes.navItem} activeClassName={classes.active}>Who Am I</NavLink></li>
                 <li><NavLink to="/skills" className={classes.navItem} activeClassName={classes.active}>My Skills</NavLink></li>
                 <li><NavLink to="/myprojects" className={classes.navItem} activeClassName={classes.active}>My Projects</NavLink></li>
-                <li><NavLink to="/blog" className={classes.navItem} activeClassName={classes.active}>Blog</NavLink></li>
+                {/*<li><NavLink to="/blog" className={classes.navItem} activeClassName={classes.active}>Blog</NavLink></li>*/}
                 <li><NavLink to="/contactme" className={classes.navItem} activeClassName={classes.active}>Contact Me</NavLink></li>
             </ul>
         </nav>
