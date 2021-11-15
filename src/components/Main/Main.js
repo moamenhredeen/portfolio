@@ -9,10 +9,10 @@ import Skills from "./Skills/Skills";
 const Main = () => {
     return (
     <div className={classes.container}>
+        <Route exact path="/contactme" component={Contact} />
         <Route exact path="/whoami" component={WhoAmI} />
         <Route exact path="/skills" component={Skills} />
         <Route exact path="/myprojects" component={Projects} />
-        <Route exact path="/contactme" component={Contact} />
     </div>
     );
 }

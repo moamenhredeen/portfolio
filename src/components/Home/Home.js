@@ -12,7 +12,7 @@ const Home = () => {
             <div className={classes.myName}>Moamen Hredeen</div>
             <div className={classes.job}>A Software Engineer</div>
             <div className={classes.btnContainer}>
-                <NavLink to="/aboutme" className={classes.btn} >more about me</NavLink>
+                <NavLink to="/whoami" className={classes.btn} >more about me</NavLink>
             </div>
         </div>
         <div className={classes.rightCol}>

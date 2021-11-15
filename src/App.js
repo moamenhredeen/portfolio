@@ -18,8 +18,8 @@ function App() {
                     <Navbar/>
                     <Main/>
                 </>
-                <Route path="*">
-                    <Redirect to="/home" />
+                <Route path={"*"}>
+                    <Redirect to={"/home"}/>
                 </Route>
             </Switch>
         </div>
