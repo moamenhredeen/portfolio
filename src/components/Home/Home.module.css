@@ -1,0 +1,190 @@
+
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px;
+    /*background-color: var(--primary-color-10);*/
+    background-image: url("./background1.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.rightCol{
+    flex-basis: 100%;
+    padding: 25px;
+    align-self: flex-start;
+}
+
+
+.leftCol{
+    flex-basis: 100%;
+    padding: 25px;
+    align-self: flex-end;
+    margin-bottom: 150px;
+}
+
+.text{
+    font-size: 2.5rem;
+    color: #CACACA;
+}
+
+
+.myName{
+    padding: 15px 0;
+    font-size: 3rem;
+    display: inline-block;
+    color:#C6DE41;
+    font-weight: bold;
+}
+
+@keyframes jobkf{
+    0%{
+        left: -30%;
+    }
+    40%,
+    100%{
+        left:130%;
+    }
+}
+
+
+.job{
+    padding: 10px 25px;
+    font-size: 3rem;
+    display: inline-block;
+    background: #C6DE41;
+    color: #071C21;
+    font-style: italic;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.job::after{
+    content: '';
+    width: 20%;
+    height: 200%;
+    background-color: white;
+    opacity: .2;
+    position: absolute;
+    top: -50%;
+    transform: rotate(35deg);
+    animation: jobkf 3s infinite ease-in-out;
+}
+
+
+
+
+.btnContainer{
+    padding: 50px 0;
+}
+
+.btn{
+    position: relative;
+    text-decoration: none;
+    color:#C6DE41;
+    font-size: 1.5r;
+    border: 3px solid #C6DE41;
+    padding: 15px 25px ;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.btn::after{
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    width:0;
+    height: 104%;
+    border-radius: 15px;
+    left: -2%;
+    top: -2%;
+    z-index: -1;
+}
+
+.btn:hover{
+    color: #071C21;
+    transition: 1s;
+}
+
+.btn:hover:after{
+    background-color: #C6DE41;
+    width: 104%;
+    transition: .5s;
+}
+
+.image{
+    width: 100%;
+}
+
+
+/*********** svg animation ********************/
+
+/* work indication */
+@keyframes workIndicator {
+    0% {
+        fill: #C6DE41;
+    }
+    100% {
+        fill: rgba(198, 222, 65, 0.25);
+    }
+}
+
+.indicator1 {
+    fill: #F3EFCC;
+    animation: workIndicator 4s infinite linear;
+    animation-delay: 1s;
+}
+
+
+.indicator2{
+    fill: #F3EFCC;
+    animation: workIndicator 4s infinite linear;
+    animation-delay: 2s;
+}
+
+.indicator3{
+    fill: #F3EFCC;
+    animation: workIndicator 4s infinite linear;
+    animation-delay: 3s;
+}
+
+.indicator4{
+    fill: #F3EFCC;
+    animation: workIndicator 4s infinite linear;
+
+}
+
+
+
+/* commits */
+/*.commit{*/
+/*    cursor: pointer;*/
+/*    z-index: 10;*/
+/*}*/
+
+/*.commit:hover{*/
+/*    fill: #C6DE41;*/
+/*}*/
+
+/*.commit1:hover{*/
+/*    fill: yellow;*/
+/*}*/
+/*.commit1:hover ~ .branch2{*/
+/*    stroke: yellow;*/
+/*    fill: yellow;*/
+/*}*/
+
+
+
+/* branches */
+/*.branch{*/
+/*    stroke-width: 2px;*/
+/*    cursor: pointer;*/
+/*}*/
+

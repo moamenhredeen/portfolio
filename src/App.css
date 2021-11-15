@@ -6,6 +6,8 @@
 
     /* colors */
     --primary-color: #F3EFCC;
+    --primary-color-50: rgba(243, 239, 204, 0.5);
+    --primary-color-10: rgba(243, 239, 204, 0.1);
     --secondary-color:#32502E;
     --secondary-color-10: rgba(50, 80, 46, 0.2);
     --secondary-color-50: rgba(50, 80, 46, 0.5);

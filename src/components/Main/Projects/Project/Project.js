@@ -1,18 +1,22 @@
-
 import classes from './Project.module.css';
-import  myImage from './image.jpg';
 
-const Project = () => {
+const Project = (props) => {
     return (
         <div className={classes.container}>
-            <div className={classes.body}>
-                <img src={myImage} alt="myimage"/>
+            <div className={classes.image}>
+                <img src={props.image} alt="myimage"/>
             </div>
-            <div className={classes.title}>
-                <h2>Project title</h2>
+            <div className={classes.content}>
+                <div className={classes.title}>
+                    <h2>{props.title}</h2>
+                </div>
+                <div className={classes.body}>
+                    <p>{props.body}</p>
+                </div>
             </div>
         </div>
     );
+
 
 }
 

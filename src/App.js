@@ -1,16 +1,24 @@
 import './App.css';
+import React from "react";
+import {Route, Switch} from "react-router-dom";
+import Main from "./components/Main/Main";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
-
-import React from "react";
-import Main from "./components/Main/Main";
+import Home from './components/Home/Home'
+import Blog from "./components/Blog/Blog";
 
 function App() {
     return (
         <div className="App">
-            <Sidebar/>
-            <Navbar/>
-            <Main/>
+            <Switch>
+                <Route exact path="/home" component={Home} />
+                <Route exact path="/blog" component={Blog} />
+                <>
+                    <Sidebar/>
+                    <Navbar/>
+                    <Main/>
+                </>
+            </Switch>
         </div>
     );
 }

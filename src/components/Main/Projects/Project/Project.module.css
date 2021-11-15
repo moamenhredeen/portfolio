@@ -1,10 +1,9 @@
-
 .container{
-    margin: 25px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 25px;
-    width: 40%;
     cursor: pointer;
+    width: 100%;
+    overflow: hidden;
 }
 
 .container:hover{
@@ -12,18 +11,25 @@
     transition: 0.2s;
 }
 
-.body{
-}
-
-.body img{
+.image img{
     display: block;
     width: 100%;
-    border-radius: 25px 25px 0  0;
+    /*border-radius: 25px 0 0 25px;*/
+}
+
+.content{
+    background-color:var(--primary-color-50);
 }
 
 .title{
-    background-color: var(--secondary-color);
-    border-radius: 0  0 25px 25px;
-    padding: 15px;
-    color: white;
+    padding: 10px 25px;
+}
+
+.title h2{
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.body{
+    padding:10px 25px;
 }
