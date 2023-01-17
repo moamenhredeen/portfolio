@@ -1,53 +1,38 @@
 <script>
-	import Header from './Header.svelte';
-	import './styles.css';
+  import "papercss/dist/paper.min.css";
+  import "./styles.css";
+
+  import { Navbar, Button } from "spaper";
 </script>
 
-<div class="app">
-	<Header />
+<svelte:head>
+  <title>Moamen Hraden</title>
+</svelte:head>
 
-	<main>
-		<slot />
-	</main>
+<div class="container">
+  <Navbar border={false}>
+    <h3 slot="brand">
+      <a href="/">Home</a>
+    </h3>
+    <ul class="inline">
+      <li><a href="/posts">Posts</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/whoami">whoami</a></li>
+    </ul>
+  </Navbar>
 
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+  </footer>
 </div>
 
+
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
+  /**{*/
+  /*    background: rgba(0, 0, 0, 0.1);*/
+  /*    outline: 1px solid lightgreen;*/
+  /*}*/
 </style>
