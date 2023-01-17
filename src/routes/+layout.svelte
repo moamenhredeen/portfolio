@@ -1,8 +1,8 @@
 <script>
   import "papercss/dist/paper.min.css";
   import "./styles.css";
-
-  import { Navbar, Button } from "spaper";
+  import { base } from "$app/paths";
+  import { Navbar } from "spaper";
 </script>
 
 <svelte:head>
@@ -12,12 +12,12 @@
 <div class="container">
   <Navbar border={false}>
     <h3 slot="brand">
-      <a href="/">Home</a>
+      <a href="{base}/">Home</a>
     </h3>
     <ul class="inline">
-      <li><a href="/posts">Posts</a></li>
-      <li><a href="/projects">Projects</a></li>
-      <li><a href="/whoami">whoami</a></li>
+      <li><a href="{base}/posts">Posts</a></li>
+      <li><a href="{base}/projects">Projects</a></li>
+      <li><a href="{base}/whoami">whoami</a></li>
     </ul>
   </Navbar>
 
@@ -31,8 +31,8 @@
 
 
 <style>
-  /**{*/
-  /*    background: rgba(0, 0, 0, 0.1);*/
-  /*    outline: 1px solid lightgreen;*/
-  /*}*/
+    /**{*/
+    /*    background: rgba(0, 0, 0, 0.1);*/
+    /*    outline: 1px solid lightgreen;*/
+    /*}*/
 </style>
