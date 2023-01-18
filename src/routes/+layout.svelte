@@ -17,6 +17,7 @@
     <ul class="inline">
       <li><a href="{base}/posts">Posts</a></li>
       <li><a href="{base}/projects">Projects</a></li>
+      <li><a href="{base}/cv">CV</a></li>
       <li><a href="{base}/whoami">whoami</a></li>
     </ul>
   </Navbar>
@@ -24,15 +25,9 @@
   <main>
     <slot />
   </main>
-
-  <footer>
-  </footer>
 </div>
 
 
 <style>
-    /**{*/
-    /*    background: rgba(0, 0, 0, 0.1);*/
-    /*    outline: 1px solid lightgreen;*/
-    /*}*/
+
 </style>
