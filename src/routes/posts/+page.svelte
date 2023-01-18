@@ -1,5 +1,6 @@
 <script>
   import { Card, Button } from "spaper";
+  import { base } from "$app/paths";
 </script>
 
 <svelte:head>
@@ -11,7 +12,7 @@
         title="My awesome Paper card!"
         image="https://picsum.photos/768">
     Card Content
-    <a href="/posts/post/algorithms">read more</a>
+    <a href="{base}/posts/post/algorithms">read more</a>
   </Card>
 </div>
 
