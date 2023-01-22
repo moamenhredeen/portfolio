@@ -1,10 +1,10 @@
 
 <script lang="ts">
-	import image from '$lib/images/image.jpg';
   import githubIcon from '$lib/images/github.svg';
   import twitterIcon from '$lib/images/twitter.svg';
   import xingIcon from '$lib/images/xing.svg';
   import linkedinIcon from '$lib/images/linkedin.svg';
+    import Icon from '$lib/components/icon/Icon.svelte';
 </script>
 
 <svelte:head>
@@ -19,23 +19,23 @@
   </section>
   <section>
     <picture>
-      <img src={image} alt="Welcome" />
+      <img src="images/image.jpg" alt="me"/>
     </picture>
     <div class="contact">
       <div class="contact-item">
-        <img src="{githubIcon}" alt="">
+        <Icon name='github'/>
         <a href="https://github.com/moamenhredeen">github/moamenhredeen</a>
       </div>
       <div class="contact-item">
-        <img src="{twitterIcon}" alt="">
+        <Icon name='twitter'/>
         <a href="https://github.com/moamenhredeen">github/moamenhredeen</a>
       </div>
       <div class="contact-item">
-        <img src="{linkedinIcon}" alt="">
+        <Icon name='linkedin'/>
         <a href="https://github.com/moamenhredeen">github/moamenhredeen</a>
       </div>
       <div class="contact-item">
-        <img src="{xingIcon}" alt="">
+        <Icon name='xing'/>
         <a href="https://github.com/moamenhredeen">github/moamenhredeen</a>
       </div>
     </div>
