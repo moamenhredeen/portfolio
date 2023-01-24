@@ -10,13 +10,15 @@
 </svelte:head>
 
 <div class="container">
-  <Navbar border={false}>
+  <!-- TODO: fixed navbar layout -->
+  <Navbar>
     <h3 slot="brand">
       <a href="{base}/">Home</a>
     </h3>
     <ul class="inline">
       <li><a href="{base}/posts">Posts</a></li>
       <li><a href="{base}/projects">Projects</a></li>
+      <li><a href="{base}/games">Games  </a></li>
       <li><a href="{base}/cv">CV</a></li>
       <li><a href="{base}/whoami">whoami</a></li>
     </ul>
@@ -29,5 +31,8 @@
 
 
 <style>
+  .container{
+    padding: 1rem;
+  }
 
 </style>
