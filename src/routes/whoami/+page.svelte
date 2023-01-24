@@ -1,10 +1,5 @@
-
 <script lang="ts">
-  import githubIcon from '$lib/images/github.svg';
-  import twitterIcon from '$lib/images/twitter.svg';
-  import xingIcon from '$lib/images/xing.svg';
-  import linkedinIcon from '$lib/images/linkedin.svg';
-    import Icon from '$lib/components/icon/Icon.svelte';
+  import Icon from "$lib/components/icon/Icon.svelte";
 </script>
 
 <svelte:head>
@@ -19,23 +14,23 @@
   </section>
   <section>
     <picture>
-      <img src="images/image.jpg" alt="me"/>
+      <img src="images/image.jpg" alt="me" />
     </picture>
     <div class="contact">
       <div class="contact-item">
-        <Icon name='github'/>
+        <Icon name="github" />
         <a href="https://github.com/moamenhredeen">github/moamenhredeen</a>
       </div>
       <div class="contact-item">
-        <Icon name='twitter'/>
+        <Icon name="twitter" />
         <a href="https://github.com/moamenhredeen">github/moamenhredeen</a>
       </div>
       <div class="contact-item">
-        <Icon name='linkedin'/>
+        <Icon name="linkedin" />
         <a href="https://github.com/moamenhredeen">github/moamenhredeen</a>
       </div>
       <div class="contact-item">
-        <Icon name='xing'/>
+        <Icon name="xing" />
         <a href="https://github.com/moamenhredeen">github/moamenhredeen</a>
       </div>
     </div>
@@ -43,24 +38,23 @@
 </div>
 
 <style lang="scss">
-  .root-container{
+  .root-container {
     margin: 25px 0;
     display: flex;
-  
-    section{
+
+    section {
       flex: 1;
     }
   }
 
-
-  .contact{
+  .contact {
     margin: 25px 10px;
-    .contact-item{
+    .contact-item {
       margin: 10px 0;
       display: flex;
       align-items: center;
       gap: 10px;
-      img{
+      img {
         width: 40px;
         height: 40px;
         border: none;

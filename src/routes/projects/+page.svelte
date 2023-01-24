@@ -16,7 +16,7 @@
     title={project.title} 
     image={project.image}
     subTitle={project.subtitle}>
-      <a slot="bottom" href={project.href}>more info</a>
+      <!-- <a slot="bottom" href={project.href}>more info</a> -->
     </Card>
   {/each}
 </div>

@@ -2,9 +2,9 @@
   import { Button, Form, Slider } from "spaper";
   import Icon from "../icon/Icon.svelte";
 
-  // 0: empty 
-  // 1: apple 
-  //-1: pomp 
+  // 0: empty
+  // 1: apple
+  //-1: pomp
   let matrix = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -16,9 +16,10 @@
 
   // snake head position
   let current = 0;
+  let snake: number[] = [];
   let started = false;
   let interval: number = 500;
-  let intervalId: NodeJS.Timer;
+  let intervalIds: NodeJS.Timer[] = [];
   let direction: "ArrowUp" | "ArrowDown" | "ArrowLeft" | "ArrowRight" | string =
     "ArrowRight";
 
@@ -56,21 +57,47 @@
       default:
         break;
     }
+
+    if(matrix[current] === 1){
+        snake = [...snake, current]
+    }else if(matrix[current] === -1){
+        snake = [current]
+    }else {
+        snake = [...snake.slice(1), current]
+    }
+
+    matrix[current] = 0
+  }
+
+  function generate(type: 'apple'| 'pomp'){
+    const random = Math.floor(Math.random() * (matrix.length - 1))
+    if(random > (matrix.length - 1) * 3 / 4){
+        matrix[random] = -1;
+    }else {
+        matrix[random] = 1
+    }
   }
 
   function start() {
     current = 0;
+    snake = [current];
     started = true;
-    clearInterval(intervalId);
-    intervalId = setInterval(() => {
+    intervalIds.forEach(id => clearInterval(id));
+    intervalIds = []
+    intervalIds.push(setInterval(() => {
       move();
-    }, interval);
+    }, interval));
+
+    intervalIds.push(setInterval(() => {
+        generate('apple')
+    }, interval * 4))
   }
 
   function stop() {
     current = 0;
+    snake = [];
     started = false;
-    clearInterval(intervalId);
+    intervalIds.forEach(id => clearInterval(id))
   }
 </script>
 
@@ -98,7 +125,7 @@
   </div>
   <div class="board">
     {#each matrix as cell, index (index)}
-      <div class="cell" class:active={current === index}>
+      <div class="cell" class:tail={snake.includes(index)} class:head={current === index}>
         {#if matrix[index] === 1}
           <Icon name="apple" />
         {:else if matrix[index] === -1}
@@ -126,11 +153,15 @@
       height: 2rem;
       width: 2rem;
       &:hover {
-        background-color: yellowgreen;
+        background-color: yellow;
       }
 
-      &.active {
+      &.tail {
         background-color: salmon;
+      }
+
+      &.head {
+        background-color: yellowgreen;
       }
     }
   }
