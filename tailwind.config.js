@@ -5,7 +5,11 @@
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {},
+    extend: {
+      cursor: {
+        'navigate': 'url(/images/navigation.svg), move'
+      }
+    },
   },
   plugins: [],
 }

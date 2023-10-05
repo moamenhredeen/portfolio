@@ -2,12 +2,18 @@
     import "../app.css"
     import {page} from "$app/stores";
 
+    import homeIcon from '$lib/images/home.svg'
+    import projectsIcon from '$lib/images/idea.svg'
+    import blogIcon from '$lib/images/user-interface.svg'
+    import aboutIcon from '$lib/images/user.svg'
+
     const links = [
-        {name: "Home", href: "/"},
-        {name: "Projects", href: "/projects"},
-        {name: "Blog", href: "/blog"},
-       {name: "About", href: "/about"},
-]
+        {name: "Home", href: "/", icon: homeIcon},
+        {name: "Projects", href: "/projects", icon: projectsIcon},
+        {name: "Blog", href: "/blog", icon: blogIcon},
+       {name: "About", href: "/about", icon: aboutIcon},
+    ]
+
 </script>
 
 <div class="relative">
@@ -16,10 +22,15 @@
             <hr>
             {#each links as link}
                 <li>
-                    <a class="block px-12 py-12 border-y-2 border-gray-400 hover:cursor-pointer text-2xl h-full"
+                    <a class="block px-12 py-12 border-y-2 border-gray-400 hover:cursor-pointer text-2xl h-full hover:bg-lime-100 hover:underline"
                        class:bg-lime-300={$page.url.pathname === link.href}
                        class:border-transparent={$page.url.pathname !== link.href}
-                       href="{link.href}">{link.name}</a>
+                       href="{link.href}">
+                        <img src="{link.icon}"
+                             class="inline w-12 h-12 mr-4"
+                             alt="page icon">
+                        {link.name}
+                    </a>
                 </li>
                 <hr>
             {/each}
