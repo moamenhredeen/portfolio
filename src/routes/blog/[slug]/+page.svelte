@@ -9,29 +9,25 @@
     <meta property="og:title" content={data.meta.title}/>
 </svelte:head>
 
-<article class="p-4 m-auto w-full xl:w-1/2">
-    <!-- Title -->
-    <hgroup>
-        <h1 class="text-4xl my-2">{data.meta.title}</h1>
-        <p>Published at {data.meta.date}</p>
-    </hgroup>
+<!-- Title -->
+<hgroup>
+    <h1 class="text-4xl my-2">{data.meta.title}</h1>
+    <p>Published at {data.meta.date}</p>
+</hgroup>
 
-    <!-- Tags -->
-    <div class="flex gap-2 my-4">
-        {#each data.meta.categories as category}
-            <span class="bg-amber-200 rounded-xl px-4 italic">&num;{category}</span>
-        {/each}
-    </div>
+<!-- Tags -->
+<div class="flex gap-2 my-4">
+    {#each data.meta.categories as category}
+        <span class="bg-amber-200 rounded-xl px-4 italic">&num;{category}</span>
+    {/each}
+</div>
 
-    <hr class="w-1/2 my-6">
+<hr class="w-1/2 my-6">
 
-    <!-- Post -->
-    <div class="post-content">
-        <svelte:component this={data.content}/>
-    </div>
-
-    <div class="h-64"></div>
-</article>
+<!-- Post -->
+<div class="post-content">
+    <svelte:component this={data.content}/>
+</div>
 
 <style lang="postcss">
 
@@ -51,7 +47,6 @@
         @apply text-xl;
         @apply my-2;
     }
-
 
 
     .post-content :global(h4) {
