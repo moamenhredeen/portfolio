@@ -11,7 +11,7 @@
 </div>
 
 <ul class="flex flex-wrap gap-12 p-6 w-full lg:w-1/2 m-auto">
-    {#each data.posts as post, index}
+    {#each data.posts as post}
         {#if post.title.toLowerCase().includes(searchKeyword.toLowerCase())}
             <li>
                 <h3 class="text-4xl hover:underline">

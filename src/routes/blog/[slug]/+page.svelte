@@ -29,6 +29,8 @@
     <div class="post-content">
         <svelte:component this={data.content}/>
     </div>
+
+    <div class="h-64"></div>
 </article>
 
 <style lang="postcss">
