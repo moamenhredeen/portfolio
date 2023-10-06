@@ -32,7 +32,7 @@
 			<div class="p-2">
 				<h3 class="text-2xl">{project.name}</h3>
 				<p>{project.description.substring(0, 32)} {project.description.length > 32 && '...'}</p>
-				<a href="#" class="block underline text-right">more info</a>
+				<a href="/projects" class="block underline text-right">more info</a>
 			</div>
 		</div>
 	{/each}
