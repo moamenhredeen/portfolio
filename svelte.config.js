@@ -1,9 +1,25 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
+import {escapeSvelte, mdsvex} from 'mdsvex'
+import {getHighlighter} from "shiki";
+
+/** @type {import('mdsvex').MdsvexOptions} */
+const mdsvexOptions = {
+	extensions: ['.md'],
+	highlight: {
+		highlighter: async (code, lang = 'text') => {
+			const highlighter = await getHighlighter({ theme: 'solarized-light' })
+			const html = escapeSvelte(highlighter.codeToHtml(code, { lang }))
+			return `{@html \`${html}\` }`
+		}
+	},
+}
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: vitePreprocess(),
+	extensions: ['.svelte', '.md'],
+	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 	kit: {
 		adapter: adapter()
 	}

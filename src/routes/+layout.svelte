@@ -8,7 +8,7 @@
     import aboutIcon from '$lib/images/user.svg'
 
     const links = [
-        {name: "Home", href: "/", icon: homeIcon},
+        {name: "Home", href: "/home", icon: homeIcon},
         {name: "Projects", href: "/projects", icon: projectsIcon},
         {name: "Blog", href: "/blog", icon: blogIcon},
        {name: "About", href: "/about", icon: aboutIcon},
@@ -23,8 +23,8 @@
             {#each links as link}
                 <li>
                     <a class="block px-12 py-12 border-y-2 border-gray-400 hover:cursor-pointer text-2xl h-full hover:bg-lime-100 hover:underline"
-                       class:bg-lime-300={$page.url.pathname === link.href}
-                       class:border-transparent={$page.url.pathname !== link.href}
+                       class:bg-lime-300={$page.url.pathname.startsWith(link.href)}
+                       class:border-transparent={!$page.url.pathname.startsWith(link.href)}
                        href="{link.href}">
                         <img src="{link.icon}"
                              class="inline w-12 h-12 mr-4"

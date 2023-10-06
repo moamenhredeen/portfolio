@@ -1,50 +1,18 @@
 
-const articles = [
-    {
-        name: 'Parallel Computing',
-        url: '#',
-        description: 'brief introduction to parallel computing in c#'
-    },
-    {
-        name: 'angular theming',
-        url: '#',
-        description: 'brief introduction to parallel computing in c#'
-    },
-    {
-        name: 'java generics',
-        url: '#',
-        description: 'brief introduction to parallel computing in c#'
-    },
-    {
-        name: 'is java really slow',
-        url: '#',
-        description: 'brief introduction to parallel computing in c#'
-    },
-    {
-        name: 'Parallel Computing',
-        url: '#',
-        description: 'brief introduction to parallel computing in c#'
-    },
-    {
-        name: 'Parallel Computing',
-        url: '#',
-        description: 'brief introduction to parallel computing in c#'
-    },
-    {
-        name: 'Parallel Computing',
-        url: '#',
-        description: 'brief introduction to parallel computing in c#'
-    },
-    {
-        name: 'Parallel Computing',
-        url: '#',
-        description: 'brief introduction to parallel computing in c#'
-    },
-]
+import type {LoadEvent} from "@sveltejs/kit";
+import type {Post} from "./types";
 
-/** @type {import('./$types').PageLoad} */
-export function load() {
-    return {
-        articles: articles
-    };
+export function load(event: LoadEvent) {
+    const paths = import.meta.glob('./posts/*.md', {eager: true});
+    const posts: Post[] = [];
+    for (const path in paths) {
+        const file = paths[path];
+        const slug = path.split('/').at(-1)?.replace('.md', '');
+        if (file && typeof file === 'object' && 'metadata' in file && slug) {
+            const metadata = file.metadata as Omit<Post, 'slug'>
+            const post = { ...metadata, slug } satisfies Post
+            post.published && posts.push(post)
+        }
+    }
+    return {posts};
 }
