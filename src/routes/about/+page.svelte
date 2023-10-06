@@ -7,7 +7,7 @@
     import gmail from './img/gmail.svg'
 
     let personalInfo = [
-        {key: 'Email', value: 'moamenhredeen@gmail.com', icon: gmail},
+        {key: 'Email', value: 'mailto:moamenhredeen@gmail.com', icon: gmail},
         {key: 'Github', value: 'https://github.com/moamenhredeen', icon: github},
         {key: 'Xing', value: 'https://www.xing.com/profile/moamen_hraden5/cv', icon: xing},
         {key: 'LinkedIn', value: 'https://www.linkedin.com/in/moamen-hraden-1b01551b5/', icon: linkedin},
