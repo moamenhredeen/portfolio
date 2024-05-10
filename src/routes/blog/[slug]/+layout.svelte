@@ -18,8 +18,8 @@
 
 </script>
 
-<article class="p-4 m-auto w-full xl:w-1/2">
+<article>
     <slot/>
 </article>
-<div id="disqus_thread"
-     class="my-12 w-full xl:w-1/2 m-auto"></div>
+<hr class="my-8">
+<div id="disqus_thread"></div>

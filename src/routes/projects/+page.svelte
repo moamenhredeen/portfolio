@@ -17,22 +17,29 @@
 			image: ecommerceImage
 		},
 		{
-			name: 'task manager',
-			description: "a",
+			name: 'Task Manager',
+			description: "Task manager for power user",
 			href: '#',
 			image: 'https://plus.unsplash.com/premium_photo-1673697239984-b089baf7b6e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFja2dyb3VuZCUyMGltYWdlfGVufDB8fDB8fHww&w=1000&q=80'
 		}
 	];
 </script>
 
-<section class="p-12 flex gap-12">
+<section class="grid grid-col-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 	{#each projects as project}
-		<div class="border-2 border-gray-400 p-1 w-80 h-80 hover:cursor-navigate" style="cursor: url('/images/navigation.svg'), pointer">
+		<div class="hover:cursor-pointer border-2 border-gray-400 flex flex-col">
 			<img src={project.image} alt="project preview" />
-			<div class="p-2">
+			<div class="p-4 flex-1 flex flex-col">
 				<h3 class="text-2xl">{project.name}</h3>
-				<p>{project.description.substring(0, 32)} {project.description.length > 32 && '...'}</p>
-				<a href="/projects" class="block underline text-right">more info</a>
+				{#if project.description.length > 32}
+					<p>{project.description.substring(0, 32)} ...</p>
+				{:else }
+					<p>{project.description}</p>
+				{/if}
+				<div class="flex-1 flex justify-end items-end">
+					<a class="underline p-2"
+					   href="/projects">more info</a>
+				</div>
 			</div>
 		</div>
 	{/each}

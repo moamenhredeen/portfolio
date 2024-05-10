@@ -13,64 +13,81 @@
         {key: 'LinkedIn', value: 'https://www.linkedin.com/in/moamen-hraden-1b01551b5/', icon: linkedin},
     ]
 
-    let skills = [
-        {name: 'Java / Spring', level: 75},
-        {name: '.NET / Asp.Net Core', level: 75},
-        {name: 'NodeJs', level: 75},
-        {name: 'Angular', level: 75},
-        {name: 'Flutter', level: 75},
-        {name: 'Svelte', level: 50},
-        {name: 'React', level: 50},
-        {name: 'Golang', level: 50},
+    let experience = [
+        {
+            date: '2021 - present',
+            company: 'Primion Technology GmbH',
+            description: `
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi eveniet modi,
+            ut facilis sequi corporis quidem vitae, reprehenderit autem dolorum
+            rerum doloribus totam unde neque labore? Earum veniam temporibus porro?`
+        },
+        {
+            date: '2020 - 2021',
+            company: 'Vinnova (Viscan)',
+            description: `
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi eveniet modi,
+            ut facilis sequi corporis quidem vitae, reprehenderit autem dolorum
+            rerum doloribus totam unde neque labore? Earum veniam temporibus porro?`
+        },
+        {
+            date: '2019 - 2020',
+            company: 'Hochschule Albstadt-Sigmaringen',
+            description: `
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi eveniet modi,
+            ut facilis sequi corporis quidem vitae, reprehenderit autem dolorum
+            rerum doloribus totam unde neque labore? Earum veniam temporibus porro?`
+        },
     ]
+
 </script>
 
-<section class="p-8">
-    <div class="flex gap-8">
-        <img class="border-2 p-1 border-gray-400 h-80 w-80" src="{myImage}" alt="me :)">
-        <div class="">
-            <h1 class="text-4xl">Moamen Hredeen</h1>
-            <ul>
-                {#each personalInfo as item}
-                    <li>
-                        <a class="block hover:underline my-4"
-                           href="{item.value}">
-                            <img src="{item.icon}"
-                                 class="inline w-8 h-8 mr-2"
-                                 alt="link icon">
-                            <!--<span class="font-bold">{item.key}: </span>-->
-                            {item.value}
-                        </a>
-                    </li>
-                {/each}
-            </ul>
-        </div>
-    </div>
-
-    <hr class="my-8 w-1/2">
-
+<div class="flex flex-col lg:flex-row gap-8">
+    <img class="border-2 p-1 border-gray-400 h-48 w-48" src="{myImage}" alt="me :)">
     <div>
-        <h1 class="text-4xl">Skills</h1>
-
-        <table class="mt-4">
-            {#each skills as skill}
-                <tr>
-                    <td class="text-l italic">{skill.name}</td>
-                    <td class="px-2">
-                        {#if skill.level >= 66 }
-                            <span class="block rounded-xl w-96 h-2 bg-lime-400"></span>
-                        {:else if skill.level >= 33 }
-                            <span class="block  rounded-xl w-64 h-2 bg-amber-400"></span>
-                        {:else}
-                            <span class="block  rounded-xl w-32 h-2 bg-red-400"></span>
-                        {/if}
-                    </td>
-                </tr>
+        <h1 class="text-4xl">Moamen Hredeen</h1>
+        <p class="py-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi eveniet modi,
+            ut facilis sequi corporis quidem vitae, reprehenderit autem dolorum
+            rerum doloribus totam unde neque labore? Earum veniam temporibus porro?
+        </p>
+        <ul class="flex justify-around">
+            {#each personalInfo as item}
+                <li>
+                    <a class="hover:underline flex flex-col items-center"
+                       href="{item.value}">
+                        <img src="{item.icon}"
+                             class="inline w-8 h-8"
+                             alt="link icon">
+                        <!--<span class="font-bold">{item.key}: </span>-->
+                        {item.key}
+                    </a>
+                </li>
             {/each}
-        </table>
+        </ul>
     </div>
+</div>
+
+<hr class="my-8 w-1/2">
+
+<div>
+    <h1 class="text-4xl">Experience</h1>
+    <ul class="flex flex-col py-12">
+        {#each experience as item}
+            <li class="flex items-start">
+                <div class="flex items-center translate-x-2">
+                    <span class="bg-lime-400 w-32 p-1 px-2 my-2 text-center">{item.date}</span>
+                    <span class="bg-lime-400 w-8 h-0.5"></span>
+                    <span class="bg-lime-400 h-4 w-4 rounded-xl"></span>
+                </div>
+                <div class="border-l-2 border-lime-400 p-2 pb-12 px-8">
+                    <h2 class="text-2xl pb-2">{item.company}</h2>
+                    <p>{item.description}</p>
+                </div>
+            </li>
+        {/each}
+    </ul>
+</div>
 
 
-    <hr class="my-8 w-1/2">
-
-</section>
+<hr class="my-8 w-1/2">

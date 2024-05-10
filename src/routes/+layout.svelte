@@ -17,28 +17,27 @@
 
 </script>
 
-<div class="relative">
-    <nav class="fixed h-screen top-0 left-0 w-80 bg-amber-50 flex flex-col justify-center items-center border-r-2 border-gray-400">
-        <ul class="w-full">
-            <hr>
+<div class="bg-amber-50 min-h-screen flex justify-center">
+
+    <main class="w-3/4 lg:w-2/3 xl:w-1/2 mb-24 pt-12">
+        <slot/>
+    </main>
+
+    <nav class="fixed bottom-0 left-0 right-0 flex justify-center p-5">
+        <ul class="flex shadow-xl bg-amber-50 border-gray-400 border-2">
             {#each links as link}
                 <li>
-                    <a class="block px-12 py-12 border-y-2 border-gray-400 hover:cursor-pointer text-2xl h-full hover:bg-lime-100 hover:underline"
-                       class:bg-lime-300={link.href === $page.url.pathname}
+                    <a class="hover:bg-lime-100 p-2 px-12 flex flex-col items-center"
+                       class:bg-lime-300={link.href + "/" === $page.url.pathname}
                        class:border-transparent={link.href !== $page.url.pathname}
                        href="{link.href}">
                         <img src="{link.icon}"
-                             class="inline w-12 h-12 mr-4"
+                             class="inline w-8 h-8"
                              alt="page icon">
                         {link.name}
                     </a>
                 </li>
-                <hr>
             {/each}
         </ul>
     </nav>
-
-    <main class="absolute top-0 left-80 right-0 min-h-screen bg-amber-50">
-        <slot/>
-    </main>
 </div>
