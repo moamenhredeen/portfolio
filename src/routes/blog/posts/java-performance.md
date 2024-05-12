@@ -5,6 +5,7 @@ date: '2023-4-16'
 categories:
   - java
 published: true
+status: in progress
 ---
 
 # Java 21 was Released 😍
@@ -16,7 +17,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 public class Main{
     public static void main(String...args){
         System.out.println("hello world");
-    }
+     }
 }
 ```
 

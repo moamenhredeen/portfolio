@@ -11,14 +11,22 @@
 
 <!-- Title -->
 <hgroup>
-    <h1 class="text-4xl my-2">{data.meta.title}</h1>
-    <p>Published at {data.meta.date}</p>
+    <h1 class="text-4xl my-2">
+        {data.meta.title}
+        {#if data.meta.status === 'draft'}
+            <span class="text-red-800 font-bold text-xl italic">{data.meta.status.toUpperCase()}</span>
+        {:else if data.meta.status === 'in progress'}
+            <span class="text-blue-800 font-bold text-xl italic">{data.meta.status.toUpperCase()}</span>
+        {/if}
+    </h1>
+    <p class="text-gray-600">Published at {data.meta.date}</p>
 </hgroup>
+
 
 <!-- Tags -->
 <div class="flex gap-2 my-4">
     {#each data.meta.categories as category}
-        <span class="bg-amber-200 rounded-xl px-4 italic">&num;{category}</span>
+        <span class="bg-amber-200 rounded-xl px-4 italic text-gray-800">&num;{category}</span>
     {/each}
 </div>
 
@@ -27,6 +35,8 @@
 <!-- Post -->
 <div class="post-content">
     <svelte:component this={data.content}/>
+    <!--  TODO:  collect the links and add them at end in a references section  -->
+    <!--  TODO:  add table of content component (on the right side maybe) -->
 </div>
 
 <style lang="postcss">

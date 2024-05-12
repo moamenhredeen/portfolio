@@ -6,20 +6,20 @@
     import projectsIcon from '$lib/images/idea.svg'
     import blogIcon from '$lib/images/user-interface.svg'
     import aboutIcon from '$lib/images/user.svg'
+    import books from '$lib/images/books.svg'
 
     const links = [
         {name: "Home", href: "/", icon: homeIcon},
         {name: "Projects", href: "/projects", icon: projectsIcon},
-        {name: "Blog", href: "/blog", icon: blogIcon},
+        {name: "Blog", href: "/blog", icon: books},
         {name: "About", href: "/about", icon: aboutIcon},
     ]
-
 
 </script>
 
 <div class="bg-amber-50 min-h-screen flex justify-center">
 
-    <main class="w-3/4 lg:w-2/3 xl:w-1/2 mb-24 pt-12">
+    <main class="w-3/4 lg:w-2/3 xl:w-1/2 mb-48 pt-12">
         <slot/>
     </main>
 
@@ -32,7 +32,7 @@
                        class:border-transparent={link.href !== $page.url.pathname}
                        href="{link.href}">
                         <img src="{link.icon}"
-                             class="inline w-8 h-8"
+                             class="inline w-10 h-10"
                              alt="page icon">
                         {link.name}
                     </a>

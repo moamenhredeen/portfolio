@@ -25,7 +25,7 @@
 	];
 </script>
 
-<section class="grid grid-col-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<section class="grid grid-col-1 md:grid-cols-2 gap-12">
 	{#each projects as project}
 		<div class="hover:cursor-pointer border-2 border-gray-400 flex flex-col">
 			<img src={project.image} alt="project preview" />

@@ -76,11 +76,11 @@
         {#each experience as item}
             <li class="flex items-start">
                 <div class="flex items-center translate-x-2">
-                    <span class="bg-lime-400 w-32 p-1 px-2 my-2 text-center">{item.date}</span>
-                    <span class="bg-lime-400 w-8 h-0.5"></span>
-                    <span class="bg-lime-400 h-4 w-4 rounded-xl"></span>
+                    <span class="bg-amber-200 w-32 p-1 px-2 my-2 text-center text-gray-800 rounded">{item.date}</span>
+                    <span class="bg-amber-200 w-8 h-0.5"></span>
+                    <span class="bg-amber-200 h-4 w-4 rounded-xl"></span>
                 </div>
-                <div class="border-l-2 border-lime-400 p-2 pb-12 px-8">
+                <div class="border-l-2 border-amber-200 p-2 pb-12 px-8">
                     <h2 class="text-2xl pb-2">{item.company}</h2>
                     <p>{item.description}</p>
                 </div>

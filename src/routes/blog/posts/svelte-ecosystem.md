@@ -6,6 +6,7 @@ categories:
   - svelte
   - frontend
 published: true
+status: done
 ---
 
 # Introduction to Svelte

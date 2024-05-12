@@ -3,7 +3,7 @@
     import {onMount} from "svelte";
 
     onMount(() => {
-        var disqus_config = function () {
+        var disqus_config =  () => {
             this.page.url = 'moamenhredeen.github.io';
             this.page.identifier = 'moamenhredeen-github-io';
         };
