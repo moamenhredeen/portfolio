@@ -12,6 +12,7 @@
         {name: "Home", href: "/", icon: homeIcon},
         {name: "Projects", href: "/projects", icon: projectsIcon},
         {name: "Blog", href: "/blog", icon: books},
+        {name: "Games", href: "/games", icon: projectsIcon},
         {name: "About", href: "/about", icon: aboutIcon},
     ]
 
@@ -19,7 +20,7 @@
 
 <div class="bg-amber-50 min-h-screen flex justify-center">
 
-    <main class="w-3/4 lg:w-2/3 xl:w-1/2 mb-48 pt-12">
+    <main class="w-3/4 lg:w-2/3 xl:w-1/2 pt-12">
         <slot/>
     </main>
 
