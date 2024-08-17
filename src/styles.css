@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary: #000000;
+  --on-primary: #ffffff;
+  --primary-container: #ffffff;
+  --on-primary-container: #ffffff;
+
+  --secondary: #000000;
+  --on-secondary: #ffffff;
+  --secondary-container: #ffffff;
+  --on-secondary-container: #ffffff;
+
+  --tertiary: #000000;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #ffffff;
+  --on-tertiary-container: #ffffff;
+
+  --error: #FF0000;
+  --on-error: #FF0000;
+  --error-container: #ffffff;
+  --on-error-container: #ffffff;
+
+  --surface-dim: #ede8de;
+  --surface: #f9f6f1;
+  --surface-bright: #ffffff;
+  --on-surface: #211e1c;
+  --on-surface-variant: #000000;
+
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #ffffff;
+  --surface-container: #ede8de;
+  --surface-container-high: #ffffff;
+  --surface-container-highest: #ffffff;
+
+  --outline: #ffffff;
+  --outline-variant: #000000;
+
+
+  --background-color-primary: rgb(249 246 241 / 1);
+  --background-color-secondary: rgb(237 232 222 / 1);
+}
+
+@font-face {
+  font-family: remarkable;
+  src: url("assets/fonts/reMarkableSans-Variable_V1.2.woff2") format("woff2");
+}
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  height: 100%;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: remarkable, sans-serif;
+}
