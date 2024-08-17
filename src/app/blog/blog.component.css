@@ -1,5 +1,78 @@
 
-.container{
+.blog{
   width: 50%;
-  margin: 4rem auto;
+  margin: auto;
+
+  input{
+    border: none;
+    outline: none;
+    background: var(--surface-container);
+    padding: 1.2rem;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: .2rem;
+    margin: 2rem 0;
+  }
+
+  .actions{
+    display: flex;
+    justify-content: flex-end;
+
+    button{
+      all: unset;
+      padding: .5rem;
+      cursor: pointer;
+      border-radius: .2rem;
+      &:hover{
+        background: var(--surface-container);
+      }
+    }
+  }
+
+  ul{
+    list-style: none;
+    li{
+      padding: 2rem;
+      border-bottom: 1px solid var(--on-surface);
+      cursor: pointer;
+
+      h2{
+        font-weight: normal;
+      }
+
+      p{
+        color: var(--on-surface-variant);
+      }
+
+      &:hover{
+        background: var(--surface-container-low)
+      }
+    }
+  }
+}
+
+.empty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--on-surface-variant);
+
+  h1{
+    padding: 4rem 0;
+    font-weight: normal;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .blog{
+    width: 75%;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  .blog{
+    width: 90%;
+  }
 }

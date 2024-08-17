@@ -14,21 +14,24 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
+  z-index: 99;
+  background-color: var(--surface);
 
   h1{
     background-color: var(--surface-container);
     padding: .5rem;
-    border-radius: .4rem;
+    border-radius: .2rem;
     cursor: pointer;
+    font-weight: normal;
   }
 
   ul{
     background-color: var(--surface-container);
     display: flex;
     list-style: none;
-    gap: 1rem;
-    padding: .4rem;
-    border-radius: .4rem;
+    gap: .5rem;
+    padding: .3rem;
+    border-radius: .2rem;
 
     li{
       a{
@@ -36,7 +39,7 @@ header{
         color: var(--on-surface);
         text-decoration: none;
         padding: .8rem 1rem;
-        border-radius: .4rem;
+        border-radius: .2rem;
 
         &:hover{
           background-color: var(--surface);

@@ -29,7 +29,7 @@
                 "glob": "src/assets",
                 "input": "**/*"
               },
-              "src/blog"
+              "src/posts"
             ],
             "styles": [
               "src/styles.css",
@@ -65,7 +65,7 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": false
             }
           },
           "defaultConfiguration": "production"

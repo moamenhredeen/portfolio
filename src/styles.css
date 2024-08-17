@@ -1,7 +1,7 @@
 
 :root {
-  --primary: #000000;
-  --on-primary: #ffffff;
+  --primary: #43766C;
+  --on-primary: #F8FAE5;
   --primary-container: #ffffff;
   --on-primary-container: #ffffff;
 
@@ -15,19 +15,29 @@
   --tertiary-container: #ffffff;
   --on-tertiary-container: #ffffff;
 
-  --error: #FF0000;
-  --on-error: #FF0000;
+  --error: #FFB996;
+  --on-error: #D37676;
   --error-container: #ffffff;
   --on-error-container: #ffffff;
+
+  --success: #D9EDBF;
+  --on-success: #43766C;
+  --success-container: #ffffff;
+  --on-success-container: #ffffff;
+
+  --warning: #FFCF81;
+  --on-warning: #EBC49F;
+  --warning-container: #ffffff;
+  --on-warning-container: #ffffff;
 
   --surface-dim: #ede8de;
   --surface: #f9f6f1;
   --surface-bright: #ffffff;
   --on-surface: #211e1c;
-  --on-surface-variant: #000000;
+  --on-surface-variant: #453e3b;
 
   --surface-container-lowest: #ffffff;
-  --surface-container-low: #ffffff;
+  --surface-container-low: #f3efe7;
   --surface-container: #ede8de;
   --surface-container-high: #ffffff;
   --surface-container-highest: #ffffff;
@@ -52,9 +62,67 @@
   box-sizing: border-box;
 }
 
+
 html, body{
   height: 100%;
   background-color: var(--surface);
   color: var(--on-surface);
   font-family: remarkable, sans-serif;
+}
+
+
+/* -------------------- customize genereated markdonw -------------------------*/
+.blog-post {
+
+  color: var(--on-surface);
+
+  /*.markdown-clipboard-button{*/
+  /*  background: red;*/
+  /*}*/
+
+  line-height: 1.8rem;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  language-javascript {
+    background-color: red;
+  }
+
+  .markdown-clipboard-button{
+    background-color: var(--primary);
+    color: var(--on-primary);
+    border: none;
+    outline: none;
+    padding: .4rem .6rem;
+    cursor: pointer;
+    border-radius: .2rem;
+    transition: .2s;
+
+    &.copied{
+      background-color: var(--success);
+      color: var(--on-success);
+    }
+  }
+
+  table{
+    margin: auto;
+    border-collapse: collapse;
+    th{
+      border-bottom: 1px solid var(--on-surface);
+      font-weight: normal;
+      padding: .4rem 2rem;
+    }
+
+    tr:hover{
+      background-color: var(--surface-container);
+    }
+
+    td{
+      padding: .4rem 2rem;
+    }
+  }
 }
