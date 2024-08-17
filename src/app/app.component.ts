@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {ChildrenOutletContexts, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {slideInAnimation} from "./app.animations";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  animations: [
+    slideInAnimation
+  ]
 })
 export class AppComponent {
   title = 'moamenhredeen';
+
+  constructor(private contexts: ChildrenOutletContexts) {}
 }
