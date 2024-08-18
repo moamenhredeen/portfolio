@@ -80,6 +80,7 @@ html, body{
   background-color: var(--surface);
   color: var(--on-surface);
   font-family: computer-modern, sans-serif;
+  box-sizing: border-box;
 }
 
 

@@ -1,26 +1,24 @@
-<mat-drawer-container class="container" [hasBackdrop]="true">
-  <mat-drawer class="drawer" mode="over" [opened]="drawerState" (click)="drawerState = false">
-    <nav>
-      <h3>Moamen Hredeen</h3>
-      <ul>
-        <li><a [routerLinkActive]="'active'" routerLink="home">Home</a></li>
-        <li><a [routerLinkActive]="'active'"  routerLink="work">Work</a></li>
-        <li><a [routerLinkActive]="'active'"  routerLink="blog">Blog</a></li>
-        <li><a [routerLinkActive]="'active'"  routerLink="about">About</a></li>
+<div class="container">
+  @if(showDrawer){
+    <div @backdropAnimation class="backdrop" (click)="showDrawer = false"></div>
+    <section @drawerAnimation class="drawer">
+      <h1>Moamen Hredeen</h1>
+      <ul (click)="showDrawer = false">
+        <li><a routerLink="home">Home</a></li>
+        <li><a routerLink="work">Work</a></li>
+        <li><a routerLink="blog">Blog</a></li>
+        <li><a routerLink="about">About</a></li>
       </ul>
-    </nav>
-  </mat-drawer>
-  <mat-drawer-content class="drawer-content">
-    <mat-toolbar class="toolbar">
-      <button mat-icon-button
-              (click)="drawerState = !drawerState"
-              class="example-icon"
-              aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>MH</span>
-      <span class="example-spacer"></span>
-    </mat-toolbar>
+    </section>
+  }
+
+  <header>
+    <button (click)="showDrawer = true">
+      <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
+    </button>
+    <h1>MH</h1>
+  </header>
+  <main>
     <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </main>
+</div>

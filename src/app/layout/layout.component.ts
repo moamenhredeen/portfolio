@@ -1,4 +1,4 @@
-import {Component, HostListener, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy} from '@angular/core';
 import {RouterOutlet} from "@angular/router";
 import {DesktopLayoutComponent} from "./desktop-layout/desktop-layout.component";
 import {MobileLayoutComponent} from "./mobile-layout/mobile-layout.component";
