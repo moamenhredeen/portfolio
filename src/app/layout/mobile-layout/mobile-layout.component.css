@@ -1,0 +1,39 @@
+
+.container{
+  height: 100%;
+}
+
+nav{
+  background-color: var(--surface-container);
+  height: 100%;
+
+  h3{
+    text-align: center;
+    padding: 1rem;
+  }
+
+  ul{
+    width: 200px;
+    list-style: none;
+    a{
+      display: block;
+      text-decoration: none;
+      padding: 1rem;
+      color: var(--on-surface);
+
+      &.active{
+        background: var(--surface);
+      }
+    }
+  }
+}
+
+
+.drawer-content{
+  position: relative;
+  .toolbar{
+    position: sticky;
+    top: 0;
+    background: var(--surface-container);
+  }
+}

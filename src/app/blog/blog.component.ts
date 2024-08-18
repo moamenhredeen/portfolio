@@ -4,6 +4,8 @@ import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BlogPost} from "./blog.types";
 import {debounceTime, Subject, takeUntil} from "rxjs";
 import {posts} from "./blog.data";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   standalone: true,
@@ -11,7 +13,11 @@ import {posts} from "./blog.data";
   imports: [
     RouterLink,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuTrigger,
+    MatMenu,
+    MatMenuItem,
+    MatButton
   ],
   styleUrl: './blog.component.css'
 })

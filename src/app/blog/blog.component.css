@@ -12,19 +12,19 @@
     margin: 2rem 0;
   }
 
-  .actions{
-    display: flex;
-    justify-content: flex-end;
+  /*.actions{*/
+  /*  display: flex;*/
+  /*  justify-content: flex-end;*/
 
-    button{
-      all: unset;
-      padding: .5rem;
-      cursor: pointer;
-      border-radius: .2rem;
-      &:hover{
-        background: var(--surface-container);
-      }
-    }
+  /*  button{*/
+  /*    all: unset;*/
+  /*    padding: .5rem;*/
+  /*    cursor: pointer;*/
+  /*    border-radius: .2rem;*/
+  /*    &:hover{*/
+  /*      background: var(--surface-container);*/
+  /*    }*/
+  /*  }*/
   }
 
   ul{

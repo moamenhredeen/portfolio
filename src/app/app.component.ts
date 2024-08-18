@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ChildrenOutletContexts, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {slideInAnimation} from "./app.animations";
 
@@ -14,6 +14,4 @@ import {slideInAnimation} from "./app.animations";
 })
 export class AppComponent {
   title = 'moamenhredeen';
-
-  constructor(private contexts: ChildrenOutletContexts) {}
 }

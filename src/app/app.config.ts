@@ -5,6 +5,7 @@ import {routes} from './app.routes';
 import {provideMarkdown} from "ngx-markdown";
 import {HttpClient, provideHttpClient} from "@angular/common/http";
 import {provideAnimations} from "@angular/platform-browser/animations";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideMarkdown({
       loader: HttpClient,
-    })
+    }), provideAnimationsAsync()
   ]
 };
