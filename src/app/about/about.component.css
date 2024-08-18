@@ -1,9 +1,4 @@
 
-.about{
-  width: 30%;
-  margin: auto auto 4rem;
-}
-
 .section{
   .heading{
     border-bottom: 1px solid ;
@@ -48,4 +43,16 @@
 img{
   height: 200px;
   border-radius: .5rem;
+}
+
+@media screen and (max-width: 800px){
+
+  .experience, .education{
+    .content{
+      grid-template-columns: 1fr;
+      span{
+        display: block;
+      }
+    }
+  }
 }

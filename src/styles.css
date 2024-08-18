@@ -141,3 +141,22 @@ html, body{
     }
   }
 }
+
+
+/* -------------------- shared -------------------------*/
+.page-container{
+  width: 50%;
+  margin: auto;
+}
+
+@media screen and (max-width: 1000px){
+  .page-container{
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .page-container{
+    width: 95%;
+  }
+}
