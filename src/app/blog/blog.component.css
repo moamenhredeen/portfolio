@@ -1,7 +1,7 @@
 
-.blog{
+.blog {
 
-  input{
+  input {
     border: none;
     outline: none;
     background: var(--surface-container);
@@ -13,32 +13,34 @@
   }
 
 
-  ul{
+  ul {
     list-style: none;
-    li{
+
+    li {
       padding: 2rem;
       border-bottom: 1px solid var(--on-surface);
       cursor: pointer;
 
-      p{
+      p {
         color: var(--on-surface-variant);
       }
 
-      &:hover{
+      &:hover {
         background: var(--surface-container-low)
       }
     }
   }
 
-.empty{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--on-surface-variant);
+  .empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--on-surface-variant);
 
-  h1{
-    padding: 4rem 0;
-    font-weight: normal;
+    h1 {
+      padding: 4rem 0;
+      font-weight: normal;
+    }
   }
 }
 
