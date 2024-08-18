@@ -29,7 +29,8 @@
                 "glob": "src/assets",
                 "input": "**/*"
               },
-              "src/posts"
+              "src/posts",
+              "src/assets/img"
             ],
             "styles": [
               "src/styles.css",

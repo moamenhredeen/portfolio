@@ -36,10 +36,6 @@
       border-bottom: 1px solid var(--on-surface);
       cursor: pointer;
 
-      h2{
-        font-weight: normal;
-      }
-
       p{
         color: var(--on-surface-variant);
       }

@@ -1,4 +1,7 @@
 
+
+
+/* -------------------------- style tokens -------------------------- */
 :root {
   --primary: #43766C;
   --on-primary: #F8FAE5;
@@ -50,12 +53,21 @@
   --background-color-secondary: rgb(237 232 222 / 1);
 }
 
+
+/* -------------------------- fonts -------------------------- */
+
 @font-face {
   font-family: remarkable;
   src: url("assets/fonts/reMarkableSans-Variable_V1.2.woff2") format("woff2");
 }
 
 
+@font-face {
+  font-family: computer-modern;
+  src: url("assets/fonts/cmunss.ttf") format("truetype");
+}
+
+/* -------------------------- global styles -------------------------- */
 *{
   padding: 0;
   margin: 0;
@@ -67,11 +79,11 @@ html, body{
   height: 100%;
   background-color: var(--surface);
   color: var(--on-surface);
-  font-family: remarkable, sans-serif;
+  font-family: computer-modern, sans-serif;
 }
 
 
-/* -------------------- customize genereated markdonw -------------------------*/
+/* -------------------- blog posts styles -------------------------*/
 .blog-post {
 
   color: var(--on-surface);
@@ -80,12 +92,15 @@ html, body{
   /*  background: red;*/
   /*}*/
 
-  line-height: 1.8rem;
+  line-height: 1.5rem;
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
     padding-top: 2rem;
     padding-bottom: 1rem;
+  }
+
+  p{
+    font-size: 1.1rem;
   }
 
   language-javascript {
