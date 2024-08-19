@@ -3,7 +3,8 @@ import {RouterLink} from "@angular/router";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BlogPost} from "./blog.types";
 import {debounceTime, Subject, takeUntil} from "rxjs";
-import {posts} from "./blog.data";
+import posts from '../../posts/posts.json'
+import {UpperCasePipe} from "@angular/common";
 
 @Component({
   standalone: true,
@@ -12,13 +13,14 @@ import {posts} from "./blog.data";
     RouterLink,
     FormsModule,
     ReactiveFormsModule,
+    UpperCasePipe,
   ],
   styleUrl: './blog.component.css'
 })
 export class BlogComponent implements OnInit, OnDestroy{
 
   searchKeyword = new FormControl<string>('');
-  filteredPosts: BlogPost[] = [...posts];
+  filteredPosts = [...posts];
 
   private destroy$ = new Subject<void>();
 

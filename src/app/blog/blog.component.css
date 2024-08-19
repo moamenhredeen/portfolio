@@ -21,6 +21,11 @@
       border-bottom: 1px solid var(--on-surface);
       cursor: pointer;
 
+      div{
+        display: flex;
+        justify-content: space-between;
+      }
+
       p {
         color: var(--on-surface-variant);
       }

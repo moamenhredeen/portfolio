@@ -1,5 +1,6 @@
 import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import {provideRouter} from '@angular/router';
+import fm from 'front-matter';
 
 import {routes} from './app.routes';
 import {provideMarkdown} from "ngx-markdown";
@@ -15,6 +16,16 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideMarkdown({
       loader: HttpClient,
+      markedExtensions: [
+        {
+          hooks: {
+            preprocess(markdown: string): string {
+              const {attributes, body} = fm(markdown);
+              return body;
+            }
+          }
+        }
+      ]
     }), provideAnimationsAsync()
   ]
 };

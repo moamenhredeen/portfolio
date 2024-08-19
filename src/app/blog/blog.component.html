@@ -8,7 +8,11 @@
   @if(filteredPosts.length > 0){
     <ul>
       @for (post of filteredPosts; track post.id){
-        <li [routerLink]="post.url">
+        <li [routerLink]="post.id + ''">
+          <div>
+            <small>{{post.date}}</small>
+            <p>{{post.status | uppercase}}</p>
+          </div>
           <h2>{{post.title}}</h2>
           <p>{{post.description}}</p>
         </li>

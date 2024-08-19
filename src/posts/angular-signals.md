@@ -1,3 +1,9 @@
+---
+title: Angular Signals
+description: what are they what advantages do they offer more than current change detection mechanism
+author: moamen hredeen
+date: 20 12 2024
+---
 
 # Angular Signals
 
