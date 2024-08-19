@@ -1,3 +1,9 @@
+---
+title: Intro
+description: who i'm i and what do i do
+author: moamen hredeen
+date: 20 12 2024
+---
 
 # Intro post
 

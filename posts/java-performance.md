@@ -1,3 +1,10 @@
+---
+title: Java Performance
+description: Jvm jit is fascinating piece of software. in this post we are going to take a look at the jvm internals and the jit
+author: moamen hredeen
+date: 20 12 2024
+---
+
 
 # Java Performance
 

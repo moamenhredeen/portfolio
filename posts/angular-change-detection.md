@@ -1,3 +1,9 @@
+---
+title: Angular Change Detection
+author: moamen hredeen
+description: brief introduction to angular change detection and zone.js
+date: 20 12 2024
+---
 
 # Angular Change Detection 
 

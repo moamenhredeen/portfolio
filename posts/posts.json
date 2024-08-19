@@ -1,0 +1,38 @@
+[
+  {
+    "id": 0,
+    "title": "Angular Change Detection",
+    "description": "brief introduction to angular change detection and zone.js",
+    "date": "20 12 2024",
+    "status": "in progress",
+    "url": "angular-change-detection.md",
+    "author": "moamen hredeen"
+  },
+  {
+    "id": 1,
+    "title": "Angular Signals",
+    "description": "what are they what advantages do they offer more than current change detection mechanism",
+    "date": "20 12 2024",
+    "status": "in progress",
+    "url": "angular-signals.md",
+    "author": "moamen hredeen"
+  },
+  {
+    "id": 2,
+    "title": "Intro",
+    "description": "who i'm i and what do i do",
+    "date": "20 12 2024",
+    "status": "in progress",
+    "url": "intro.md",
+    "author": "moamen hredeen"
+  },
+  {
+    "id": 3,
+    "title": "Java Performance",
+    "description": "Jvm jit is fascinating piece of software. in this post we are going to take a look at the jvm internals and the jit",
+    "date": "20 12 2024",
+    "status": "in progress",
+    "url": "java-performance.md",
+    "author": "moamen hredeen"
+  }
+]
