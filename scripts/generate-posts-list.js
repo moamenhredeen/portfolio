@@ -3,7 +3,7 @@ const path = require('path');
 const fm = require('front-matter');
 const {Marked} = require('marked');
 const prettier = require('prettier');
-
+const Prism = require('prismjs');
 
 const marked = new Marked();
 marked.use({
@@ -15,9 +15,10 @@ marked.use({
   },
   renderer: {
     code({text, lang, escaped}) {
+      const  hightlightedCode = Prism.highlight(text, Prism.languages[lang], lang)
       return `
       <div class="code-snippet-wrapper">
-      <pre class="code-snippet language-${lang}"><code>${text}</code></pre>
+      <pre class="code-snippet language-${lang}"><code>${hightlightedCode}</code></pre>
       <button class="copy-code-snippet">copy</button>
       </div>`;
     }

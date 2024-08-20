@@ -1,45 +1,38 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import posts from '../../../posts/generated/posts.json';
-import {HttpClient} from "@angular/common/http";
-import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {BlogPost} from "../blog.types";
 import {Clipboard} from "@angular/cdk/clipboard";
-import {UpperCasePipe} from "@angular/common";
+import {AsyncPipe, UpperCasePipe} from "@angular/common";
+import {PostService} from "./post.service";
 
 @Component({
   selector: 'app-post',
   standalone: true,
   templateUrl: './post.component.html',
   imports: [
-    UpperCasePipe
+    UpperCasePipe,
+    AsyncPipe
   ],
   styleUrl: './post.component.css'
 })
 export class PostComponent implements OnInit, AfterViewInit {
 
-  content: SafeHtml = 'loading...';
+  content$ = this.postService.post$;
   post!: BlogPost | undefined;
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private http: HttpClient,
-    private sanitizer: DomSanitizer,
     private elementRef: ElementRef<HTMLElement>,
     private clipboard: Clipboard,
+    private postService: PostService,
   ) {
   }
 
   ngOnInit() {
     const id = this.activeRoute.snapshot.params['id'];
     this.post = posts.find(e => e.id === id) as BlogPost;
-    if (this.post) {
-      this.http.get(`posts/generated/${this.post.url}`, {responseType: 'text'})
-        .subscribe(data => {
-          const safeHtml = this.sanitizer.bypassSecurityTrustHtml(data)
-          this.content = safeHtml;
-        })
-    }
+    this.postService.getPostById(this.post.id)
   }
 
   ngAfterViewInit() {

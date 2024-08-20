@@ -3,8 +3,17 @@
   display: flex;
 }
 
+.content{
+ width: 100%;
+}
+
+.loading{
+  text-align: center;
+  padding: 4rem 0;
+}
+
 header {
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   border-bottom: 1px solid var(--on-surface);
   p {
     span {

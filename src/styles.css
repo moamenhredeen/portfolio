@@ -120,10 +120,6 @@ html, body{
     font-size: 1.1rem;
   }
 
-  language-javascript {
-    background-color: red;
-  }
-
   .markdown-clipboard-button{
     background-color: var(--primary);
     color: var(--on-primary);
@@ -166,7 +162,7 @@ html, body{
     font-family: cascadia, sans-serif;
     padding: 1rem;
     border-radius: .2rem;
-    background-color: var(--surface-container);
+    background-color: #f5f2f0;
 
     .copy-code-snippet{
       outline: none;

@@ -33,6 +33,7 @@
               "src/assets/img"
             ],
             "styles": [
+              "node_modules/prismjs/themes/prism.css",
               "src/styles.css"
             ],
             "scripts": [
