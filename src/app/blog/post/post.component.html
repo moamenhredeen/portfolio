@@ -1,7 +1,13 @@
 
 <div class="blog-post page-container">
-  <markdown
-    clipboard
-    lineNumbers
-    [src]="'posts/' + this.url"></markdown>
+
+  <div class="content">
+    <header>
+      <h1>{{post?.title}}</h1>
+      <p> <span>Publish Date: </span>{{post?.date}}</p>
+      <p><span>Status:</span> {{post?.status}}</p>
+    </header>
+
+    <section class="blog-post-content" [innerHTML]="content"></section>
+  </div>
 </div>

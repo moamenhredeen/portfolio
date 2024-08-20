@@ -1,0 +1,14 @@
+
+.blog-post {
+  display: flex;
+}
+
+header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--on-surface);
+  p {
+    span {
+      font-weight: bold;
+    }
+  }
+}

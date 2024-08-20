@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {BlogPost} from "./blog.types";
 import {debounceTime, Subject, takeUntil} from "rxjs";
-import posts from '../../posts/posts.json'
+import posts from '../../posts/generated/posts.json'
 import {UpperCasePipe} from "@angular/common";
 
 @Component({

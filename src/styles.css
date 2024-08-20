@@ -67,6 +67,22 @@
   src: url("assets/fonts/cmunss.ttf") format("truetype");
 }
 
+
+@font-face {
+  font-family: cascadia;
+  src: url("assets/fonts/CaskaydiaCoveNerdFont-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: cascadia;
+  src: url("assets/fonts/CaskaydiaCoveNerdFont-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: cascadia;
+  src: url("assets/fonts/CaskaydiaCoveNerdFont-Italic.ttf") format("truetype");
+}
+
 /* -------------------------- global styles -------------------------- */
 *{
   padding: 0;
@@ -85,7 +101,7 @@ html, body{
 
 
 /* -------------------- blog posts styles -------------------------*/
-.blog-post {
+.blog-post-content {
 
   color: var(--on-surface);
 
@@ -139,6 +155,28 @@ html, body{
 
     td{
       padding: .4rem 2rem;
+    }
+  }
+
+  .code-snippet-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 16px;
+    font-family: cascadia, sans-serif;
+    padding: 1rem;
+    border-radius: .2rem;
+    background-color: var(--surface-container);
+
+    .copy-code-snippet{
+      outline: none;
+      padding: .2rem .4rem;
+      border: none;
+      background-color: var(--warning);
+      color: var(--on-surface);
+      border-radius: .2rem;
+      cursor: pointer;
+      transition: .2s;
     }
   }
 }
