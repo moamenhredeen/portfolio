@@ -1,38 +1,38 @@
 [
   {
-    "id": 0,
+    "id": "angular-change-detection",
     "title": "Angular Change Detection",
     "description": "brief introduction to angular change detection and zone.js",
     "date": "20 12 2024",
     "status": "in progress",
-    "url": "angular-change-detection.md",
+    "url": "angular-change-detection.html",
     "author": "moamen hredeen"
   },
   {
-    "id": 1,
+    "id": "angular-signals",
     "title": "Angular Signals",
     "description": "what are they what advantages do they offer more than current change detection mechanism",
     "date": "20 12 2024",
     "status": "in progress",
-    "url": "angular-signals.md",
+    "url": "angular-signals.html",
     "author": "moamen hredeen"
   },
   {
-    "id": 2,
-    "title": "Intro",
+    "id": "hello-world",
+    "title": "hello world",
     "description": "who i'm i and what do i do",
     "date": "20 12 2024",
     "status": "in progress",
-    "url": "intro.md",
+    "url": "intro.html",
     "author": "moamen hredeen"
   },
   {
-    "id": 3,
+    "id": "java-performance",
     "title": "Java Performance",
     "description": "Jvm jit is fascinating piece of software. in this post we are going to take a look at the jvm internals and the jit",
     "date": "20 12 2024",
     "status": "in progress",
-    "url": "java-performance.md",
+    "url": "java-performance.html",
     "author": "moamen hredeen"
   }
 ]
