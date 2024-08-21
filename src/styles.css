@@ -68,20 +68,20 @@
 }
 
 
-@font-face {
-  font-family: cascadia;
-  src: url("assets/fonts/CaskaydiaCoveNerdFont-Regular.ttf") format("truetype");
-}
+/*@font-face {*/
+/*  font-family: cascadia;*/
+/*  src: url("assets/fonts/CaskaydiaCoveNerdFont-Regular.ttf") format("truetype");*/
+/*}*/
 
-@font-face {
-  font-family: cascadia;
-  src: url("assets/fonts/CaskaydiaCoveNerdFont-Bold.ttf") format("truetype");
-}
+/*@font-face {*/
+/*  font-family: cascadia;*/
+/*  src: url("assets/fonts/CaskaydiaCoveNerdFont-Bold.ttf") format("truetype");*/
+/*}*/
 
-@font-face {
-  font-family: cascadia;
-  src: url("assets/fonts/CaskaydiaCoveNerdFont-Italic.ttf") format("truetype");
-}
+/*@font-face {*/
+/*  font-family: cascadia;*/
+/*  src: url("assets/fonts/CaskaydiaCoveNerdFont-Italic.ttf") format("truetype");*/
+/*}*/
 
 /* -------------------------- global styles -------------------------- */
 *{
