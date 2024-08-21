@@ -28,9 +28,7 @@
               {
                 "glob": "src/assets",
                 "input": "**/*"
-              },
-              "src/posts/generated",
-              "src/assets/img"
+              }
             ],
             "styles": [
               "node_modules/prismjs/themes/prism.css",
