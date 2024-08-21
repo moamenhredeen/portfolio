@@ -14,10 +14,10 @@ export const routes: Routes = [
         path: 'work',
         loadComponent: () => import('./work/work.component').then(m => m.WorkComponent),
       },
-      {
-        path: 'blog',
-        loadChildren: () => import('./blog/blog.routs').then(m => m.routes),
-      },
+      // {
+      //   path: 'blog',
+      //   loadChildren: () => import('./blog/blog.routs').then(m => m.routes),
+      // },
       {
         path: 'about',
         loadComponent: () => import('./about/about.component').then(m => m.AboutComponent),
