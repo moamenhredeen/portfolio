@@ -1,6 +1,6 @@
 name: Build and Deploy
 run-name: ${{ github.actor }}
-n: [push]
+on: [push]
 jobs:
   build:
     runs-on: self-hosted
