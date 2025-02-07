@@ -6,15 +6,14 @@ import {Subject, takeUntil} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
-  selector: 'app-layout',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    DesktopLayoutComponent,
-    MobileLayoutComponent
-  ],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+    selector: 'app-layout',
+    imports: [
+        RouterOutlet,
+        DesktopLayoutComponent,
+        MobileLayoutComponent
+    ],
+    templateUrl: './layout.component.html',
+    styleUrl: './layout.component.css'
 })
 export class LayoutComponent implements OnDestroy {
 
