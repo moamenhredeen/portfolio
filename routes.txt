@@ -1,0 +1,4 @@
+/
+/about/
+/home/
+/work/

@@ -3,6 +3,7 @@ import {provideRouter, withHashLocation, withRouterConfig} from '@angular/router
 
 import {routes} from './app.routes';
 import {provideHttpClient} from "@angular/common/http";
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +12,6 @@ export const appConfig: ApplicationConfig = {
       routes,
       withHashLocation()
     ),
-    provideHttpClient(),
+    provideHttpClient(), provideClientHydration(withEventReplay()),
   ]
 };
