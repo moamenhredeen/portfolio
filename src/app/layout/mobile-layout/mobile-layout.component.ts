@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import { RouterLink, RouterOutlet } from "@angular/router";
 import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
     selector: 'app-mobile-layout',
     imports: [
         RouterOutlet,
-        RouterLinkActive,
         RouterLink,
     ],
     templateUrl: './mobile-layout.component.html',

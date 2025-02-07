@@ -1,5 +1,4 @@
 import {Component, inject, OnDestroy} from '@angular/core';
-import {RouterOutlet} from "@angular/router";
 import {DesktopLayoutComponent} from "./desktop-layout/desktop-layout.component";
 import {MobileLayoutComponent} from "./mobile-layout/mobile-layout.component";
 import {Subject, takeUntil} from "rxjs";
@@ -8,7 +7,6 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 @Component({
     selector: 'app-layout',
     imports: [
-        RouterOutlet,
         DesktopLayoutComponent,
         MobileLayoutComponent
     ],
