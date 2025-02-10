@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "echo Hey there"
+    "start": "eleventy --serve"
   },
   "repository": {
     "type": "git",
