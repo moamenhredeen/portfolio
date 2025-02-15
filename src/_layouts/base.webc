@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title @text="title"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/themes/blue-light.css" webc:keep />
+    <style @raw="getBundle('css')" webc:keep></style>
+</head>
+<body>
+
+
+    <ul>
+        <li webc:for="item of $data.collections.all">
+            <a :href="item.url" @text="item.data.title"></a>
+        </li>
+    </ul>
+
+    <div @raw="content"></div>
+    <script @raw="getBundle('js')" webc:keep></script>
+</body>
+</html>

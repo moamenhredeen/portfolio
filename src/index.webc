@@ -1,0 +1,14 @@
+---
+title: Home
+layout: base
+---
+
+<script>
+    console.log("moamen hredeen")
+</script>
+
+<h1>Moamen Hredeen</h1>
+
+<style>
+
+</style>
