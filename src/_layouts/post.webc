@@ -1,0 +1,11 @@
+---
+layout: base
+---
+
+<!-- <ul>
+    <li webc:for="item of $data.collections.post">
+        <a :href="item.url" @text="item.data.title"></a>
+    </li>
+</ul> -->
+
+<div class="post-content" @raw="content"></div>
