@@ -1,5 +1,6 @@
 import webcPlugin from "@11ty/eleventy-plugin-webc";
 import {readFileSync} from "fs";
+import {EleventyHtmlBasePlugin} from '@11ty/eleventy'
 
 /** @param {import("@11ty/eleventy").UserConfig} config */
 export default async function (config) {
@@ -39,7 +40,10 @@ export default async function (config) {
   // TODO: why can not we do the function async
   config.addJavaScriptFunction("svg", (name) => {
     return  readFileSync(`./src/assets/icons/${name}.svg`, { encoding: "utf8" });
-  })
+  });
+
+	// configure base url
+	config.addPlugin(EleventyHtmlBasePlugin);
 }
 
 export const config = {
@@ -48,4 +52,5 @@ export const config = {
     layouts: "_layouts",
     output: "build",
   },
+	pathPrefix: "/portfolio/"
 };
