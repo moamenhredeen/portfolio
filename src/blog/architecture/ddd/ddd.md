@@ -1,6 +1,5 @@
 ---
 id: ddd
-aliases: []
 tags:
   - SystemDesign
   - SoftwareArchitecture

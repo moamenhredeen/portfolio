@@ -1,6 +1,5 @@
 ---
 id: authorization
-aliases: []
 tags:
   - AuthZ
   - Authorization
