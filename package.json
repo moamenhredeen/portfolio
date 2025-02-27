@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy --pathprefix='/portfolio'"
   },
   "repository": {
     "type": "git",
