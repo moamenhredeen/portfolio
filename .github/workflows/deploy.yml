@@ -19,4 +19,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Publish Output Files
-        run: cp -r ${{github.workspace}}/build/* /srv/nginx/portfolio/
+        run: cp -r ${{github.workspace}}/build/* /srv/nginx/moamen/
