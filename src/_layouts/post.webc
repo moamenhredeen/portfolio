@@ -1,7 +1,6 @@
 ---
-layout: base
+layout: base.webc
 ---
-
 <!-- <ul>
     <li webc:for="item of $data.collections.post">
         <a :href="item.url" @text="item.data.title"></a>
