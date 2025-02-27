@@ -1,6 +1,6 @@
 ---
 title: Home
-layout: base
+layout: base.webc
 ---
 
 # Hi 👋
