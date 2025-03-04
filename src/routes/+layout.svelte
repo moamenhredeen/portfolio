@@ -1,44 +1,84 @@
 <script lang="ts">
-    import "../app.css"
-    import {page} from "$app/stores";
-
-    import homeIcon from '$lib/images/home.svg'
-    import projectsIcon from '$lib/images/idea.svg'
-    import blogIcon from '$lib/images/user-interface.svg'
-    import aboutIcon from '$lib/images/user.svg'
-    import books from '$lib/images/books.svg'
+    import {page} from "$app/state";
 
     const links = [
-        {name: "Home", href: "/", icon: homeIcon},
-        {name: "Projects", href: "/projects", icon: projectsIcon},
-        {name: "Blog", href: "/blog", icon: books},
-        {name: "Games", href: "/games", icon: projectsIcon},
-        {name: "About", href: "/about", icon: aboutIcon},
+        {name: "Home",      href: "/"},
+        {name: "Projects",  href: "/projects"},
+        {name: "Blog",      href: "/blog"},
+        {name: "About",     href: "/about"},
     ]
 
 </script>
 
-<div class="bg-amber-50 min-h-screen flex justify-center">
+<div class="root-container">
 
-    <main class="w-3/4 lg:w-2/3 xl:w-1/2 pt-12">
-        <slot/>
-    </main>
-
-    <nav class="fixed bottom-0 left-0 right-0 flex justify-center p-5">
-        <ul class="flex shadow-xl bg-amber-50 border-gray-400 border-2">
+    <nav>
+        <h1>YU</h1>
+        <ul>
             {#each links as link}
                 <li>
-                    <a class="hover:bg-lime-100 p-2 px-12 flex flex-col items-center"
-                       class:bg-lime-300={link.href + "/" === $page.url.pathname}
-                       class:border-transparent={link.href !== $page.url.pathname}
+                    <a class:active={link.href === page.url.pathname}
                        href="{link.href}">
-                        <img src="{link.icon}"
-                             class="inline w-10 h-10"
-                             alt="page icon">
                         {link.name}
                     </a>
                 </li>
             {/each}
         </ul>
     </nav>
+
+
+    <main>
+        <slot/>
+    </main>
+
+    <footer>
+        <p>© 2025 Moamen Hredeen | Full-Stack Developer</p>
+    </footer>
+
 </div>
+
+
+<style>
+    :global(html, body) {
+        font-family: "JetBrainsMono NF", sans-serif;
+        padding: 0;
+        margin: 0;
+    }
+
+    .root-container{
+        width: 50%;
+        min-height: 100vh;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+
+    footer{
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid black;
+        margin-top: 1rem;
+    }
+
+    nav{
+        display: flex;
+        justify-content: space-between;
+        ul{
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            li > a{
+                display: block;
+                text-decoration: none;
+                color: inherit;
+                &:hover{
+                    text-decoration: underline;
+                }
+                &.active{
+                    color: red;
+                }
+            }
+        }
+    }
+</style>
