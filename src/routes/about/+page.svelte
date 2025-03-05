@@ -1,54 +1,52 @@
 <script lang="ts">
-    import myImage from './moamen-hraden.1024x1024.jpg'
+	import myImage from './moamen-hraden.1024x1024.jpg';
 </script>
 
 <main>
-    <div>
-        <h1>Who am I ?</h1>
-        <p>
-            Let me introduce myself.
-            I’m an enthusiastic software developer, currently living and working in Germany.
-            I have a deep love for tinkering with weird software ideas and diving headfirst into challenging technical problems—there’s something exciting about breaking things just to figure out how they work.
-            I was born in 1997 in Tafas, a small town in southern Syria.
-            In 2015, when the war broke out, I left my home and moved to Germany as a refugee.
-            Starting over wasn’t easy, but I took it step by step—learning the language, adapting to a new culture, and eventually studying computer science.
-            That journey led me to where I am today, doing what I love and continuously pushing myself to learn and grow.
-
-            You can find me at <a href="https://github.com/moamenhredeen">Github</a> and <a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>.
-        </p>
-
-    </div>
+	<div>
+		<h1>Who am I ?</h1>
+		<p>
+			Let me introduce myself. I’m an enthusiastic software developer, currently living and
+			working in Germany. I have a deep love for tinkering with weird software ideas and
+			diving headfirst into challenging technical problems—there’s something exciting about
+			breaking things just to figure out how they work. I was born in 1997 in Tafas, a small
+			town in southern Syria. In 2015, when the war broke out, I left my home and moved to
+			Germany as a refugee. Starting over wasn’t easy, but I took it step by step—learning the
+			language, adapting to a new culture, and eventually studying computer science. That
+			journey led me to where I am today, doing what I love and continuously pushing myself to
+			learn and grow. You can find me at <a href="https://github.com/moamenhredeen">Github</a>
+			and <a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>.
+		</p>
+	</div>
 </main>
 
 <style>
-    main {
-        container: wrapper / inline-size;
-        padding: 5vh 10vw;
-        width: 35%;
+	main {
+		container: wrapper / inline-size;
+		padding: 5vh 10vw;
 
-        h1{
-            font-size: clamp(3rem, 12cqi, 4em);
-            font-weight: 700;
-            margin-bottom: 0;
-        }
+		h1 {
+			font-size: clamp(3rem, 12cqi, 4em);
+			font-weight: 700;
+			margin-bottom: 0;
+		}
 
-        p{
-            font-size: clamp(1rem, 4cqi, 1.2rem);
-        }
+		p {
+			max-width: 35em;
+			font-size: 1.3em;
+			font-weight: 300;
+			line-height: 1.4;
+		}
 
+		a {
+			color: var(--tertiary);
+		}
+	}
 
-        a {
-            color: var(--tertiary);
-        }
-
-    }
-
-    @container wrapper (width < 720px) {
-        main{
-            background-color: red;
-            width: 100%;
-        }
-    }
-
-
+	@container wrapper (width < 720px) {
+		main {
+			background-color: red;
+			width: 100%;
+		}
+	}
 </style>

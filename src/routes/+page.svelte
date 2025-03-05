@@ -1,33 +1,32 @@
-
 <main>
-    <h1>Hello</h1>
-    <p>
-        Not sure how you ended up here, but hey, since you’re already around, why not take a look?
-        Curious about who I am ? You can learn more about me <a href="/about">here</a>.
-        Or if you’re in the mood to read, check out some of my blog posts <a href="/blog">here</a>!
-    </p>
+	<h1>Hello</h1>
+	<p>
+		Not sure how you ended up here, but hey, since you’re already around, why not take a look?
+		Curious about who I am ? You can learn more about me <a href="/about">here</a>. Or if you’re
+		in the mood to read, check out some of my blog posts here!
+	</p>
 </main>
 
 <style>
-    main{
-        container-type: inline-size;
-        padding: 5vh 10vw;
-    }
+	main {
+		container-type: inline-size;
+		padding: 5vh 10vw;
+	}
 
-    h1 {
-        font-size: clamp(3rem, 12cqi, 5rem);
-        font-weight: 700;
-        margin-bottom: 0;
-    }
-    p {
-        font-size: 1.3em;
-        font-weight: 300;
-        line-height: 1.4;
-        max-width: 28em;
-    }
+	h1 {
+		font-size: clamp(3rem, 12cqi, 5rem);
+		font-weight: 700;
+		margin-bottom: 0;
+	}
+	p {
+		font-size: 1.3em;
+		font-weight: 300;
+		line-height: 1.4;
+		max-width: 28em;
+	}
 
-    a{
-        font-style: italic;
-        color: var(--tertiary);
-    }
+	a {
+		font-style: italic;
+		color: var(--tertiary);
+	}
 </style>
