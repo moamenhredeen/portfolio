@@ -5,104 +5,12 @@
     <title @text="title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="/assets/img/me.ico">
-    <link rel="stylesheet" href="/assets/themes/blue-light.css" webc:keep/>
     <link rel="stylesheet" href="/assets/styles.css" webc:keep/>
-    <style>
-        .root-container {
-            width: 40%;
-            min-height: 100vh;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            h1 a {
-                padding: 2rem;
-                margin: 0;
-                font-size: 72px;
-                color: var(--primary);
-                text-decoration: none;
-                font-family: "Requited Script Regular", sans-serif;
-            }
-
-            ul {
-                list-style: none;
-                margin: 0;
-                display: flex;
-                justify-content: flex-end;
-
-                a {
-                    border-radius: 1rem;
-                    display: block;
-                    text-decoration: none;
-                    padding: 1.5rem;
-                    color: var(--on-primary-container);
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-            }
-        }
-
-        main {
-            flex: 1;
-        }
-
-        footer {
-            margin-top: 2rem;
-            padding: 1rem 0;
-            border-top: 1px solid var(--surface-container);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            .icon {
-                display: flex;
-                align-items: center;
-                gap: 2rem;
-
-                svg {
-                    height: 32px;
-                    width: 32px;
-                }
-
-            }
-        }
-    </style>
     <style @raw="getBundle('css')" webc:keep></style>
 </head>
 <body>
 
-<div class="root-container">
-    <nav>
-        <h1><a href="/">tuy</a></h1>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/archive">Archive</a></li>
-            <li><a href="/resume">Resume</a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
-    </nav>
-
-    <main @raw="content"></main>
-
-    <footer>
-        <p>© 2025 Moamen Hredeen | Full-Stack Developer</p>
-        <div class="icon">
-            <a class="github" href="https:/github.com/moamenhredeen" @raw="svg('github')"></a>
-            <a class="linkedin" href="https:/linkedin.com/in/moamen-hraden" @raw="svg('linkedin')"></a>
-            <a class="rss" href="#" @raw="svg('rss')"></a>
-        </div>
-    </footer>
-</div>
+<div @raw="content"></div>
 
 <script @raw="getBundle('js')" webc:keep></script>
 </body>

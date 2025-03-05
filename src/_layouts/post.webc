@@ -1,10 +1,96 @@
 ---
 layout: base.webc
 ---
-<!-- <ul>
-    <li webc:for="item of $data.collections.post">
-        <a :href="item.url" @text="item.data.title"></a>
-    </li>
-</ul> -->
 
-<div class="post-content" @raw="content"></div>
+<main>
+    <header>
+        <h1 @text="$data.title"></h1>
+        <span @text="$data.date.toString()"></span>
+    </header>
+    <section class="post-content" @raw="content"></section>
+    <footer>
+            <p>© 2025 Moamen Hredeen | Full-Stack Developer</p>
+            <div class="icon">
+                <a class="github" href="https:/github.com/moamenhredeen" @raw="svg('github')"></a>
+                <a class="linkedin" href="https:/linkedin.com/in/moamen-hraden" @raw="svg('linkedin')"></a>
+                <a class="rss" href="#" @raw="svg('rss')"></a>
+            </div>
+        </footer>
+</main>
+
+<style>
+
+main{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+header{
+    padding: 1rem 0;
+    border-bottom: 1px solid lightgray;
+
+    h1 {
+            font-size: clamp(2rem, 6cqi, 3rem);
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 1px 0 var(--shadow);
+
+    thead {
+        background-color: var(--primary);
+        color: var(--on-primary);
+        text-align: left;
+    }
+
+    th,
+    td {
+        padding: 0.8rem 0.2rem;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: lightgray;
+    }
+}
+
+pre {
+    background-color: lightgray;
+    padding: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+a{
+    color:inherit;
+}
+
+footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    border-top: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .icon {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        svg {
+            height: 32px;
+            width: 32px;
+        }
+
+    }
+</style>

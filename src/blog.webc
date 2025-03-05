@@ -1,64 +1,101 @@
 ---
 title: Blog
+layout: base.webc
 ---
 
-<ul class="blog-list">
-    <li webc:for="item of $data.collections.post">
-        <a class="post" :href="item.url">
-            <h1 @text="item.data.title"></h1>
-            <p @text="item.data.description"></p>
-            <div class="tags">
-                <span webc:for="tag of item.data.tags" @text="`#${tag}`"></span>
-            </div>
-            <div class="date">
-                <span @text="item.data.date"></span>
-            </div>
-        </a>
-    </li>
 
-</ul>
+
+<main>
+    <h1>Moamen Hredeen Blog</h1>
+    <ul class="years">
+        <li class="year" webc:for="year of $data.collections.postsByYear.keys()">
+            <div class="year-number">
+                <hr>
+                <span @text="year"></span>
+                <hr>
+            </div>
+            <ul class="posts">
+                <li class="post" webc:for="post of $data.collections.postsByYear.get(year)">
+                    <a :href="post.url" @text="post.data.title"></a>
+                    <span class="date" @text="post.data.date"></span>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+</main>
+
 
 
 <style>
-    .blog-list{
+main{
+    container-type: inline-size;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+
+    h1{
+        text-align: center;
+        padding: 5vh 0;
+        font-size: clamp(2rem, 10cqi, 3rem);
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+    .years {
         list-style: none;
         padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-        .post {
-            display: block;
-            text-decoration: none;
-            color: var(--on-background);
-            padding: 1rem;
-            transition: .4s;
+    .year-number {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 2.5rem;
+        padding: 3vh 0;
+        font-style: italic;
+        font-weight: 100;
 
-            &:hover{
-                background: var(--background);
-            }
-
-            h1{
-                margin-top: 0;
-            }
-            .date{
-                display: flex;
-                justify-content: flex-end;
-                font-size: 1rem;
-            }
-
-            .tags{
-                display: flex;
-                font-size: 1rem;
-                gap: 1rem;
-                span{
-                    background-color: var(--surface-container);
-                    border-radius: .2rem;
-                    padding: .2rem;
-                }
-            }
-
-        }
-
-        li:not(:last-child){
-            border-bottom: 1px solid var(--surface-container);
+        hr{
+            height: 1px;
+            flex: 1;
+            border: none;
+            background: lightgray;
         }
     }
+
+    .posts {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+
+    .post {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            font-size: clamp(1.2rem, 5cqi, 1.5rem);
+            color: inherit;
+            text-decoration: none;
+            font-size: clamp(1.2rem, 8cqi, 1.5rem);
+            transition: .2s;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        .date{
+            font-style: italic;
+        }
+
+    }
+
+}
 </style>
