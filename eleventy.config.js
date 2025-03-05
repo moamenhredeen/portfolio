@@ -1,6 +1,9 @@
 import webcPlugin from "@11ty/eleventy-plugin-webc";
 import { readFileSync } from "fs";
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import Shiki from '@shikijs/markdown-it'
+import MarkdownIt from 'markdown-it'
+
 
 /** @param {import("@11ty/eleventy").UserConfig} config */
 export default async function (config) {
@@ -60,6 +63,16 @@ export default async function (config) {
     key: "liquid",
     outputFileExtension: "css"
   });
+
+
+  const markdownIt = MarkdownIt()
+  markdownIt.use(await Shiki({
+      themes: {
+        light: 'one-light',
+        dark: 'one-dark-pro',
+      }
+    }));
+  config.setLibrary("md", markdownIt);
 
   // configure base url
   config.addPlugin(EleventyHtmlBasePlugin);

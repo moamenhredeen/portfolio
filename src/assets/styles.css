@@ -34,3 +34,11 @@ body {
 body {
     font-family: "Inter", sans-serif;
 }
+
+:root{
+    --primary: #3d405bff;
+    --secondary: #81b29aff;
+    --tertiary: #f2cc8fff;
+    --light: #f4f1deff;
+    --danger: #e07a5fff;
+}

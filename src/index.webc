@@ -22,6 +22,7 @@ main{
         font-size: clamp(3rem, 12cqi, 5rem);
         font-weight: 700;
         margin-bottom: 0;
+        color: var(--primary);
     }
     p {
         font-size: 1.3em;
@@ -32,7 +33,7 @@ main{
 
     a{
         font-style: italic;
-        color: var(--tertiary);
+        color: var(--secondary);
     }
 }
 </style>
