@@ -2,39 +2,53 @@
     import myImage from './moamen-hraden.1024x1024.jpg'
 </script>
 
-<section class="about">
-
-    <img src="{myImage}" alt="me :)">
+<main>
     <div>
-        <h1>Moamen Hredeen</h1>
+        <h1>Who am I ?</h1>
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi eveniet modi,
-            ut facilis sequi corporis quidem vitae, reprehenderit autem dolorum
-            rerum doloribus totam unde neque labore? Earum veniam temporibus porro?
+            Let me introduce myself.
+            I’m an enthusiastic software developer, currently living and working in Germany.
+            I have a deep love for tinkering with weird software ideas and diving headfirst into challenging technical problems—there’s something exciting about breaking things just to figure out how they work.
+            I was born in 1997 in Tafas, a small town in southern Syria.
+            In 2015, when the war broke out, I left my home and moved to Germany as a refugee.
+            Starting over wasn’t easy, but I took it step by step—learning the language, adapting to a new culture, and eventually studying computer science.
+            That journey led me to where I am today, doing what I love and continuously pushing myself to learn and grow.
+
+            You can find me at <a href="https://github.com/moamenhredeen">Github</a> and <a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>.
         </p>
-        <ul>
-            <li>
-                <a href="mailto:moamen@hredeen.com">Mail</a>
-                <a href="https://github.com/moamenhredeen">Github</a>
-                <a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>
-            </li>
-        </ul>
+
     </div>
-</section>
+</main>
 
 <style>
-    .about {
-        img{
-            width: 200px;
-            float: right;
+    main {
+        container: wrapper / inline-size;
+        padding: 5vh 10vw;
+        width: 35%;
+
+        h1{
+            font-size: clamp(3rem, 12cqi, 4em);
+            font-weight: 700;
+            margin-bottom: 0;
         }
 
-        ul{
-            list-style: none;
-            padding: 0;
-            a {
-                color: inherit;
-            }
+        p{
+            font-size: clamp(1rem, 4cqi, 1.2rem);
+        }
+
+
+        a {
+            color: var(--tertiary);
+        }
+
+    }
+
+    @container wrapper (width < 720px) {
+        main{
+            background-color: red;
+            width: 100%;
         }
     }
+
+
 </style>

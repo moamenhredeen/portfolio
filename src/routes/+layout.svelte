@@ -1,84 +1,28 @@
-<script lang="ts">
-    import {page} from "$app/state";
-
-    const links = [
-        {name: "Home",      href: "/"},
-        {name: "Projects",  href: "/projects"},
-        {name: "Blog",      href: "/blog"},
-        {name: "About",     href: "/about"},
-    ]
-
-</script>
-
-<div class="root-container">
-
-    <nav>
-        <h1>YU</h1>
-        <ul>
-            {#each links as link}
-                <li>
-                    <a class:active={link.href === page.url.pathname}
-                       href="{link.href}">
-                        {link.name}
-                    </a>
-                </li>
-            {/each}
-        </ul>
-    </nav>
-
-
-    <main>
-        <slot/>
-    </main>
-
-    <footer>
-        <p>© 2025 Moamen Hredeen | Full-Stack Developer</p>
-    </footer>
-
-</div>
-
+<slot/>
 
 <style>
-    :global(html, body) {
-        font-family: "JetBrainsMono NF", sans-serif;
-        padding: 0;
-        margin: 0;
+    @font-face {
+        font-family: InterVariable;
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("/fonts/InterVariable.woff2") format("woff2");
     }
 
-    .root-container{
-        width: 50%;
-        min-height: 100vh;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
+    @font-face {
+        font-family: InterVariable;
+        font-style: italic;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
     }
 
-    footer{
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        border-top: 1px solid black;
-        margin-top: 1rem;
-    }
-
-    nav{
-        display: flex;
-        justify-content: space-between;
-        ul{
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-            li > a{
-                display: block;
-                text-decoration: none;
-                color: inherit;
-                &:hover{
-                    text-decoration: underline;
-                }
-                &.active{
-                    color: red;
-                }
-            }
+    :global {
+        html, body{
+            font-family: "Inter", sans-serif;
+            line-height: 1.8;
+            padding: 0;
+            margin: 0;
         }
     }
 </style>
