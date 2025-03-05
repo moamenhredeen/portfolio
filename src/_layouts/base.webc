@@ -7,10 +7,15 @@
     <link rel="icon" type="image/x-icon" href="/assets/img/me.ico">
     <link rel="stylesheet" href="/assets/styles.css" webc:keep/>
     <style @raw="getBundle('css')" webc:keep></style>
+    <style webc:keep>
+        .wrapper{
+            container: wrapper / inline-size;
+        }
+    </style>
 </head>
 <body>
 
-<div @raw="content"></div>
+<div class="wrapper" @raw="content"></div>
 
 <script @raw="getBundle('js')" webc:keep></script>
 </body>

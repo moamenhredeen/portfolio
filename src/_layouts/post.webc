@@ -9,7 +9,14 @@ layout: base.webc
 	</header>
 	<section class="post-content" @raw="content"></section>
 	<footer>
-		<p>© 2025 Moamen Hredeen | Full-Stack Developer</p>
+		<div>
+			<p>© 2025 Moamen Hredeen | Full-Stack Developer</p>
+			<ul class="links">
+				<li><a href="/">home</a></li>
+				<li><a href="/about">about</a></li>
+				<li><a href="/blog">blog</a></li>
+			</ul>
+		</div>
 		<div class="icon">
 			<a class="github" href="https:/github.com/moamenhredeen" @raw="svg('github')"></a>
 			<a class="linkedin" href="https:/linkedin.com/in/moamen-hraden" @raw="svg('linkedin')"></a>
@@ -19,24 +26,11 @@ layout: base.webc
 </main>
 
 <style>
-
     main {
-        width: 50%;
+        width: 35%;
         margin-left: auto;
         margin-right: auto;
         line-height: 1.8;
-    }
-
-    @media screen and (max-width: 1200px) {
-        main{
-            width: 75%;
-        }
-    }
-
-		@media screen and (max-width: 768px) {
-				main{
-						width: 90%;
-				}
     }
 
     header {
@@ -54,11 +48,10 @@ layout: base.webc
         color: var(--primary)
     }
 
-
     table {
-        width: 100%;
+		margin: 2em auto;
+		min-width: 50%;
         border-collapse: collapse;
-        margin: 20px 0;
         box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.4);
 
         thead {
@@ -101,6 +94,16 @@ layout: base.webc
         align-items: center;
         justify-content: space-between;
 
+		.links{
+			list-style: none;
+			padding: 0;
+			display: flex;
+			gap: 1em;
+			a{
+				color: var(--secondary);
+			}
+		}
+
         .icon {
             display: flex;
             align-items: center;
@@ -113,4 +116,42 @@ layout: base.webc
 
         }
     }
+
+	@container wrapper (min-width: 0) {
+		main{
+			width: 90%;
+		}
+	}
+
+	@container wrapper (min-width: 576px) {
+		main{
+			width: 80%;
+		}
+	}
+
+	@container wrapper (min-width: 768px) {
+		main{
+			width: 75%;
+		}
+	}
+
+	@container wrapper (min-width: 992px) {
+		main{
+			width: 60%;
+		}
+	}
+
+
+	@container wrapper (min-width: 1200px) {
+		main{
+			width: 50%;
+		}
+	}
+
+
+	@container wrapper (min-width: 1400px) {
+		main{
+			width: 35%;
+		}
+	}
 </style>
