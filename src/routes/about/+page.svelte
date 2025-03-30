@@ -1,4 +1,4 @@
-<h1 class="text-7xl text-zinc-600 font-bold">Who am I ?</h1>
+<h1 class="text-7xl text-sky-900 font-bold">Who am I ?</h1>
 <p class="max-w-3xl py-8 text-2xl font-light">
 	Let me introduce myself.
 	I’m an enthusiastic software developer, currently living and working in Germany.
@@ -11,7 +11,7 @@
 	That journey led me to where I am today, doing what I love and continuously pushing myself to learn and grow.
 
 	You can find me at
-	<a class="italic underline text-green-800" href="https://github.com/moamenhredeen">Github</a>
+	<a class="italic underline text-sky-800" href="https://github.com/moamenhredeen">Github</a>
 	and
-	<a class="italic underline text-green-800" href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>.
+	<a class="italic underline text-sky-800" href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>.
 </p>
