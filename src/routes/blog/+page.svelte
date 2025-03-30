@@ -2,18 +2,48 @@
 	let { data } = $props();
 </script>
 
-<ul class="max-w-4xl">
+<ul>
 {#each data.posts as item (item.slug)}
-	<li class="p-8">
-		<span class="text-zinc-500">📆 {item.date}</span>
-		<h1 class="text-4xl py-2 text-sky-900 font-bold">{item.title}</h1>
-		<p class="text-zinc-600 text-xl">{item.description}</p>
-		<ul class="flex gap-3 py-2">
+	<li class="post">
+		<span class="date">📆 {item.date}</span>
+		<h1>{item.title}</h1>
+		<p>{item.description}</p>
+		<ul class="tags">
 			{#each item.tags as tag (tag)}
-				<li class="bg-sky-50 rounded p-1 text-sky-900">#{tag}</li>
+				<li class="tag">#{tag}</li>
 			{/each}
 		</ul>
-		<a href="{item.slug}" class="text-sky-900">Read article  ❯</a>
+		<a class="read-link" href="{item.slug}">Read article  ❯</a>
 	</li>
 {/each}
 </ul>
+
+
+<style>
+	.post{
+			margin-bottom: 4rem;
+	}
+
+	.date{
+			color: gray;
+	}
+
+	.tags{
+			display: flex;
+			gap: 1rem;
+			border-radius: 1rem;
+			margin-top: .5rem;
+      margin-bottom : .5rem;
+
+			.tag{
+          font-size: calc(9px + 0.33vw);
+					background: #f4f4f5;
+					padding: .1rem .2rem;
+					border-radius: 0.2rem;
+			}
+	}
+
+	.read-link{
+			text-decoration: none;
+	}
+</style>

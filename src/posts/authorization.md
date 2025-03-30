@@ -1,5 +1,8 @@
 ---
-id: authorization
+published: true
+title: Authorization
+description: What is authorization and what are the different Authorization types
+date: "2025-01-25"
 tags:
   - AuthZ
   - Authorization
@@ -7,11 +10,6 @@ tags:
   - ABAC
   - ReBAC
   - ACLs
-author: Moamen Hredeen
-date: "2025-01-25"
-description: What is authorization and what are the different Authorization types
-status: WIP
-title: Authorization
 ---
 
 Authorization is determining the access rights or privileges that user has to given resources.
@@ -39,7 +37,7 @@ This is both slow and error prone. If it’s too slow, we also end up with a sec
 
 ## RBAC
 
-![RBAC](AuthZ_RBAC.png)
+![RBAC](/img/AuthZ_RBAC.png)
 
 
 RBAC (Role-based Access Control) is one of the most common access control frameworks. 

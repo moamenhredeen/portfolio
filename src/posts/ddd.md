@@ -1,15 +1,13 @@
 ---
-id: ddd
+published: true
+title: Domain-Driven Design
+description: Learning Domain-Driven Design by building Identity Management Service
+date: "2025-02-02"
 tags:
   - SystemDesign
   - SoftwareArchitecture
   - DDD
   - DomainDrivenDesign
-author: Moamen Hredeen
-date: "2025-02-02"
-description: Learning Domain-Driven Design by building Identity Management Service
-title: Domain-Driven Design
-published: true
 ---
 
 

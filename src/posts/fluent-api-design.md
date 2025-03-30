@@ -1,16 +1,14 @@
 ---
-id: fluent-api-design
+published: true
+title: Fluent API Desing
+description: Good APIs guide their users through a well-lit path, resulting in clearer code, fewer mistakes and better maintainability
+date: "2024-08-20"
 tags:
   - API
   - SystemDesign
   - SoftwareArchitecture
   - REST
   - Java
-author: Moamen Hredeen
-date: "2024-08-20"
-description: Good APIs guide their users through a well-lit path, resulting in clearer code, fewer mistakes and better maintainability
-title: Fluent API Desing
-published: true
 ---
 
 Good APIs guide their users through a well-lit path, resulting in clearer code,

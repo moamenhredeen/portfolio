@@ -9,7 +9,14 @@
 </script>
 
 {#key page.url.pathname}
-	<main  in:fly={{ x: -200, duration: 500 }} class="p-32 min-h-screen">
+	<main  in:fly={{ x: -200, duration: 500 }}>
 		{@render children()}
 	</main>
 {/key}
+
+
+<style>
+	main{
+      max-width: 900px;
+	}
+</style>
