@@ -36,6 +36,7 @@
 		.tags {
 				display: flex;
 				gap: 1rem;
+				flex-wrap: wrap;
 				li{
 						background: var(--bg-light);
 						color: var(--text-light);
@@ -76,9 +77,6 @@
             list-style: disc;
 						padding-left: 1.6rem;
 						line-height: 2rem;
-						li{
-								font-size: 1.3rem;
-						}
         }
 
 
@@ -101,6 +99,10 @@
                 background-color: var(--bg-light);
             }
         }
+
+				img{
+						max-width: 100%;
+				}
 		}
 
 </style>

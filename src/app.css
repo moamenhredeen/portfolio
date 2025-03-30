@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 4.5em;
+    font-size: 4em;
     font-weight: 700;
     color:  #024a70;
     margin: 0;
@@ -51,7 +51,7 @@ h2 {
     font-weight: 700;
     letter-spacing: -1.5px;
 }
-p{
+p, li{
     font-size: 1.3em;
     font-weight: 300;
     line-height: 1.5;

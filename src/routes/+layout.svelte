@@ -17,6 +17,6 @@
 
 <style>
 	main{
-      max-width: 900px;
+      max-width: 800px;
 	}
 </style>

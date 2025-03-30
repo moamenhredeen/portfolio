@@ -22,6 +22,7 @@
 <style>
 	.post{
 			margin-bottom: 4rem;
+      font-size: calc(10px + 0.25vw);
 	}
 
 	.date{
