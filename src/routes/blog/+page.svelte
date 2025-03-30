@@ -1,0 +1,1 @@
+<h1 class="text-7xl text-zinc-600 font-bold">Blog</h1>
