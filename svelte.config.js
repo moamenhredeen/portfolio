@@ -13,7 +13,7 @@ const config = {
 	kit: {
 		adapter: adapter({}),
 		prerender: {
-			origin: 'http://moamenhredeen.me'
+			origin: 'https://moamenhredeen.me'
 		}
 	},
 	extensions: ['.svelte', '.md']
