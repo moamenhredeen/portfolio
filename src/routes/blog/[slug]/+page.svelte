@@ -5,8 +5,8 @@
 <div class="post">
 	<div class="post-heading">
 		<span class="date">📆 {data.meta.date}</span>
-		<h1>{data.meta.title}</h1>
-		<p>{data.meta.description}</p>
+		<h1 class="title">{data.meta.title}</h1>
+		<p class="description">{data.meta.description}</p>
 
 		<ul class="tags">
 			{#each data.meta.tags as tag (tag)}
@@ -24,79 +24,88 @@
 <style>
 
 		.post-heading{
-				border-bottom: 1px solid var(--bg-medium);
+				border-bottom: 1px solid var(--stone-3);
 				padding-bottom: 1rem;
 				margin-bottom: 2rem;
 		}
 
 		.date{
-				color: var(--text-light);
+				color: var(--stone-8);
 		}
 
-		.tags {
-				display: flex;
-				gap: 1rem;
-				flex-wrap: wrap;
-				li{
-						background: var(--bg-light);
-						color: var(--text-light);
-						padding: .1rem .2rem;
-						border-radius: .2rem;
-				}
+		.title{
+				color: var(--blue-10);
+				font-size: var(--font-size-fluid-3);
+				line-height: 0;
 		}
+
+		.description{
+				font-size: var(--font-size-fluid-1);
+		}
+
+    .tags {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: var(--size-2);
+        margin-bottom: var(--size-2);
+        li {
+            color: var(--stone-7);
+            background: var(--stone-1);
+            padding: 0 var(--size-1);
+            border-radius: var(--size-1);
+        }
+    }
 
 		.post-content :global {
 
+				h1, h2, h3{
+						color: var(--blue-10);
+				}
+
         h1 {
-            font-size: 3em;
+            font-size: var(--font-size-fluid-3);
         }
         h2 {
-            font-size: 2em;
+            font-size: var(--font-size-fluid-2);
         }
 
         h3 {
-            font-size: 1.4em;
+            font-size: var(--font-size-fluid-1);
         }
 
         pre {
-						background: var(--bg-lighter);
-						padding: 1rem;
-						margin: 2rem 0;
-						border: 2px solid var(--bg-medium);
+						background: var(--gray-0);
+            box-shadow: var(--inner-shadow-0);
+						padding: var(--size-3);
+						margin: var(--size-3) 0;
 						overflow-x: auto;
 				}
 
 				blockquote {
-						background: var(--bg-lighter);
-						padding: .1rem 1rem;
-						margin: 2rem 0;
-						border-left: .3rem solid var(--secondary);
+						background: var(--violet-0);
+						box-shadow: var(--inner-shadow-0);
+						padding: var(--size-1) var(--size-3);
+						margin: var(--size-4) 0;
 				}
-
-        ul{
-            list-style: disc;
-						padding-left: 1.6rem;
-						line-height: 2rem;
-        }
 
 
         table {
             border-collapse: collapse;
-						border: 1px solid var(--bg-medium);
+						box-shadow: var(--inner-shadow-0);
 
             thead {
-                background-color: var(--secondary);
-                color: var(--primary);
+                background-color: var(--blue-0);
                 text-align: left;
             }
 
             th,
             td {
-                padding: 0.5rem;
+                padding: var(--size-2);
             }
 
             tbody tr:nth-child(even) {
-                background-color: var(--bg-light);
+                background-color: var(--stone-1);
             }
         }
 

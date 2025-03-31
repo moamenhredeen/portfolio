@@ -15,3 +15,19 @@
 	and
 	<a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>.
 </p>
+
+<style>
+    h1{
+        color: var(--blue-10);
+        font-size: var(--font-size-fluid-3);
+    }
+
+    p{
+        font-size: var(--font-size-fluid-1);
+    }
+
+    a{
+        color: var(--blue-10);
+        font-style: italic;
+    }
+</style>

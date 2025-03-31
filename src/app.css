@@ -1,3 +1,5 @@
+@import "open-props/style";
+
 @font-face {
     font-family: Inter;
     font-style: normal;
@@ -29,42 +31,42 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: calc(10px + 0.33vw);
-    color: #3f3f46;
+    color: var(--stone-9);
     padding: 5vh 10vw;
-    font-weight: 300;
-    line-height: 1.5;
+    font-weight: var(--font-weight-3);
+    line-height: var(--font-lineheight-4);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--primary);
-}
+/*h1, h2, h3, h4, h5, h6 {*/
+/*    color: var(--blue-10);*/
+/*}*/
 
-h1 {
-    font-size: 4em;
-    font-weight: 700;
-    color:  #024a70;
-    margin: 0;
-    padding: 0;
-}
-h2 {
-    font-size: 2.2em;
-    font-weight: 700;
-    letter-spacing: -1.5px;
-}
-p, li{
-    font-size: 1.3em;
-    font-weight: 300;
-    line-height: 1.5;
-}
-a {
-    white-space: nowrap;
-    color: var(--primary);
-    font-style: italic;
-    position: relative;
-}
+/*h1 {*/
+/*    font-size: 4em;*/
+/*    font-weight: 700;*/
+/*    color:  var(--blue-10);*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+/*h2 {*/
+/*    font-size: 2.2em;*/
+/*    font-weight: 700;*/
+/*    letter-spacing: -1.5px;*/
+/*}*/
+/*p, li{*/
+/*    font-size: 1.3em;*/
+/*    font-weight: 300;*/
+/*    line-height: 1.5;*/
+/*}*/
+/*a {*/
+/*    white-space: nowrap;*/
+/*    color: var(--blue-10);*/
+/*    font-style: italic;*/
+/*    position: relative;*/
+/*}*/
 
 
-ul{
-    list-style: none;
-    padding: 0;
-}
+/*ul{*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*}*/

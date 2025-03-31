@@ -6,3 +6,19 @@
 	Or if you’re in the mood to read, check out some of my blog posts
 	<a href="/blog">here</a>!
 </p>
+
+<style>
+	h1{
+			color: var(--blue-10);
+			font-size: var(--font-size-fluid-3);
+	}
+
+	p{
+			font-size: var(--font-size-fluid-1);
+	}
+
+	a{
+			color: var(--blue-10);
+			font-style: italic;
+	}
+</style>
