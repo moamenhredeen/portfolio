@@ -10,6 +10,7 @@
 
 <ul>
 	<li><a href="/about" class:active={page.url.pathname === '/about/'}>ABOUT</a></li>
+	<li><a href="/resume" class:active={page.url.pathname === '/resume/'}>RESUME</a></li>
 	<li><a href="/blog" class:active={page.url.pathname.startsWith('/blog/')}>BLOG</a></li>
 	<li><a href="/" class:active={page.url.pathname === '/'}>HOME</a></li>
 </ul>
