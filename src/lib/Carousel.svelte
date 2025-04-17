@@ -1,5 +1,3 @@
-
-
 <ul>
 	<li>Slide 1</li>
 	<li>Slide 2</li>
@@ -8,16 +6,16 @@
 </ul>
 
 <style>
-	ul{
-			display: flex;
-			list-style: none;
-			gap: 1rem;
+	ul {
+		display: flex;
+		list-style: none;
+		gap: 1rem;
 	}
 
-	li{
-			border-radius: 1rem;
-			height: 200px;
-			width: 500px;
-			background: lightgray;
+	li {
+		border-radius: 1rem;
+		height: 200px;
+		width: 500px;
+		background: lightgray;
 	}
 </style>
