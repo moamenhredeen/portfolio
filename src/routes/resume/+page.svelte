@@ -4,6 +4,6 @@
 
 <style>
 	.resume-container {
-		height: 90vh;
+		height: 80vh;
 	}
 </style>
