@@ -2,10 +2,81 @@
 layout: base
 ---
 
-<!-- <ul>
-    <li webc:for="item of $data.collections.post">
-        <a :href="item.url" @text="item.data.title"></a>
-    </li>
-</ul> -->
+<!-- <div class="post">
+    <div class="post-heading">
+        <span class="date">📆 {data.meta.date}</span>
+        <h1 class="title">{data.meta.title}</h1>
+        <p class="description">{data.meta.description}</p>
+
+        <ul class="tags">
+            {#each data.meta.tags as tag (tag)}
+            <li>#{tag}</li>
+            {/each}
+        </ul>
+    </div>
+
+    <div class="post-content">
+        {@render data.content()}
+    </div>
+</div> -->
+
 
 <div class="post-content" @raw="content"></div>
+
+<style>
+
+.post-content {
+    max-width: 800px;
+    font-size: clamp(14px, 1.3em, 20px);
+    font-weight: 300;
+    line-height: 1.4;
+    
+    h1, h2, h3 { 
+        color: var(--primary);
+    }
+    h1 { font-size: 3em }
+    h2 { font-size: 1.8em }
+    h3 { font-size: 1.2em }
+    pre {
+        background: var(--bg-lighter);
+        border: 4px solid var(--bg-light);
+        padding: 1em;
+        margin: 1em 0;
+        overflow-x: auto;
+    }
+
+    blockquote {
+        background: var(--bg-lighter);
+        border-left: 4px solid var(--secondary);
+        padding: .5em 1em;
+        margin: 1em 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        border: 2px solid var(--bg-light);
+        width: 100%;
+
+        thead {
+            background-color: var(--secondary);
+            text-align: left;
+        }
+        
+        th, td {
+            padding: .5em;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: var(--bg-lighter);
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+    
+    a{
+        color: var(--primary);
+    }
+}
+</style>

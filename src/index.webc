@@ -1,0 +1,14 @@
+---
+title: Home
+layout: base
+---
+
+<h1 class="header-title">Hallo</h1>
+
+<p class="header-content">
+    Not sure how you ended up here, but hey, since you’re already around, why not take a look?
+    
+    Curious about who I am? You can learn more about me <a href="/about">here</a>
+    or read my <a href="/resume">resume</a>.
+    If you’re in the mood to read, check out some of my blog posts <a href="/blog">here</a>!
+</p>
