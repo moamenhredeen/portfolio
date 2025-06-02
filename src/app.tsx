@@ -1,20 +1,9 @@
-import { Router } from "@solidjs/router";
-import { FileRoutes } from "@solidjs/start/router";
-import { Suspense } from "solid-js";
-import Nav from "~/components/Nav";
-import "./app.css";
+import type { Component } from 'solid-js';
 
-export default function App() {
+const App: Component = () => {
   return (
-    <Router
-      root={props => (
-        <>
-          <Nav />
-          <Suspense>{props.children}</Suspense>
-        </>
-      )}
-    >
-      <FileRoutes />
-    </Router>
+    <p class="text-4xl text-green-700 text-center py-20">Hello tailwind!</p>
   );
-}
+};
+
+export default App;
