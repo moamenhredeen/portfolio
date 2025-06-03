@@ -103,7 +103,7 @@ layout: base
 			}
 		}
 
-		.markdown-alert-warning {
+		.markdown-alert-tip {
 			background: #10b98114;
 			border-left: 4px solid #10b98148;
 			.markdown-alert-title {
@@ -112,7 +112,7 @@ layout: base
 		}
 
 
-		.markdown-alert-tip{
+		.markdown-alert-warning{
 			background: #eab30814;
 			border-left: 4px solid #eab30848;
 			.markdown-alert-title {
