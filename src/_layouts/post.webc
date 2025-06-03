@@ -44,7 +44,6 @@ layout: base
     
     
     max-width: 800px;
-    font-size: clamp(14px, 1.3em, 20px);
     font-weight: 300;
     line-height: 1.4;
     
