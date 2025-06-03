@@ -18,7 +18,7 @@ fewer mistakes and better maintainability
 
 # What are Fluent APIs
 
-> In software engineering, a fluent interface is an object-oriented API whose
+> In software engineering[^first], a fluent interface is an object-oriented API whose
 > design relies extensively on method chaining. Its goal is to increase code
 > legibility by creating a domain-specific language (DSL). The term was coined
 > in 2005 by Eric Evans and Martin Fowler.
@@ -178,3 +178,5 @@ valid no-op valie to bypass teh action of the method
 
 - [Principles of Fluent API Design by David Beaumont](https://www.youtube.com/watch?v=VPu-ytfYTeU)
 - [How to Create a Fluent API in C#](https://mitesh1612.github.io/blog/2021/08/11/how-to-design-fluent-api)
+
+[^first]: something

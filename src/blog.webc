@@ -4,13 +4,14 @@ layout: base
 ---
 
 <ul class="post-list">
+    
     <li webc:for="item of $data.collections.post" class="post">
+        <span class="date" @text="`🗓 ${item.data.date}`"></span>
 		<h1 class="title" @text="item.data.title"></h1>
-		<span class="date" @text="item.data.date"></span>
 		<p class="subtitle" @text="item.data.description"></p>
-		<ul class="tags">
+		<!-- <ul class="tags">
 		    <li webc:for="tag of item.data.tags" class="tag" @text="tag"></li>
-		</ul>
+		</ul> -->
 		<a class="read-link" :href="item.url">Read article ❯</a>
 	</li>
 </ul>
@@ -24,21 +25,23 @@ layout: base
 		flex-direction: column;
 		gap: 2rem;
 	}
+	
+	.post{
+	    padding-bottom: 1em;
+	    border-bottom: 2px dashed var(--bg-medium);
+	}
 
 	.date{
 		color: var(--text-light);
-		font-size: 14px;
 	}
 
 	.title {
-        font-size: 3em;
         font-weight: 700;
         color: var(--primary);
-        margin-bottom: .5em;
 	}
 
 	.subtitle {
-		font-size: clamp(10px, 1.2em, 18px);
+		line-height: 1.3;
 	}
 
 	.tags {

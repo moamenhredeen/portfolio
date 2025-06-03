@@ -2,41 +2,54 @@
 layout: base
 ---
 
-<!-- <div class="post">
+<div class="post">
     <div class="post-heading">
-        <span class="date">📆 {data.meta.date}</span>
-        <h1 class="title">{data.meta.title}</h1>
-        <p class="description">{data.meta.description}</p>
-
+        <h1 class="title" @text="title"></h1>
+        <span class="date" @text="`🗓 ${page.date.toUTCString()}`"></span>
+        <p class="description" @text="description"></p>
         <ul class="tags">
-            {#each data.meta.tags as tag (tag)}
-            <li>#{tag}</li>
-            {/each}
+            <li class="tag" webc:for="tag of tags" @text="tag"></li>
         </ul>
     </div>
+    <div class="post-content" @raw="content"></div>
+</div>
 
-    <div class="post-content">
-        {@render data.content()}
-    </div>
-</div> -->
-
-
-<div class="post-content" @raw="content"></div>
 
 <style>
 
-.post-content {
+.post {
+    .post-heading{
+        border-bottom: 2px dashed var(--bg-medium);
+        .title{ 
+            color: var(--primary);
+            font-size: 3em;
+        }
+        .date{
+            display: block;
+            color: var(--text-light)
+        }
+        .tags {
+            display: flex;
+            list-style: none;
+            padding-left: 0;
+            gap: 1em;
+            flex-wrap: wrap;
+            .tag{
+                background: var(--bg-light);
+                border-radius: .2em;
+                padding: .1em .4em;
+            }
+        }
+    }
+    
+    
     max-width: 800px;
     font-size: clamp(14px, 1.3em, 20px);
     font-weight: 300;
     line-height: 1.4;
     
-    h1, h2, h3 { 
-        color: var(--primary);
-    }
-    h1 { font-size: 3em }
-    h2 { font-size: 1.8em }
-    h3 { font-size: 1.2em }
+    h1, h2, h3, h4, h5, h6 {  color: var(--primary) }
+    p{ line-height: 1.5em }
     pre {
         background: var(--bg-lighter);
         border: 4px solid var(--bg-light);
@@ -46,24 +59,25 @@ layout: base
     }
 
     blockquote {
-        background: var(--bg-lighter);
-        border-left: 4px solid var(--secondary);
-        padding: .5em 1em;
+        border-left: 2px solid var(--bg-medium);
+        padding-left: 1em;
+        font-style: italic;
         margin: 1em 0;
     }
 
     table {
         border-collapse: collapse;
-        border: 2px solid var(--bg-light);
         width: 100%;
+        border: 4px solid var(--bg-light);
 
         thead {
             background-color: var(--secondary);
+            color: var(--primary);
             text-align: left;
         }
         
         th, td {
-            padding: .5em;
+            padding: .2em;
         }
 
         tbody tr:nth-child(even) {
@@ -78,5 +92,59 @@ layout: base
     a{
         color: var(--primary);
     }
+
+		.markdown-alert {
+			margin: 1em 0;
+			padding: 1em;
+			.markdown-alert-title {
+				margin: 0;
+				font-weight: 500;
+				font-size: 1.5em;
+			}
+		}
+
+		.markdown-alert-warning {
+			background: #10b98114;
+			border-left: 4px solid #10b98148;
+			.markdown-alert-title {
+				color: #18794e ;
+			}
+		}
+
+
+		.markdown-alert-tip{
+			background: #eab30814;
+			border-left: 4px solid #eab30848;
+			.markdown-alert-title {
+				color: #915930;
+			}
+		}
+
+
+		.markdown-alert-caution{
+			background: #f43f5e14;
+			border-left: 4px solid #f43f5e48;
+			.markdown-alert-title {
+				color: #b8272c;
+			}
+		}
+
+
+		.markdown-alert-important{
+			background: #9f7aea24;
+			border-left: 4px solid #9f7aea48;
+			.markdown-alert-title {
+				color: #6f42c1;
+			}
+		}
+
+
+		.markdown-alert-note{
+			background: var(--bg-lighter);
+			border-left: 4px solid var(--bg-light);
+			.markdown-alert-title {
+				color: var(--text-light);
+			}
+		}
 }
 </style>

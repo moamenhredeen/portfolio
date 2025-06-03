@@ -24,6 +24,10 @@
     "@11ty/eleventy": "^3.0.0"
   },
   "devDependencies": {
-    "@11ty/eleventy-plugin-webc": "^0.11.2"
+    "@11ty/eleventy-plugin-webc": "^0.11.2",
+    "@mdit/plugin-alert": "^0.21.0",
+    "@mdit/plugin-footnote": "^0.21.0",
+    "@mdit/plugin-plantuml": "^0.21.0",
+    "@shikijs/markdown-it": "^3.4.2"
   }
 }
