@@ -7,7 +7,7 @@ layout: base
 
 <ul class="tag-list">
     <li webc:for="item of $data.collections.tagList">
-        <a :href="item"  @text="item"></a>
+        <a :href="`${item.toLowerCase()}`"  @text="item"></a>
     </li>
 </ul>
 
