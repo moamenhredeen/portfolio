@@ -1,6 +1,9 @@
 ---
-id: authorization
-aliases: []
+title: Authorization
+description: What is authorization and what are the different Authorization types
+author: Moamen Hredeen
+date: "2025-01-25"
+status: WIP
 tags:
   - AuthZ
   - Authorization
@@ -8,11 +11,6 @@ tags:
   - ABAC
   - ReBAC
   - ACLs
-author: Moamen Hredeen
-date: "2025-01-25"
-description: What is authorization and what are the different Authorization types
-status: WIP
-title: Authorization
 ---
 
 authorization is determining the access rights or privileges that user has to given resources.

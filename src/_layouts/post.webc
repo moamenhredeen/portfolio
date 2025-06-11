@@ -8,7 +8,9 @@ layout: base
         <span class="date" @text="`🗓 ${page.date.toUTCString()}`"></span>
         <p class="description" @text="description"></p>
         <ul class="tags">
-            <li class="tag" webc:for="tag of tags" @text="tag"></li>
+            <li class="tag" webc:for="tag of tags.filter(el => el !== 'post')">
+                <a :href="`/tags/${tag}`"  @text="tag"></a>
+            </li>
         </ul>
     </div>
     <div class="post-content" @raw="content"></div>

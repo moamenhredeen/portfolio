@@ -1,0 +1,60 @@
+---
+title: Gallery
+---
+
+<div class="slides-wrapper">
+	<ul class="slides">
+		<li>Slide 1</li>
+		<li>Slide 2</li>
+		<li>Slide 3</li>
+		<li>Slide 4</li>
+		<li>Slide 5</li>
+	</ul>
+</div>
+
+<style>
+html, body{
+	padding: 0;
+	margin: 0;
+}
+.slides-wrapper{
+	box-sizing: border-box;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.slides{
+		box-sizing: border-box;
+		list-style: none;
+		padding: 0;
+		background: #EEEFE0;
+		height: 50%;
+		width: 90%;
+		max-width:60em;
+		max-height: 40em; 
+		padding: 2em;
+		display: flex;
+		overflow-x: scroll;
+		gap: 1em;
+		border-radius: .5em;
+
+		li{
+			border-radius: .4em;
+			flex-shrink: 0;
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			background: #A7C1A8;
+			border: .1em solid #819A91; 
+			color: white;
+			justify-content: center;
+			align-items: center;
+			font-size: 3em;
+		}
+	}
+}
+
+</style>
+

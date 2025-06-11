@@ -1,0 +1,35 @@
+---
+title: Blog
+layout: base
+---
+
+<h1 class="header-title">Tags</h1>
+
+<ul class="tag-list">
+    <li webc:for="item of $data.collections.tagList">
+        <a :href="item"  @text="item"></a>
+    </li>
+</ul>
+
+<style>
+    .tag-list{
+        margin-block: 2em;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2em;
+
+        a{
+            background: var(--secondary);
+            padding: .2em .4em;
+            border-radius: 5px;
+            color: inherit;
+            text-decoration: none;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+</style>

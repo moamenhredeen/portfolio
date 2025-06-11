@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title @text="title"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/assets/img/me.ico">
+    <style @raw="getBundle('css')" webc:keep></style>
+</head>
+<body>
+    <main @raw="content"></main>
+    <script @raw="getBundle('js')" webc:keep></script>
+</body>
+</html>

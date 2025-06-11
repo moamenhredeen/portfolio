@@ -1,0 +1,63 @@
+---js
+// <script>
+    const layout = "base"
+    const pagination = {
+        data: "collections.tagList",
+        size: 1,
+        alias: "tag",
+    };
+
+    const eleventyExcludeFromCollections = true;
+
+    const eleventyComputed = {
+        permalink: data => `/tags/${data.tag.toLowerCase()}/`
+    };
+// </script>
+---
+
+<div class="filter">
+    <div>
+        <span class="prefix">Filter</span>
+        <span class="tag" @text="$data.tag" style="background: var(--secondary)"></span>
+    </div>
+    <div class="actions">
+        <a href="/tags">Edit</a>
+        <a href="/blog">Clear</a>
+    </div>
+</div>
+
+
+<post-list :items="$data.collections[$data.tag]"></post-list>
+
+
+<style>
+    .filter{
+        margin-bottom: 3em;
+        background: var(--bg-light);
+        padding: 1em;
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        justify-content: space-between;
+        .prefix{
+            font-weight: 400;
+            font-size: 1.2em;
+            color: var(--text-light)
+        }
+        .tag{
+            padding: .2em;
+            margin-inline: 1em;
+            border-radius: .2em;
+        }
+
+        .actions{
+            display: flex;
+            gap: 1em;
+            a{
+                color: var(--primary);
+                text-decoration: none;
+            }
+        }
+
+    }
+</style>

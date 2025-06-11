@@ -1,0 +1,21 @@
+---
+title: Gallery
+layout: base
+---
+
+<h1>Hello World</h1>
+
+<ul class="components-list">
+	<li>
+		<a href="./carousel">Carousel</a>
+	</li>
+</ul>
+
+<style>
+.components-list{
+	padding: 0;
+	list-style: none;
+}
+</style>
+
+
