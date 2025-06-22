@@ -3,8 +3,8 @@
 
     <li webc:for="item of items" class="post">
         <span class="date" @text="`🗓 ${item.data.date}`"></span>
-        <h1 class="title" @text="item.data.title"></h1>
-        <p class="subtitle" @text="item.data.description"></p>
+        <h1 class="title" @text="item.data.title" :style="`view-transition-name: ${slugify(item.data.title)}`"></h1>
+        <p class="subtitle" @text="item.data.description" :style="`view-transition-name: ${slugify(item.data.title)}-description`"></p>
         <!-- <ul class="tags">
             <li webc:for="tag of item.data.tags" class="tag" @text="tag"></li>
         </ul> -->

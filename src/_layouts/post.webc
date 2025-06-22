@@ -4,12 +4,12 @@ layout: base
 
 <div class="post">
     <div class="post-heading">
-        <h1 class="title" @text="title"></h1>
+        <h1 class="title" @text="title" :style="`view-transition-name: ${slugify(title)};`"></h1>
         <span class="date" @text="`🗓 ${page.date.toUTCString()}`"></span>
-        <p class="description" @text="description"></p>
+        <p class="description" @text="description" :style="`view-transition-name: ${slugify(title)}-description`"></p>
         <ul class="tags">
             <li class="tag" webc:for="tag of tags.filter(el => el !== 'post')">
-                <a :href="`/tags/${tag.toLowerCase()}`"  @text="tag"></a>
+                <a :href="`/tags/${tag.toLowerCase()}`"  @text="tag" :style="`view-transition-name: ${tag}`"></a>
             </li>
         </ul>
     </div>

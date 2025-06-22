@@ -18,7 +18,7 @@
 <div class="filter">
     <div>
         <span class="prefix">Filter</span>
-        <span class="tag" @text="$data.tag" style="background: var(--secondary)"></span>
+        <span class="tag" @text="$data.tag" :style="`view-transition-name: ${tag}`"></span>
     </div>
     <div class="actions">
         <a href="/tags">Edit</a>
@@ -48,6 +48,7 @@
             padding: .2em;
             margin-inline: 1em;
             border-radius: .2em;
+            background: var(--secondary)
         }
 
         .actions{
