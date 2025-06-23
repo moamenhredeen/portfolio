@@ -1,6 +1,0 @@
----
-title: Blog
-layout: base
----
-
-<post-list :items="$data.collections.post"></post-list>
