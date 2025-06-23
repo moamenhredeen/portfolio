@@ -120,58 +120,58 @@ layout: base
         color: inherit;
     }
 
-		.markdown-alert {
-			margin: 1em 0;
-			padding: 1em;
-			.markdown-alert-title {
-				margin: 0;
-				font-weight: 500;
-				font-size: 1.5em;
-			}
-		}
+    .markdown-alert {
+        margin: 1em 0;
+        padding: 1em;
+        .markdown-alert-title {
+            margin: 0;
+            font-weight: 500;
+            font-size: 1.5em;
+        }
+    }
 
-		.markdown-alert-tip {
-			background: #10b98114;
-			border-left: 4px solid #10b98148;
-			.markdown-alert-title {
-				color: #18794e ;
-			}
-		}
-
-
-		.markdown-alert-warning{
-			background: #eab30814;
-			border-left: 4px solid #eab30848;
-			.markdown-alert-title {
-				color: #915930;
-			}
-		}
+    .markdown-alert-tip {
+        background: #10b98114;
+        border: 2px dashed #10b98148;
+        .markdown-alert-title {
+            color: #18794e ;
+        }
+    }
 
 
-		.markdown-alert-caution{
-			background: #f43f5e14;
-			border-left: 4px solid #f43f5e48;
-			.markdown-alert-title {
-				color: #b8272c;
-			}
-		}
+    .markdown-alert-warning{
+        background: #eab30814;
+        border: 2px dashed #eab30848;
+        .markdown-alert-title {
+            color: #915930;
+        }
+    }
 
 
-		.markdown-alert-important{
-			background: #9f7aea24;
-			border-left: 4px solid #9f7aea48;
-			.markdown-alert-title {
-				color: #6f42c1;
-			}
-		}
+    .markdown-alert-caution{
+        background: #f43f5e14;
+        border: 2px dashed #f43f5e48;
+        .markdown-alert-title {
+            color: #b8272c;
+        }
+    }
 
 
-		.markdown-alert-note{
-			background: var(--bg-lighter);
-			border-left: 4px solid var(--bg-light);
-			.markdown-alert-title {
-				color: var(--text-light);
-			}
-		}
+    .markdown-alert-important{
+        background: #9f7aea24;
+        border: 2px dashed #9f7aea48;
+        .markdown-alert-title {
+            color: #6f42c1;
+        }
+    }
+
+
+    .markdown-alert-note{
+        background: var(--bg-lighter);
+        border: 2px dashed var(--bg-light);
+        .markdown-alert-title {
+            color: var(--text-light);
+        }
+    }
 }
 </style>

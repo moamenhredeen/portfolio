@@ -39,5 +39,29 @@ layout: base
     font-size: 1.2em;
     font-weight: 300;
     line-height: 1.5;
+    
+    a {
+        color: inherit;
+        font-style: italic;
+        text-decoration: none;
+        position: relative;
+        
+        &::before {
+            transition: 0.2s;
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transform: skew(-10deg);
+            height: 25%;
+            width: 100%;
+            background-color: var(--primary);
+        }
+        
+        &:hover::before {
+            height: 100%;
+        }
+    }
 }
 </style>

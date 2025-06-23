@@ -22,6 +22,12 @@
                 <a href="/blog" :class="page.url.startsWith('/blog/') ? 'active' : ''">Blog</a>
                 <a href="/tags" :class="page.url.startsWith('/tags/') ? 'active' : ''">Tags</a>
             </nav>
+            
+            <footer class="socials">
+                <a href="https://github.com/moamenhredeen" target="_blank">Github</a> 
+                <span>/</span>
+                <a href="https://linkedin/in/moamen-hraden" target="_blank">LinkedIn</a>
+            </footer>
         </header>
     </div>
     <script @raw="getBundle('js')" webc:keep></script>
