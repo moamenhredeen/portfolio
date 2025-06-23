@@ -9,7 +9,21 @@
     <style @raw="getBundle('css')" webc:keep></style>
 </head>
 <body>
-    <main @raw="content"></main>
+    <div class="root-container">
+        <main @raw="content"></main>
+        <header>
+            <hgroup>
+                <h1>YU</h1>
+                <p>Hi there, i'm Moamen Hredeen and this is my personal portfolio</p>
+            </hgroup>
+            <nav>
+                <a href="/" :class="page.url === '/' ? 'active' : ''">Home</a>
+                <a href="/about" :class="page.url === '/about/' ? 'active' : ''">About</a>
+                <a href="/blog" :class="page.url.startsWith('/blog/') ? 'active' : ''">Blog</a>
+                <a href="/tags" :class="page.url.startsWith('/tags/') ? 'active' : ''">Tags</a>
+            </nav>
+        </header>
+    </div>
     <script @raw="getBundle('js')" webc:keep></script>
 </body>
 </html>

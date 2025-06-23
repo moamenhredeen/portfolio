@@ -3,9 +3,9 @@ title: About
 layout: base
 ---
 
-<h1 class="header-title"> Who am I ?</h1>
+<h1 class="about-title"> Who am I ?</h1>
 
-<p class="header-content">
+<p class="about-body">
     Let me introduce myself. I’m an enthusiastic software developer, currently living and working in
     Germany. I have a deep love for tinkering with weird software ideas and diving headfirst into
     challenging technical problems—there’s something exciting about breaking things just to figure out
@@ -18,3 +18,31 @@ layout: base
     and
     <a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>
 </p>
+
+<style webc:keep>
+
+.about-title {
+    position: relative;
+    margin: 0;
+    font-size: 3em;
+    font-weight: 700;
+    width: fit-content;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+        background-color: var(--primary);
+        transform: skew(-10deg);
+        height: 50%;
+        width: 100%;
+    }
+}
+
+.about-body {
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.5;
+}
+</style>

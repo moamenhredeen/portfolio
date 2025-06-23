@@ -2,12 +2,9 @@
 <ul class="post-list">
 
     <li webc:for="item of items" class="post">
-        <span class="date" @text="`🗓 ${item.data.date}`"></span>
         <h1 class="title" @text="item.data.title" :style="`view-transition-name: ${slugify(item.data.title)}`"></h1>
+        <span class="date" @text="item.data.date"></span>
         <p class="subtitle" @text="item.data.description" :style="`view-transition-name: ${slugify(item.data.title)}-description`"></p>
-        <!-- <ul class="tags">
-            <li webc:for="tag of item.data.tags" class="tag" @text="tag"></li>
-        </ul> -->
         <a class="read-link" :href="item.url">Read article ❯</a>
     </li>
 </ul>
@@ -23,22 +20,24 @@
     }
 
     .post{
-        padding-bottom: 1em;
+        padding-bottom: 2em;
         border-bottom: 2px dashed var(--bg-medium);
     }
 
     .date{
         color: var(--text-light);
+        font-style: italic;
     }
 
     .title {
         font-weight: 700;
-        color: var(--primary);
+        margin-block: .5em;
     }
 
     .subtitle {
         line-height: 1.5;
         font-weight: 300;
+        margin-block: .5em;
     }
 
     .tags {
@@ -58,10 +57,26 @@
 
     .read-link {
         text-decoration: none;
-        color: var(--primary);
+        color: var(--text);
+        font-weight: 500;
         font-size: clamp(10px, 1.2em, 16px);
-        &:hover {
-            text-decoration: underline;
+        position: relative;
+        
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transform: skew(-10deg);
+            height: 30%;
+            width: 100%;
+            background-color: var(--primary);
+            transition: .2s;
+        }
+
+        &:hover::before {
+            height: 100%;
         }
     }
 </style>
