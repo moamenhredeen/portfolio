@@ -1,0 +1,67 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import Layout from "./Layout.astro";
+type Props = MarkdownLayoutProps<{
+  title: string;
+  description: string;
+  tags: string[];
+}>
+const { frontmatter } = Astro.props;
+---
+
+<Layout>
+    <div class="container">
+        <header>
+            <h1>{frontmatter.title}</h1>
+            <p>{frontmatter.description}</p>
+            <ul class="tags">
+                {frontmatter.tags.map(el => <li>
+                    <a href={el}>{el}</a>
+                </li>)}
+            </ul>
+        </header>
+        <main>
+            <slot/>
+        </main>
+    </div>
+</Layout>
+
+
+<style>
+
+.container{
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+header{
+    border-bottom: 2px dashed lightgray;
+
+    h1{
+        font-size: 3em;
+        margin: 0;
+        color: var(--red);
+    }
+}
+
+.tags{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: .5em;
+    a{
+        color: inherit;
+        text-decoration: none;
+        background-color: #efefef;
+        padding: 4px;
+        border-radius: 4px;
+    }
+}
+
+main{
+    a{
+        color: var(--red);
+        text-decoration: none;
+    }
+}
+</style>
