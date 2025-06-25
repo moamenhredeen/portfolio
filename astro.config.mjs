@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import remarkGithubAlerts from 'remark-github-alerts'
 import solidJs from '@astrojs/solid-js';
 
 import mdx from '@astrojs/mdx';
@@ -16,6 +17,9 @@ export default defineConfig({
           dark: 'github-dark',
         },
       },
+      remarkPlugins: [
+          remarkGithubAlerts
+      ]
     },
 
   integrations: [solidJs(), mdx()],

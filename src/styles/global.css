@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
 @theme {
+    /**** colors ****/
     --color-primary: #AF3E3E;
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+    --color-light: #fbfbfb;
+
+    /**** text sizes ****/
+    --text-title: 2.5em;
+
 }

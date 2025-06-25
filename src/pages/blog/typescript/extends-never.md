@@ -34,7 +34,7 @@ type Test5 = HasNoKeys<{ a: string } | { b: string }> // true - no common keys!
 
 The last example reveals the problem: union types with no common keys return `true` because `keyof` only returns keys that exist on *all* members of the union.
 
-> [!important]
+> [!note]
 > `keyof` returns only the keys that exist on **all** members of an union
 
 Why This Breaks DeepReadonly ?

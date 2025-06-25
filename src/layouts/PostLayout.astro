@@ -11,7 +11,7 @@ const { frontmatter } = Astro.props;
 
 <Layout>
     <div>
-        <header class="py-8">
+        <header class="py-2 mb-4 border-b-2 border-dashed border-zinc-200">
             <h1 class="text-primary text-6xl mb-8">{frontmatter.title}</h1>
             <p class="text-lg italic">Summary: {frontmatter.description}</p>
             <ul class="flex gap-2 my-2">
@@ -45,17 +45,68 @@ const { frontmatter } = Astro.props;
             color: var(--color-primary);
             font-size: 14px;
         }
-        pre{margin-block: 2em}
+        blockquote{
+            background: var(--color-light);
+            margin-block: 1em;
+            padding: 1em;
+        }
+        pre:has(code) {
+            margin-block: 1em;
+        }
         table{
             margin-block: 2em;
             width: 100%;
             text-align: center;
             thead {
-                border-bottom: 1px solid oklch(86.9% 0.005 56.366);
+                border-bottom: 1px solid var(--color-light);
             }
 
             tr:nth-child(even){
-                background: oklch(98.5% 0.001 106.423);
+                background: var(--color-light);
+            }
+        }
+        .markdown-alert{
+            background: var(--color-light);
+            padding: .5em 1em;
+            margin-block: 1em;
+            border-inline-start: 4px solid;
+            .markdown-alert-title{
+                font-weight: bold;
+            }
+        }
+
+        .markdown-alert-note{
+            border-color: var(--color-note);
+            .markdown-alert-title{
+                color: var(--color-note);
+            }
+        }
+
+        .markdown-alert-caution{
+            border-color: var(--color-caution);
+            .markdown-alert-title{
+                color: var(--color-caution);
+            }
+        }
+
+        .markdown-alert-warning{
+            border-color: var(--color-warning);
+            .markdown-alert-title{
+                color: var(--color-warning);
+            }
+        }
+
+        .markdown-alert-important{
+            border-color: var(--color-important);
+            .markdown-alert-title{
+                color: var(--color-important);
+            }
+        }
+
+        .markdown-alert-tip{
+            border-color: var(--color-tip);
+            .markdown-alert-title{
+                color: var(--color-tip);
             }
         }
     }

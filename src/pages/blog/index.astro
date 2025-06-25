@@ -9,7 +9,7 @@ const posts = await getCollection("posts");
         {
             posts.map((el) => (
                 <li class="py-4">
-                    <h1 class="text-primary text-4xl my-2">{el.data.title}</h1>
+                    <h1 class="text-primary text-title font-bold my-2">{el.data.title}</h1>
                     <p class="text-lg/8">{el.data.description}</p>
                     <a class="block text-primary text-lg mt-2" href={`/blog/${el.id}`}>Read more</a>
                 </li>
