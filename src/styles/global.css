@@ -146,8 +146,38 @@ samp {
     text-decoration: none;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.print-button:hover {
     color: var(--accent);
+}
+
+.print-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: var(--ink);
+    background: transparent;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+}
+
+.print-button svg {
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+}
+
+.print-button:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 0.25rem;
 }
 
 .site-footer {
@@ -196,26 +226,77 @@ samp {
     }
 }
 
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
 @media print {
-    :root,
+    :root {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
     html,
-    body,
-    .paper-page {
-        background: white;
+    body {
+        background: var(--paper);
+    }
+
+    body {
+        min-width: 0;
     }
 
     .paper-page {
+        width: 210mm;
         max-width: none;
-        padding: 0;
+        min-height: 297mm;
+        margin: 0;
+        padding: 16mm 18mm 24mm;
+        background: var(--paper-raised);
         box-shadow: none;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
     }
 
-    .site-nav,
+    .site-header {
+        margin-bottom: 3.5rem;
+    }
+
     .site-footer {
+        position: fixed;
+        right: 18mm;
+        bottom: 0;
+        left: 18mm;
+        margin: 0;
+        padding: 2mm 0 3mm;
+        background: var(--paper-raised);
+    }
+
+    .print-button {
         display: none;
     }
 
-    a {
-        color: inherit;
+    pre,
+    table,
+    figure,
+    blockquote,
+    img,
+    svg {
+        break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        break-after: avoid;
+    }
+
+    p,
+    li {
+        orphans: 3;
+        widows: 3;
     }
 }
