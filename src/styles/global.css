@@ -72,12 +72,18 @@ samp {
 }
 
 .paper-page {
+    display: flex;
+    flex-direction: column;
     max-width: 900px;
     min-height: 100vh;
     margin: 0 auto;
     padding: 2.5rem 4.5rem 4rem;
     background: var(--paper-raised);
     box-shadow: 0 0 0 1px rgb(25 24 22 / 5%);
+}
+
+.paper-page > main {
+    flex: 1;
 }
 
 .paper-kicker {
