@@ -39,7 +39,7 @@ This is both slow and error prone. If it’s too slow, we also end up with a sec
 
 ## RBAC
 
-![RBAC](./AuthZ_RBAC.png)
+![](_attachments/rbac.excalidraw.svg)
 
 
 RBAC (Role-based Access Control) is one of the most common access control frameworks. 
@@ -63,8 +63,6 @@ As a side note here, if you can make it fit your needs and don’t anticipate an
 ReBAC (Relation-Based Access Control) revolves around granting access based on the relationships between entities, such as users and resources. These relationships can be direct, like a customer representative accessing a customer’s record, or indirect like a teller accessing a customer’s record only if they belong to the same branch. The key objective is to ensure access is granted based on the contextual relationships between the requesting party and the requested resource.
 
 While the concept may seem straightforward, ReBAC implementations can vary. Some advocate for a graph-based authorization model, which visually represents the interconnected relationships. Others prefer a policy-driven approach, where access control rules are defined through policies. Regardless of the chosen method, the ultimate goal remains the same: delivering context-based access decisions in real-time at runtime, adhering to the principle of least privilege (PoLP).
-
-
 ## ABAC
 **Attribute Based Access Control or ABAC** is the most flexible of these options. Unlike ACLs or RBAC, ABAC doesn’t store permissions, but instead **calculates those permissions on demand** based on a number of attributes. These attributes can be anything and can either be passed in with the request or looked up on the fly. 
 

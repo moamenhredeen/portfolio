@@ -3,7 +3,13 @@ import { glob, file } from "astro/loaders";
 
 const posts = defineCollection({
     loader: glob({
-        pattern: '**/*.{md,mdx}',
+        pattern: [
+            '**/*.{md,mdx}',
+            "!**/_attachments/**",
+            "!**/*.excalidraw.md",
+            ".obsidian",
+            ".trash",
+        ],
         base: './src/pages/blog'
     }),
     schema: z.object({
