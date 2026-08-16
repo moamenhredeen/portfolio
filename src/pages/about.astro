@@ -2,32 +2,174 @@
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout title="About" description="About software developer Moamen Hredeen.">
+<Layout
+    title="About"
+    description="About Moamen Hredeen, a software developer focused on maintainable systems and software architecture."
+>
     <main class="about-page">
-        <header>
+        <header class="about-header">
             <p class="paper-kicker">About me</p>
-            <h1 class="page-title">About</h1>
-        </header>
-        <div class="about-copy">
+            <h1 class="page-title">Moamen Hredeen</h1>
             <p class="lead">
-                I’m an enthusiastic software developer, currently living and
-                working in Germany. I love tinkering with unusual software ideas
-                and diving into difficult technical problems—there’s something
-                exciting about breaking things to understand how they work.
+                I’m a software developer based in Germany, interested in solving
+                complex problems through clean code, thoughtful architecture, and
+                systems that remain maintainable over time.
+            </p>
+        </header>
+
+        <section>
+            <h2>What I do</h2>
+            <p>
+                My experience spans backend and full-stack development, embedded
+                systems, desktop and mobile applications, and DevOps. I have worked
+                on access-control and physical security systems, including modular
+                architectures, workflow management, configuration services, system
+                integrations, and build and release processes.
             </p>
             <p>
-                I was born in 1997 in Tafas, a small town in southern Syria. In
-                2015, I left home and moved to Germany as a refugee. Starting over
-                meant learning a language, adapting to a new culture, and eventually
-                studying computer science. That journey led me to the work I do
-                today and to a habit of continuously learning.
+                I primarily work with Java and the Spring ecosystem, alongside
+                TypeScript and JavaScript frameworks such as Angular, React, and
+                Node.js. My broader experience includes .NET, JavaFX, containerized
+                environments, REST APIs, OPC UA, and systems programming with Rust.
             </p>
-            <p class="contact-line">
-                Correspondence:
-                <a href="https://github.com/moamenhredeen">GitHub</a> ·
+        </section>
+
+        <section>
+            <h2>Background</h2>
+            <p>
+                I earned a B.Eng. in Technical Computer Science from
+                Albstadt-Sigmaringen University. My studies covered operating and
+                distributed systems, software engineering, databases, cloud and
+                mobile systems, web development, and artificial intelligence.
+            </p>
+            <p>
+                For my thesis, I compared communication and deployment architectures
+                for an embedded access-controller platform, including multithreading,
+                RPC, IPC, MQTT, and the performance and resource costs of using
+                containers.
+            </p>
+        </section>
+
+        <section class="timeline-section">
+            <h2>Experience</h2>
+            <ol class="timeline">
+                <li>
+                    <div class="timeline-heading">
+                        <h3>Java Developer</h3>
+                        <time>2023–2025</time>
+                    </div>
+                    <p class="organization">Primion Technology GmbH</p>
+                    <p>
+                        Designed modular access-control architectures and developed
+                        workflow-management and configuration systems with Java,
+                        REST services, and Angular.
+                    </p>
+                </li>
+                <li>
+                    <div class="timeline-heading">
+                        <h3>Full-stack Web Developer</h3>
+                        <time>2024</time>
+                    </div>
+                    <p class="organization">Vinnova</p>
+                    <p>
+                        Helped build a Node.js and React platform for detecting,
+                        mapping, and documenting damage to transport infrastructure.
+                    </p>
+                </li>
+                <li>
+                    <div class="timeline-heading">
+                        <h3>Software Engineer</h3>
+                        <time>2022–2023</time>
+                    </div>
+                    <p class="organization">Primion Technology GmbH</p>
+                    <p>
+                        Worked on physical-security management software, mobile and
+                        desktop applications, an OPC UA integration, and DevOps
+                        processes for Java and .NET projects.
+                    </p>
+                </li>
+                <li>
+                    <div class="timeline-heading">
+                        <h3>Thesis &amp; Internship</h3>
+                        <time>2020–2021</time>
+                    </div>
+                    <p class="organization">Primion Technology GmbH</p>
+                    <p>
+                        Researched embedded software architectures, built a Jira
+                        Cloud migration tool, containerized test environments, and
+                        designed a Git workflow around the team’s release process.
+                    </p>
+                </li>
+                <li>
+                    <div class="timeline-heading">
+                        <h3>University Tutor</h3>
+                        <time>2020–2021</time>
+                    </div>
+                    <p class="organization">Albstadt-Sigmaringen University</p>
+                    <p>
+                        Supported and assessed students in a practical course on
+                        discrete-event systems.
+                    </p>
+                </li>
+            </ol>
+        </section>
+
+        <section class="timeline-section">
+            <h2>Education</h2>
+            <ol class="timeline">
+                <li>
+                    <div class="timeline-heading">
+                        <h3>B.Eng. Technical Computer Science</h3>
+                        <time>2018–2021</time>
+                    </div>
+                    <p class="organization">Albstadt-Sigmaringen University</p>
+                    <p>
+                        Studied software engineering, operating and distributed
+                        systems, databases, cloud and mobile systems, web development,
+                        applied mathematics, and artificial intelligence.
+                    </p>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <dl class="skills-list">
+                <div>
+                    <dt>Architecture</dt>
+                    <dd>Software architecture, system design, distributed systems</dd>
+                </div>
+                <div>
+                    <dt>Backend</dt>
+                    <dd>Java, Spring, ASP.NET Core, Node.js, REST APIs</dd>
+                </div>
+                <div>
+                    <dt>Frontend</dt>
+                    <dd>TypeScript, React, Angular, Svelte, HTMX</dd>
+                </div>
+                <div>
+                    <dt>Systems</dt>
+                    <dd>Rust, embedded systems, OPC UA, Docker</dd>
+                </div>
+                <div>
+                    <dt>Applications</dt>
+                    <dd>JavaFX, Ionic, Flutter, Avalonia UI</dd>
+                </div>
+                <div>
+                    <dt>Languages</dt>
+                    <dd>Arabic (native), German (fluent), English (fluent)</dd>
+                </div>
+            </dl>
+        </section>
+
+        <footer class="about-links">
+            <a class="cv-link" href="/cv.pdf">Download my CV <span aria-hidden="true">↓</span></a>
+            <span class="external-links">
+                <a href="https://github.com/moamenhredeen">GitHub</a>
+                <span aria-hidden="true">·</span>
                 <a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>
-            </p>
-        </div>
+            </span>
+        </footer>
     </main>
 </Layout>
 
@@ -36,18 +178,162 @@ import Layout from "@layouts/Layout.astro";
         max-width: 43rem;
     }
 
-    .about-copy {
-        border-top: 1px solid var(--rule-dark);
-        padding-top: 1.5rem;
+    .about-header {
+        margin-bottom: 2.75rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--rule-dark);
     }
 
-    .about-copy > p:not(.lead) {
+    section {
+        display: grid;
+        grid-template-columns: 9rem 1fr;
+        gap: 1.5rem;
+        padding: 1.75rem 0;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    section h2 {
+        margin: 0;
+        font-size: 0.95rem;
+        font-variant: small-caps;
+        letter-spacing: 0.06em;
+        line-height: 1.4;
+    }
+
+    section p {
+        grid-column: 2;
+        margin: 0;
+    }
+
+    section p + p {
+        margin-top: -0.65rem;
+    }
+
+    .timeline {
+        grid-column: 2;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .timeline li + li {
         margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px dotted var(--rule);
     }
 
-    .contact-line {
-        padding-top: 1rem;
-        border-top: 1px solid var(--rule);
+    .timeline-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .timeline h3 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .timeline time {
+        flex: none;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .timeline .organization {
+        margin: 0.1rem 0 0.55rem;
+        color: var(--accent);
+        font-size: 0.86rem;
+        font-style: italic;
+    }
+
+    .timeline .organization + p {
+        margin: 0;
+    }
+
+    .skills-list {
+        grid-column: 2;
+        margin: 0;
+    }
+
+    .skills-list div {
+        display: grid;
+        grid-template-columns: 6.5rem 1fr;
+        gap: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .skills-list div:first-child {
+        padding-top: 0;
+    }
+
+    .skills-list div + div {
+        border-top: 1px dotted var(--rule);
+    }
+
+    .skills-list dt {
+        font-size: 0.86rem;
+        font-weight: 700;
+    }
+
+    .skills-list dd {
+        margin: 0;
+        color: var(--muted);
         font-size: 0.9rem;
+    }
+
+    .about-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding-top: 1.75rem;
+        font-size: 0.9rem;
+    }
+
+    .cv-link {
+        font-weight: 700;
+    }
+
+    .external-links {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+        section {
+            display: block;
+        }
+
+        section h2 {
+            margin-bottom: 0.75rem;
+        }
+
+        section p + p {
+            margin-top: 1rem;
+        }
+
+        .timeline {
+            margin-top: 0;
+        }
+
+        .timeline-heading {
+            display: block;
+        }
+
+        .skills-list div {
+            display: block;
+        }
+
+        .skills-list dd {
+            margin-top: 0.15rem;
+        }
+
+        .about-links {
+            align-items: flex-start;
+            flex-direction: column;
+        }
     }
 </style>
