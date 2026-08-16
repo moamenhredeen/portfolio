@@ -53,6 +53,26 @@ a:hover {
     color: var(--ink);
 }
 
+p a,
+blockquote a,
+td a,
+li > a {
+    padding: 0.02em 0.16em;
+    border: 1px solid color-mix(in srgb, var(--accent) 72%, transparent);
+    color: inherit;
+    text-decoration: none;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+p a:hover,
+blockquote a:hover,
+td a:hover,
+li > a:hover {
+    color: inherit;
+    border-color: var(--accent);
+}
+
 ::selection {
     color: var(--paper-raised);
     background: var(--accent);
