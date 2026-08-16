@@ -12,10 +12,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   markdown: {
       shikiConfig: {
-        themes: {
-          light: 'one-light',
-          dark: 'github-dark',
-        },
+        theme: 'gruvbox-light-hard',
       },
       remarkPlugins: [
           remarkGithubAlerts

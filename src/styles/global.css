@@ -8,7 +8,8 @@
     --rule: #b9b5aa;
     --rule-dark: #4c4943;
     --accent: #7b2020;
-    --code-bg: #efeee9;
+    --code-bg: #faf9f3;
+    --code-rule: #dedacf;
     --color-primary: var(--accent);
     --color-note: #2f5d80;
     --color-tip: #44643d;
