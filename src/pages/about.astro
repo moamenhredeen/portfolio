@@ -6,7 +6,7 @@ import Layout from "@layouts/Layout.astro";
     title="About"
     description="About Moamen Hredeen, a software developer focused on maintainable systems and software architecture."
 >
-    <main class="about-page">
+    <main id="main-content" class="about-page" tabindex="-1">
         <header class="about-header">
             <p class="paper-kicker">About me</p>
             <h1 class="page-title">Moamen Hredeen</h1>
@@ -56,7 +56,7 @@ import Layout from "@layouts/Layout.astro";
                 <li>
                     <div class="timeline-heading">
                         <h3>Java Developer</h3>
-                        <time>2023–2025</time>
+                        <span class="timeline-date">2023–2025</span>
                     </div>
                     <p class="organization">Primion Technology GmbH</p>
                     <p>
@@ -68,7 +68,7 @@ import Layout from "@layouts/Layout.astro";
                 <li>
                     <div class="timeline-heading">
                         <h3>Full-stack Web Developer</h3>
-                        <time>2024</time>
+                        <time class="timeline-date" datetime="2024">2024</time>
                     </div>
                     <p class="organization">Vinnova</p>
                     <p>
@@ -79,7 +79,7 @@ import Layout from "@layouts/Layout.astro";
                 <li>
                     <div class="timeline-heading">
                         <h3>Software Engineer</h3>
-                        <time>2022–2023</time>
+                        <span class="timeline-date">2022–2023</span>
                     </div>
                     <p class="organization">Primion Technology GmbH</p>
                     <p>
@@ -91,7 +91,7 @@ import Layout from "@layouts/Layout.astro";
                 <li>
                     <div class="timeline-heading">
                         <h3>Thesis &amp; Internship</h3>
-                        <time>2020–2021</time>
+                        <span class="timeline-date">2020–2021</span>
                     </div>
                     <p class="organization">Primion Technology GmbH</p>
                     <p>
@@ -103,7 +103,7 @@ import Layout from "@layouts/Layout.astro";
                 <li>
                     <div class="timeline-heading">
                         <h3>University Tutor</h3>
-                        <time>2020–2021</time>
+                        <span class="timeline-date">2020–2021</span>
                     </div>
                     <p class="organization">Albstadt-Sigmaringen University</p>
                     <p>
@@ -120,7 +120,7 @@ import Layout from "@layouts/Layout.astro";
                 <li>
                     <div class="timeline-heading">
                         <h3>B.Eng. Technical Computer Science</h3>
-                        <time>2018–2021</time>
+                        <span class="timeline-date">2018–2021</span>
                     </div>
                     <p class="organization">Albstadt-Sigmaringen University</p>
                     <p>
@@ -162,14 +162,14 @@ import Layout from "@layouts/Layout.astro";
             </dl>
         </section>
 
-        <footer class="about-links">
+        <div class="about-links">
             <a class="cv-link" href="/cv.pdf">Download my CV <span aria-hidden="true">↓</span></a>
             <span class="external-links">
                 <a href="https://github.com/moamenhredeen">GitHub</a>
                 <span aria-hidden="true">·</span>
                 <a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>
             </span>
-        </footer>
+        </div>
     </main>
 </Layout>
 
@@ -235,7 +235,7 @@ import Layout from "@layouts/Layout.astro";
         font-weight: 700;
     }
 
-    .timeline time {
+    .timeline-date {
         flex: none;
         color: var(--muted);
         font-size: 0.78rem;

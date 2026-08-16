@@ -21,6 +21,7 @@
     font-family: Georgia, "Times New Roman", Times, serif;
     color: var(--ink);
     background: var(--paper);
+    color-scheme: light;
     font-synthesis: none;
 }
 
@@ -51,6 +52,35 @@ a {
 
 a:hover {
     color: var(--ink);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+main:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 0.5rem;
+}
+
+.skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    border: 2px solid var(--accent);
+    color: var(--ink);
+    background: var(--paper-raised);
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(calc(-100% - 1rem));
+}
+
+.skip-link:focus {
+    transform: translateY(0);
 }
 
 p a,
@@ -151,12 +181,22 @@ samp {
     color: var(--accent);
 }
 
+.site-nav a[aria-current="page"] {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+}
+
 .print-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding: 0;
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    margin-block: -0.9rem;
     border: 0;
     color: var(--ink);
     background: transparent;
@@ -176,8 +216,8 @@ samp {
 }
 
 .print-button:focus-visible {
-    outline: 1px solid var(--accent);
-    outline-offset: 0.25rem;
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
 .site-footer {
@@ -223,6 +263,30 @@ samp {
 
     .site-nav {
         margin-top: 0.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (forced-colors: active) {
+    p a,
+    blockquote a,
+    td a,
+    li > a {
+        border-color: LinkText;
+    }
+
+    .print-button svg {
+        stroke: ButtonText;
     }
 }
 
@@ -273,6 +337,10 @@ samp {
     }
 
     .print-button {
+        display: none;
+    }
+
+    .skip-link {
         display: none;
     }
 

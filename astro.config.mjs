@@ -7,6 +7,7 @@ import solidJs from '@astrojs/solid-js';
 import mdx from '@astrojs/mdx';
 
 import tailwindcss from '@tailwindcss/vite';
+import remarkDemoteHeadings from './src/plugins/remark-demote-headings.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +16,8 @@ export default defineConfig({
         theme: 'gruvbox-light-hard',
       },
       remarkPlugins: [
-          remarkGithubAlerts
+          remarkGithubAlerts,
+          remarkDemoteHeadings,
       ]
     },
 

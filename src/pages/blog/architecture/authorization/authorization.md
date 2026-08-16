@@ -39,7 +39,7 @@ This is both slow and error prone. If it’s too slow, we also end up with a sec
 
 ## RBAC
 
-![](_attachments/rbac.excalidraw.svg)
+![Roles connected to their assigned permissions in an RBAC model](_attachments/rbac.excalidraw.svg)
 
 
 RBAC (Role-based Access Control) is one of the most common access control frameworks. 

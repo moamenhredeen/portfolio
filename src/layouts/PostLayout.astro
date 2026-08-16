@@ -15,29 +15,34 @@ const { frontmatter } = Astro.props;
 const date = frontmatter.date
     ? new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(new Date(frontmatter.date))
     : undefined;
+const dateTime = frontmatter.date
+    ? new Date(frontmatter.date).toISOString().slice(0, 10)
+    : undefined;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
-    <article class="paper-article">
-        <header class="article-header">
-            {frontmatter.status && <p class="paper-kicker">{frontmatter.status}</p>}
-            <h1>{frontmatter.title}</h1>
-            <div class="post-meta">
-                <span>{frontmatter.author ?? "Moamen Hredeen"}</span>
-                {date && <span>{date}</span>}
+    <main id="main-content" tabindex="-1">
+        <article class="paper-article">
+            <header class="article-header">
+                {frontmatter.status && <p class="paper-kicker">{frontmatter.status}</p>}
+                <h1>{frontmatter.title}</h1>
+                <div class="post-meta">
+                    <span>{frontmatter.author ?? "Moamen Hredeen"}</span>
+                    {date && <time datetime={dateTime}>{date}</time>}
+                </div>
+                <section class="post-summary" aria-labelledby="summary-title">
+                    <h2 id="summary-title">Summary</h2>
+                    <p>{frontmatter.description}</p>
+                </section>
+                <p class="keywords">
+                    <strong>Topics:</strong> {frontmatter.tags.join(" · ")}
+                </p>
+            </header>
+            <div class="article-body">
+                <slot />
             </div>
-            <section class="post-summary" aria-labelledby="summary-title">
-                <h2 id="summary-title">Summary</h2>
-                <p>{frontmatter.description}</p>
-            </section>
-            <p class="keywords">
-                <strong>Topics:</strong> {frontmatter.tags.join(" · ")}
-            </p>
-        </header>
-        <main class="article-body">
-            <slot />
-        </main>
-    </article>
+        </article>
+    </main>
 </Layout>
 
 <style>
@@ -87,7 +92,7 @@ const date = frontmatter.date
     .keywords {
         margin: 0.8rem auto 0;
         color: var(--muted);
-        font-size: 0.7rem;
+        font-size: 0.78rem;
     }
 
     .article-body {
@@ -152,6 +157,15 @@ const date = frontmatter.date
         background: var(--code-bg) !important;
         font-size: 0.78rem;
         line-height: 1.55;
+    }
+
+    /* Gruvbox's yellow and gray tokens fall below AA on our softer background. */
+    .article-body :global(.astro-code span[style*="#B57614"]) {
+        color: #8f5f00 !important;
+    }
+
+    .article-body :global(.astro-code span[style*="#928374"]) {
+        color: #665c54 !important;
     }
 
     .article-body :global(:not(pre) > code) {

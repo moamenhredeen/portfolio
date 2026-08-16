@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout description="The personal portfolio and technical blog of software developer Moamen Hredeen.">
-    <main>
+    <main id="main-content" tabindex="-1">
         <p class="paper-kicker">Portfolio · Blog · Technical notes</p>
         <h1 class="page-title">Software, systems,<br />and careful thinking.</h1>
         <p class="lead">
@@ -12,7 +12,7 @@ import Layout from "@layouts/Layout.astro";
             software architecture, type systems, and the web.
         </p>
 
-        <div class="index-links" aria-label="Explore this website">
+        <nav class="index-links" aria-label="Explore this website">
             <a href="/blog">
                 <span class="index-number">01</span>
                 <span><strong>Read the blog</strong><small>Technical posts and notes</small></span>
@@ -23,7 +23,7 @@ import Layout from "@layouts/Layout.astro";
                 <span><strong>About the author</strong><small>Background and current work</small></span>
                 <span aria-hidden="true">→</span>
             </a>
-        </div>
+        </nav>
     </main>
 </Layout>
 

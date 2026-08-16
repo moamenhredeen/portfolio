@@ -6,7 +6,7 @@ const posts = await getCollection("posts");
 ---
 
 <Layout title="Blog" description="Technical blog posts and notes by Moamen Hredeen.">
-    <main>
+    <main id="main-content" tabindex="-1">
         <header class="papers-header">
             <p class="paper-kicker">Collected writings</p>
             <h1 class="page-title">Blog</h1>
@@ -84,7 +84,7 @@ const posts = await getCollection("posts");
 
     .paper-list .keywords {
         margin-top: 0.65rem;
-        font-size: 0.65rem;
+        font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.04em;
     }
