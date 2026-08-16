@@ -20,18 +20,18 @@ const date = frontmatter.date
 <Layout title={frontmatter.title} description={frontmatter.description}>
     <article class="paper-article">
         <header class="article-header">
-            {frontmatter.status && <p class="paper-kicker">{frontmatter.status} · Working paper</p>}
+            {frontmatter.status && <p class="paper-kicker">{frontmatter.status}</p>}
             <h1>{frontmatter.title}</h1>
             <div class="post-meta">
                 <span>{frontmatter.author ?? "Moamen Hredeen"}</span>
                 {date && <span>{date}</span>}
             </div>
-            <section class="abstract" aria-labelledby="abstract-title">
-                <h2 id="abstract-title">Abstract</h2>
+            <section class="post-summary" aria-labelledby="summary-title">
+                <h2 id="summary-title">Summary</h2>
                 <p>{frontmatter.description}</p>
             </section>
             <p class="keywords">
-                <strong>Keywords:</strong> {frontmatter.tags.join(" · ")}
+                <strong>Topics:</strong> {frontmatter.tags.join(" · ")}
             </p>
         </header>
         <main class="article-body">
@@ -63,7 +63,7 @@ const date = frontmatter.date
         font-size: 0.76rem;
     }
 
-    .abstract {
+    .post-summary {
         max-width: 38rem;
         margin: 2.25rem auto 0;
         padding: 1.15rem 1.5rem;
@@ -71,14 +71,14 @@ const date = frontmatter.date
         text-align: left;
     }
 
-    .abstract h2 {
+    .post-summary h2 {
         margin: 0 0 0.35rem;
         font-size: 0.9rem;
         font-variant: small-caps;
         letter-spacing: 0.08em;
     }
 
-    .abstract p {
+    .post-summary p {
         margin: 0;
         font-size: 0.96rem;
         line-height: 1.55;

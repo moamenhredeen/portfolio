@@ -9,7 +9,7 @@ interface Props {
 
 const {
     title,
-    description = 'Technical notes and essays by Moamen Hredeen.',
+    description = 'Technical blog posts and notes by Moamen Hredeen.',
 } = Astro.props;
 const documentTitle = title ? `${title} — Moamen Hredeen` : 'Moamen Hredeen';
 ---
@@ -28,11 +28,11 @@ const documentTitle = title ? `${title} — Moamen Hredeen` : 'Moamen Hredeen';
         <div class="paper-page">
             <header class="site-header">
                 <div>
-                    <p class="paper-kicker">Personal papers in computer science</p>
+                    <p class="paper-kicker">A personal software development blog</p>
                     <a class="site-title" href="/">Moamen Hredeen</a>
                 </div>
                 <nav class="site-nav" aria-label="Primary navigation">
-                    <a href="/blog">Papers</a>
+                    <a href="/blog">Blog</a>
                     <a href="/about">About</a>
                 </nav>
             </header>
@@ -41,7 +41,7 @@ const documentTitle = title ? `${title} — Moamen Hredeen` : 'Moamen Hredeen';
 
             <footer class="site-footer">
                 <span>Moamen Hredeen</span>
-                <span>Technical notes &amp; working papers</span>
+                <span>Software development blog</span>
             </footer>
         </div>
     </body>
