@@ -1,19 +1,91 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+
 const posts = await getCollection("posts");
 ---
 
-<Layout>
-    <ul>
-        {
-            posts.map((el) => (
-                <li class="py-4">
-                    <h1 class="text-primary text-title font-bold my-2">{el.data.title}</h1>
-                    <p class="text-lg/8">{el.data.description}</p>
-                    <a class="block text-primary text-lg mt-2" href={`/blog/${el.id}`}>Read more</a>
+<Layout title="Papers" description="Technical essays and working papers by Moamen Hredeen.">
+    <main>
+        <header class="papers-header">
+            <p class="paper-kicker">Collected writings</p>
+            <h1 class="page-title">Papers</h1>
+            <p>Technical essays, explanations, and working notes.</p>
+        </header>
+
+        <ol class="paper-list">
+            {posts.map((post, index) => (
+                <li>
+                    <span class="post-number">{String(index + 1).padStart(2, "0")}</span>
+                    <div>
+                        <h2><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
+                        <p>{post.data.description}</p>
+                        <p class="keywords">{post.data.tags.join(" · ")}</p>
+                    </div>
                 </li>
-            ))
-        }
-    </ul>
+            ))}
+        </ol>
+    </main>
 </Layout>
+
+<style>
+    .papers-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .papers-header > p:last-child {
+        color: var(--muted);
+        font-style: italic;
+    }
+
+    .paper-list {
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid var(--rule-dark);
+        list-style: none;
+    }
+
+    .paper-list li {
+        display: grid;
+        grid-template-columns: 2.5rem 1fr;
+        gap: 1rem;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .post-number {
+        padding-top: 0.25rem;
+        color: var(--muted);
+        font-size: 0.68rem;
+    }
+
+    h2 {
+        margin: 0 0 0.4rem;
+        font-size: 1.35rem;
+        font-weight: 600;
+        line-height: 1.25;
+    }
+
+    h2 a {
+        color: var(--ink);
+        text-decoration: none;
+    }
+
+    h2 a:hover {
+        color: var(--accent);
+    }
+
+    .paper-list p {
+        max-width: 42rem;
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+
+    .paper-list .keywords {
+        margin-top: 0.65rem;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+</style>

@@ -1,114 +1,206 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
 import Layout from "./Layout.astro";
+
 type Props = MarkdownLayoutProps<{
-  title: string;
-  description: string;
-  tags: string[];
-}>
+    title: string;
+    description: string;
+    tags: string[];
+    author?: string;
+    date?: string | Date;
+    status?: string;
+}>;
+
 const { frontmatter } = Astro.props;
+const date = frontmatter.date
+    ? new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(new Date(frontmatter.date))
+    : undefined;
 ---
 
-<Layout>
-    <div>
-        <header class="py-2 mb-4 border-b-2 border-dashed border-zinc-200">
-            <h1 class="text-primary text-6xl mb-8">{frontmatter.title}</h1>
-            <p class="text-lg italic">Summary: {frontmatter.description}</p>
-            <ul class="flex gap-2 my-2">
-                <li>Tags:</li>
-                {frontmatter.tags.map(el => <li>
-                    <a class="text-primary text-lg" href={el}>{el},</a>
-                </li>)}
-            </ul>
+<Layout title={frontmatter.title} description={frontmatter.description}>
+    <article class="paper-article">
+        <header class="article-header">
+            {frontmatter.status && <p class="paper-kicker">{frontmatter.status} · Working paper</p>}
+            <h1>{frontmatter.title}</h1>
+            <div class="post-meta">
+                <span>{frontmatter.author ?? "Moamen Hredeen"}</span>
+                {date && <span>{date}</span>}
+            </div>
+            <section class="abstract" aria-labelledby="abstract-title">
+                <h2 id="abstract-title">Abstract</h2>
+                <p>{frontmatter.description}</p>
+            </section>
+            <p class="keywords">
+                <strong>Keywords:</strong> {frontmatter.tags.join(" · ")}
+            </p>
         </header>
-        <main>
-            <slot/>
+        <main class="article-body">
+            <slot />
         </main>
-    </div>
+    </article>
 </Layout>
 
 <style>
-    main{
-        h1{font-size: 2em;  margin-block: .67em; font-weight: bold}
-        h2{font-size: 1.5em; margin-block: .83em; font-weight: bold}
-        h3{font-size: 1.17em; margin-block: 1em; font-weight: bold}
-        h4{font-size: 1.3em; margin-block: 1em}
-        h5{font-size: 1.2em;margin-block: 1em}
-        h6{font-size: 1em; margin-block: 1em}
-        p {font-size: 1.2em; line-height: 1.8; font-weight: 300;}
-        ul{list-style: disc; padding-left: 1.5em; margin-block: 8px}
-        a{ color: var(--color-primary); cursor: pointer}
-        :not(pre) code{
-            background: oklch(97% 0.001 106.424);
-            padding: 2px;
-            border-radius: 2px;
-            color: var(--color-primary);
-            font-size: 14px;
-        }
-        blockquote{
-            background: var(--color-light);
-            margin-block: 1em;
-            padding: 1em;
-        }
-        pre:has(code) {
-            margin-block: 1em;
-            padding: 1em;
-        }
-        table{
-            margin-block: 2em;
-            width: 100%;
-            text-align: center;
-            thead {
-                border-bottom: 1px solid var(--color-light);
-            }
+    .article-header {
+        margin: 0 auto 3rem;
+        text-align: center;
+    }
 
-            tr:nth-child(even){
-                background: var(--color-light);
-            }
-        }
-        .markdown-alert{
-            background: var(--color-light);
-            padding: .5em 1em;
-            margin-block: 1em;
-            border-inline-start: 4px solid;
-            .markdown-alert-title{
-                font-weight: bold;
-            }
-        }
+    .article-header > h1 {
+        max-width: 18em;
+        margin: 0.35rem auto 1rem;
+        font-size: clamp(2.25rem, 6vw, 3.75rem);
+        font-weight: 400;
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+    }
 
-        .markdown-alert-note{
-            border-color: var(--color-note);
-            .markdown-alert-title{
-                color: var(--color-note);
-            }
-        }
+    .post-meta {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        color: var(--muted);
+        font-size: 0.76rem;
+    }
 
-        .markdown-alert-caution{
-            border-color: var(--color-caution);
-            .markdown-alert-title{
-                color: var(--color-caution);
-            }
-        }
+    .abstract {
+        max-width: 38rem;
+        margin: 2.25rem auto 0;
+        padding: 1.15rem 1.5rem;
+        border-block: 1px solid var(--rule);
+        text-align: left;
+    }
 
-        .markdown-alert-warning{
-            border-color: var(--color-warning);
-            .markdown-alert-title{
-                color: var(--color-warning);
-            }
-        }
+    .abstract h2 {
+        margin: 0 0 0.35rem;
+        font-size: 0.9rem;
+        font-variant: small-caps;
+        letter-spacing: 0.08em;
+    }
 
-        .markdown-alert-important{
-            border-color: var(--color-important);
-            .markdown-alert-title{
-                color: var(--color-important);
-            }
-        }
+    .abstract p {
+        margin: 0;
+        font-size: 0.96rem;
+        line-height: 1.55;
+    }
 
-        .markdown-alert-tip{
-            border-color: var(--color-tip);
-            .markdown-alert-title{
-                color: var(--color-tip);
-            }
-        }
+    .keywords {
+        margin: 0.8rem auto 0;
+        color: var(--muted);
+        font-size: 0.7rem;
+    }
+
+    .article-body {
+        max-width: 43rem;
+        margin: 0 auto;
+        counter-reset: section;
+    }
+
+    .article-body :global(h1),
+    .article-body :global(h2) {
+        margin: 2.5rem 0 0.8rem;
+        font-size: 1.45rem;
+        font-weight: 600;
+        line-height: 1.25;
+    }
+
+    .article-body :global(h2) {
+        font-size: 1.25rem;
+    }
+
+    .article-body :global(h3) {
+        margin: 2rem 0 0.65rem;
+        font-size: 1.05rem;
+        font-style: italic;
+    }
+
+    .article-body :global(h4),
+    .article-body :global(h5),
+    .article-body :global(h6) {
+        margin: 1.5rem 0 0.5rem;
+        font-size: 1rem;
+    }
+
+    .article-body :global(p) {
+        margin: 0 0 1rem;
+        line-height: 1.72;
+    }
+
+    .article-body :global(ul),
+    .article-body :global(ol) {
+        margin: 0.75rem 0 1.25rem;
+        padding-left: 1.6rem;
+    }
+
+    .article-body :global(li) {
+        margin: 0.25rem 0;
+    }
+
+    .article-body :global(blockquote) {
+        margin: 1.5rem 0;
+        padding: 0.1rem 0 0.1rem 1.25rem;
+        border-left: 2px solid var(--rule-dark);
+        color: var(--muted);
+        font-style: italic;
+    }
+
+    .article-body :global(pre) {
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        padding: 1rem 1.15rem;
+        border: 1px solid var(--rule);
+        background: var(--code-bg) !important;
+        font-size: 0.78rem;
+        line-height: 1.55;
+    }
+
+    .article-body :global(:not(pre) > code) {
+        padding: 0.08em 0.25em;
+        background: var(--code-bg);
+        font-size: 0.82em;
+    }
+
+    .article-body :global(table) {
+        width: 100%;
+        margin: 1.75rem 0;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
+
+    .article-body :global(th),
+    .article-body :global(td) {
+        padding: 0.5rem 0.65rem;
+        border-bottom: 1px solid var(--rule);
+        text-align: left;
+    }
+
+    .article-body :global(th) {
+        border-top: 1px solid var(--rule-dark);
+        border-bottom-color: var(--rule-dark);
+        font-variant: small-caps;
+    }
+
+    .article-body :global(img) {
+        display: block;
+        margin: 2rem auto;
+    }
+
+    .article-body :global(hr) {
+        margin: 2.5rem 0;
+        border: 0;
+        border-top: 1px solid var(--rule);
+    }
+
+    .article-body :global(.markdown-alert) {
+        margin: 1.5rem 0;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--rule);
+        background: transparent;
+    }
+
+    .article-body :global(.markdown-alert-title) {
+        margin-bottom: 0.25rem;
+        font-variant: small-caps;
+        font-weight: 700;
     }
 </style>

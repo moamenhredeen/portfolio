@@ -2,23 +2,52 @@
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout>
-    <h1 class="text-primary text-6xl mt-4 mb-8 font-bold">Who am I ?</h1>
-
-    <p class="text-2xl/10 font-light">
-        Let me introduce myself. I’m an enthusiastic software developer,
-        currently living and working in Germany. I have a deep love for
-        tinkering with weird software ideas and diving headfirst into
-        challenging technical problems—there’s something exciting about breaking
-        things just to figure out how they work. I was born in 1997 in Tafas, a
-        small town in southern Syria. In 2015, when the war broke out, I left my
-        home and moved to Germany as a refugee. Starting over wasn’t easy, but I
-        took it step by step—learning the language, adapting to a new culture,
-        and eventually studying computer science. That journey led me to where I
-        am today, doing what I love and continuously pushing myself to learn and
-        grow. You can find me at
-        <a class="text-primary" href="https://github.com/moamenhredeen">Github</a>
-        and
-        <a class="text-primary" href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>
-    </p>
+<Layout title="About" description="About software developer Moamen Hredeen.">
+    <main class="about-page">
+        <header>
+            <p class="paper-kicker">Author note</p>
+            <h1 class="page-title">About</h1>
+        </header>
+        <div class="about-copy">
+            <p class="lead">
+                I’m an enthusiastic software developer, currently living and
+                working in Germany. I love tinkering with unusual software ideas
+                and diving into difficult technical problems—there’s something
+                exciting about breaking things to understand how they work.
+            </p>
+            <p>
+                I was born in 1997 in Tafas, a small town in southern Syria. In
+                2015, I left home and moved to Germany as a refugee. Starting over
+                meant learning a language, adapting to a new culture, and eventually
+                studying computer science. That journey led me to the work I do
+                today and to a habit of continuously learning.
+            </p>
+            <p class="contact-line">
+                Correspondence:
+                <a href="https://github.com/moamenhredeen">GitHub</a> ·
+                <a href="https://linkedin.com/in/moamen-hraden">LinkedIn</a>
+            </p>
+        </div>
+    </main>
 </Layout>
+
+<style>
+    .about-page {
+        max-width: 43rem;
+    }
+
+    .about-copy {
+        border-top: 1px solid var(--rule-dark);
+        padding-top: 1.5rem;
+    }
+
+    .about-copy > p:not(.lead) {
+        margin-top: 1.5rem;
+    }
+
+    .contact-line {
+        padding-top: 1rem;
+        border-top: 1px solid var(--rule);
+        font-size: 0.9rem;
+    }
+</style>

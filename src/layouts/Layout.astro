@@ -1,6 +1,17 @@
 ---
 import '../styles/global.css'
 import '../styles/Iosevka.css'
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title,
+    description = 'Technical notes and essays by Moamen Hredeen.',
+} = Astro.props;
+const documentTitle = title ? `${title} — Moamen Hredeen` : 'Moamen Hredeen';
 ---
 
 <!doctype html>
@@ -8,30 +19,36 @@ import '../styles/Iosevka.css'
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
+        <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
         <meta name="generator" content={Astro.generator} />
-        <title>Moamen Hredeen</title>
+        <title>{documentTitle}</title>
     </head>
     <body>
-        <slot />
+        <div class="paper-page">
+            <header class="site-header">
+                <div>
+                    <p class="paper-kicker">Personal papers in computer science</p>
+                    <a class="site-title" href="/">Moamen Hredeen</a>
+                </div>
+                <nav class="site-nav" aria-label="Primary navigation">
+                    <a href="/blog">Papers</a>
+                    <a href="/about">About</a>
+                </nav>
+            </header>
+
+            <slot />
+
+            <footer class="site-footer">
+                <span>Moamen Hredeen</span>
+                <span>Technical notes &amp; working papers</span>
+            </footer>
+        </div>
     </body>
 </html>
 
 <style>
     @view-transition {
         navigation: auto;
-        types: slide;
-    }
-    
-    :root{
-        --red: #AF3E3E;
-    }
-
-    body {
-        box-sizing: border-box;
-        padding: 4em 8em;
-        max-width: 1000px;
-        line-height: 1.8;
-        font-family: Iosevka, sans-serif;
     }
 </style>

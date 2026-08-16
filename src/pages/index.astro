@@ -2,15 +2,69 @@
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout>
-    <h1 class="text-primary text-6xl mt-4 mb-8 font-bold">Hello</h1>
-    <p class="text-2xl/10 font-light">
-        Not sure how you ended up here, but hey, since you’re already around, why not take a look?
-        Curious about who I am? You can learn more about me
-        <a class="text-primary" href="/about">here</a>
-        or read my
-        <a class="text-primary" href="/resume">resume</a>.
-        If you’re in the mood to read, check out some of my blog posts
-        <a class="text-primary" href="/blog">here</a>!
-    </p>
+<Layout description="The personal portfolio and technical papers of software developer Moamen Hredeen.">
+    <main>
+        <p class="paper-kicker">Portfolio · Essays · Research notes</p>
+        <h1 class="page-title">Software, systems,<br />and careful thinking.</h1>
+        <p class="lead">
+            I’m Moamen Hredeen, a software developer in Germany. This is my
+            collection of technical essays, experiments, and working notes on
+            software architecture, type systems, and the web.
+        </p>
+
+        <div class="index-links" aria-label="Explore this website">
+            <a href="/blog">
+                <span class="index-number">01</span>
+                <span><strong>Read the papers</strong><small>Technical essays and field notes</small></span>
+                <span aria-hidden="true">→</span>
+            </a>
+            <a href="/about">
+                <span class="index-number">02</span>
+                <span><strong>About the author</strong><small>Background and current work</small></span>
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </main>
 </Layout>
+
+<style>
+    main {
+        padding: 1rem 0 2rem;
+    }
+
+    .index-links {
+        margin-top: 4rem;
+        border-top: 1px solid var(--rule-dark);
+    }
+
+    .index-links a {
+        display: grid;
+        grid-template-columns: 2.5rem 1fr auto;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.15rem 0;
+        border-bottom: 1px solid var(--rule);
+        color: var(--ink);
+        text-decoration: none;
+    }
+
+    .index-links a:hover {
+        color: var(--accent);
+    }
+
+    .index-number,
+    .index-links small {
+        color: var(--muted);
+        font-family: Iosevka, monospace;
+        font-size: 0.7rem;
+    }
+
+    .index-links strong,
+    .index-links small {
+        display: block;
+    }
+
+    .index-links strong {
+        font-weight: 600;
+    }
+</style>
