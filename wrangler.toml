@@ -1,0 +1,9 @@
+name = "portfolio"
+compatibility_date = "2025-11-26"
+
+[assets]
+directory = "./dist"
+
+[[routes]]
+pattern = "moamenhredeen.me"
+custom_domain = true
