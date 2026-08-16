@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "architecture/fluent-api-design.md",
+                "file": "architecture/authorization/authorization.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "fluent-api-design"
+              "title": "authorization"
             }
           }
         ],
@@ -107,7 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 511.5
+    "width": 296.5
   },
   "right": {
     "id": "6f147f6d64fca4c4",
@@ -215,17 +215,19 @@
   },
   "active": "da270a93368a4ee5",
   "lastOpenFiles": [
-    "aoc/2023.md",
+    "architecture/authorization/_attachments/authorization-intro.excalidraw.svg",
+    "architecture/authorization/_attachments/authorization-intro.excalidraw.md",
     "architecture/authorization/authorization.md",
     "architecture/authorization/_attachments/rbac.excalidraw.svg",
     "architecture/authorization/_attachments/rbac.excalidraw.md",
+    "architecture/fluent-api-design.md",
+    "aoc/2023.md",
     "_drawings/test_drawing.excalidraw.md",
     "architecture/authorization/_attachments",
     "_drawings/Drawing 2026-08-16 16.44.09.excalidraw.md",
     "_drawings/test_2.excalidraw.md",
     "_drawings/test_2.excalidraw.svg",
     "_drawings/test_drawing.excalidraw.svg",
-    "architecture/fluent-api-design.md",
     "architecture/authorization/_attachments/authorization 2026-08-16 16.48.05.excalidraw.svg",
     "architecture/authorization/_attachments/authorization 2026-08-16 16.48.05.excalidraw.md",
     "architecture/authorization/_attachments",

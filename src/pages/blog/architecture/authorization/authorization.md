@@ -1,24 +1,41 @@
 ---
 layout: '@layouts/PostLayout.astro'
 title: Authorization
-description: What is authorization and what are the different Authorization types
+description: What is authorization and what are the different authorization types
 author: Moamen Hredeen
 date: "2025-01-25"
 status: WIP
 tags:
   - AuthZ
   - Authorization
-  - RABAC
+  - RBAC
   - ABAC
   - ReBAC
   - ACLs
 ---
 
-authorization is determining the access rights or privileges that user has to given resources.
+Authorization is determining the access rights or privileges that a user has to
+given resources. It answers a question like:
 
-#  Types
+> Can Alice edit Document 42?
 
-##  ACLs
+This question has a **subject** (Alice), an **action** (edit) and a **resource**
+(Document 42). Sometimes the decision also depends on the **context**, such as
+the time, location or organization.
+
+Authorization is different from authentication. Authentication determines who
+the user is, while authorization determines what that user is allowed to do.
+
+![](_attachments/authorization-intro.excalidraw.svg)
+
+
+There are multiple ways to represent and evaluate access. The most common ones
+are ACLs, RBAC, ReBAC and ABAC. Each one answers the same authorization question
+using different information.
+
+# Types
+
+## ACLs
 
 | user | resource | permission |
 |-|-|-|
@@ -27,64 +44,163 @@ authorization is determining the access rights or privileges that user has to gi
 | Bob | File 1 | read |
 | Bob | File 2 | read |
 
-ACLs (Access Control Lists) store the access of each user or group per object. 
-This means that lookup is super fast because, assuming I’ve set up my indexes correctly, I can look up by objectId and userId to get a near instantaneous response. 
+ACLs (Access Control Lists) store which users or groups have access to each
+resource. To decide whether Alice can edit Document 42, the system looks for a
+permission that directly connects Alice to that document.
 
-There are two major problems with ACLs — one is that if you have a lot of users, a lot of objects and a lot of permission types, you quickly end up needing to store a very large amount of data.
-The most common use-case for ACLs are file-systems where typically there are at most a few users with access, meaning this wouldn’t be a problem.
-The other major problem with ACLs is that if you update one thing — say Organization B didn’t pay and we want to disable their account, we suddenly need to figure out all of the objects that might be affected by that change and update the stored permissions for each of those objects.
+This can make the decision simple and fast, especially when the data is indexed
+by the resource and the user. ACLs are commonly used in file systems and
+document sharing, where a resource often has a limited number of users with
+access.
 
-This means that for a single action, we could end up modifying thousands, if not millions of records. 
-This is both slow and error prone. If it’s too slow, we also end up with a security vulnerability where there is a window of time between when the user thought access was revoked and when it’s actually gone.
+The first problem with ACLs is their size. If you have a lot of users, a lot of
+resources and a lot of permission types, you can quickly end up storing a very
+large amount of data.
+
+The other problem appears when access depends on something bigger than a single
+user or resource. Say Organization B did not pay and we want to disable its
+account. We may need to find every resource affected by that change and update
+the stored permissions for each one.
+
+For a single action, we could end up modifying thousands, if not millions, of
+records. This can be slow and error prone. It can also create a security problem
+if there is a window between when access should be revoked and when all stored
+permissions are actually updated.
+
+ACLs work well when direct, resource-level sharing is the main requirement, but
+become harder to manage when permissions need to follow organizational rules.
 
 ## RBAC
 
 ![Roles connected to their assigned permissions in an RBAC model](_attachments/rbac.excalidraw.svg)
 
+RBAC (Role-Based Access Control) is one of the most common access control
+models. In RBAC, you create roles, assign users to those roles and associate the
+roles with sets of permissions.
 
-RBAC (Role-based Access Control) is one of the most common access control frameworks. 
-In RBAC, you create roles, assigning users to those roles and associating those roles to sets of
-permissions.  For example, 
-- I might have a manager role that has access to particular things that a manager should be able to do. 
-- I might also have an engineer role that has access to everything an engineer should be able to do. 
-- I can add people to one or both of these roles. If they’re added to both, they get the intersection of permissions allowed to either. 
+For example:
 
-This allows you to update the permissions for everyone with a particular role very quickly. Likewise, it allows you to remove or add all needed permissions to a user very quickly — when someone is promoted to manager, I just add that role to them and they immediately have access to all of the things they should. 
+- A manager role can have access to actions that a manager should be able to do.
+- An engineer role can have access to actions that an engineer should be able to do.
+- A user can be assigned to one or both roles.
 
-One of the big problems with RBAC comes if you try to model something like ACLs as a 
-user-facing feature on top. If you have something like this, you could quickly end up with the 
-case that it’s no longer if I have permission to edit everything, but if I can edit things on one particular item and because the user can pick and chose which items I can edit, suddenly it 
-could be the case that to represent exactly what I can do, I’ll need very specific roles that allow access to item3 and item6 but nothing else and I easily end up with a huge explosion of roles. 
-RBAC often works very well for systems and infrastructure level authorization and it can work well for much more simple authorization schemes at the framework level. However, it isn't flexible enough for more complex scenarios. 
+When a user has multiple roles, they normally get the **union** of the
+permissions granted by those roles. This means that a user who is both a manager
+and an engineer receives the permissions from both roles.
 
-As a side note here, if you can make it fit your needs and don’t anticipate any future use-cases where it will be problematic, I would highly recommend using RBAC.
+RBAC makes it easy to update permissions for everyone with a particular role.
+When someone is promoted to manager, I can assign the manager role and they
+immediately receive its permissions. When the responsibilities of all managers
+change, I can update the role instead of updating every user.
+
+One of the big problems with RBAC is **role explosion**. Imagine users can share
+individual documents with each other. If I try to represent every possible
+combination using roles, I may need a role for people who can edit Document 3
+and Document 6, another role for Document 2 and Document 4, and so on. The
+number of roles can quickly become difficult to manage.
+
+RBAC often works well for organizational, system and infrastructure-level
+authorization. It can also work well for applications with simple permission
+schemes. It becomes less flexible when access depends on a particular resource
+or on the relationship between users and resources.
+
+As a side note, if RBAC fits the requirements and you do not anticipate use
+cases where it becomes problematic, it is usually a good place to start.
 
 ## ReBAC
-ReBAC (Relation-Based Access Control) revolves around granting access based on the relationships between entities, such as users and resources. These relationships can be direct, like a customer representative accessing a customer’s record, or indirect like a teller accessing a customer’s record only if they belong to the same branch. The key objective is to ensure access is granted based on the contextual relationships between the requesting party and the requested resource.
 
-While the concept may seem straightforward, ReBAC implementations can vary. Some advocate for a graph-based authorization model, which visually represents the interconnected relationships. Others prefer a policy-driven approach, where access control rules are defined through policies. Regardless of the chosen method, the ultimate goal remains the same: delivering context-based access decisions in real-time at runtime, adhering to the principle of least privilege (PoLP).
+ReBAC (Relationship-Based Access Control) grants access based on relationships
+between entities such as users, teams, organizations and resources.
+
+A relationship can be direct:
+
+> Alice is the owner of Document 42.
+
+It can also be indirect:
+
+> Alice is a member of Team A, and Team A owns Document 42.
+
+In both cases, the system decides whether Alice can access the document by
+following a path of relationships. This makes ReBAC useful for applications
+with sharing, ownership, groups or hierarchies. Examples include collaboration
+tools, social networks and systems where resources belong to teams or
+organizations.
+
+ReBAC can express resource-level permissions without creating a role for every
+possible combination. It is also a natural fit when the domain is already
+described using relationships.
+
+The added flexibility comes with complexity. The system needs to store and
+evaluate relationships, including indirect ones. As the graph grows, it can
+become harder to understand why access was granted and to evaluate decisions
+efficiently.
+
+ReBAC implementations can vary. Some use a graph-based authorization model,
+while others express relationships through policies. The goal is the same: make
+access decisions using the relationship between the subject and the resource.
+
 ## ABAC
-**Attribute Based Access Control or ABAC** is the most flexible of these options. Unlike ACLs or RBAC, ABAC doesn’t store permissions, but instead **calculates those permissions on demand** based on a number of attributes. These attributes can be anything and can either be passed in with the request or looked up on the fly. 
 
-The most common implementation of ABAC follows the 
-**XACML** standard. With this, attributes are categorized in one of three ways
-- Subject (data  related to the user)
-- Resource (data related to the object we’re trying to access)
-- Environment (literally anything else — it could be if we’re getting too many requests or if the temperature is too hot outside right now). 
+ABAC (Attribute-Based Access Control) calculates an access decision using
+attributes and policies. Unlike a direct ACL entry or a role assignment, the
+decision can depend on information about several parts of the request:
 
-ABAC’s two biggest strengths are its flexibility and the fact that if I update a policy, that change will take place immediately since no cascading needs  to happen to get it applied to previously stored permissions. 
+- **Subject attributes:** the user's department, job level or organization.
+- **Resource attributes:** the document's owner, classification or organization.
+- **Action attributes:** the operation being attempted, such as read or edit.
+- **Environment attributes:** the time, location or any other request context.
 
-It has two primary downsides —  because permissions are calculated
-dynamically, this takes time on each request (usually small, but non-zero). Additionally, 
-if attributes are needed to make a decision and any of those downstream services I use to fetch
-my attributes are unavailable, the permissions decision can’t be made. 
+For example, a policy could allow Alice to edit Document 42 only when Alice and
+the document belong to the same organization and the document is not locked.
 
-# Resources
-- [ABAC, ReBAC, Zanzibar, ALFA... How and why should i implement authorization in my APIs](https://www.youtube.com/watch?v=byI_Jjb0c6c&list=LL&index=1)
-- [How Authorization Evolves: From basic roles to ABAC](https://www.youtube.com/watch?v=1ZINsQN7gtM&list=LL&index=2)
-- [Demystifying relationship-based access control (ReBAC)](https://axiomatics.com/blog/demystifying-relationship-based-access-control-rebac-what-you-need-to-know)
-- [All Things Authorization](https://scribe.rip/all-things-authorization-d1713ad6b9e0)
-- [ALFA](https://alfa.guide//)
-- [CEDAR](https://www.cedarpolicy.com/en)
-- [OpenFGA](https://openfga.dev/)
-- [okta](https://www.okta.com)
+The most common standard associated with ABAC is **XACML**, which describes how
+attribute-based policies and authorization decisions can be represented.
+
+ABAC's biggest strength is its flexibility. A policy can combine multiple
+conditions, and a policy update can affect future decisions immediately without
+updating a permission on every resource.
+
+It has two primary downsides. First, evaluating policies dynamically adds work
+to every request. Second, the required attributes need to be available and
+correct. If the system cannot retrieve an attribute needed by a policy, it may
+not be able to make the decision safely. As policies grow, they can also become
+difficult to understand, test and audit.
+
+# Combining Access Control Models
+
+These models are not mutually exclusive. A real system can use RBAC for broad
+permissions, ReBAC for resource ownership and ABAC for contextual restrictions.
+
+For example, editing a document might require all of the following:
+
+- The user has an editor role (RBAC).
+- The user belongs to the team that owns the document (ReBAC).
+- The document is not locked (ABAC).
+
+An ACL could still be used to share a particular document directly with another
+user. Combining models is useful, but every additional model also makes the
+authorization system harder to reason about.
+
+<!-- DRAWING: Compare how the same question, "Can Alice edit Document 42?", is
+answered by each model: ACL uses a direct grant, RBAC follows Alice -> Editor
+role -> edit permission, ReBAC follows Alice -> Team -> Document, and ABAC
+evaluates user/resource/action/context attributes. -->
+
+# Comparison
+
+| Model | Decision is based on | Works well for | Main difficulty |
+| --- | --- | --- | --- |
+| ACL | Direct user or group permissions on a resource | File systems and resource sharing | Large numbers of stored permissions |
+| RBAC | Permissions assigned through roles | Organizational and system-level access | Role explosion |
+| ReBAC | Relationships between entities | Ownership, sharing, groups and hierarchies | Evaluating and understanding relationship paths |
+| ABAC | Attributes evaluated against policies | Contextual and fine-grained rules | Policy and attribute complexity |
+
+There is no access control model that fits every system. ACLs are simple for
+direct sharing, RBAC is effective for stable organizational roles, ReBAC fits
+domains built around relationships, and ABAC provides the most flexibility for
+contextual rules.
+
+The best option is usually the simplest model, or combination of models, that
+can express the requirements clearly. More flexibility is useful, but it also
+creates more policies, data and decisions that need to be understood and
+maintained.
