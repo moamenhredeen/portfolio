@@ -29,6 +29,7 @@
 
 html {
     background: var(--paper);
+    scrollbar-gutter: stable;
 }
 
 body {
