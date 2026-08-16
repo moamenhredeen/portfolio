@@ -64,12 +64,9 @@ svg {
 
 code,
 pre,
-.paper-kicker,
-.site-nav,
-.post-meta,
-.keywords,
-.post-number {
-    font-family: Iosevka, "SFMono-Regular", Consolas, monospace;
+kbd,
+samp {
+    font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 }
 
 .paper-page {
