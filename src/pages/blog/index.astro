@@ -6,14 +6,53 @@ const posts = (await getCollection("posts")).sort(
     (a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0),
 );
 const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "long" });
+
+// Journal-style masthead figures, derived from the archive itself.
+const years = posts
+    .map((post) => post.data.date?.getFullYear())
+    .filter((year): year is number => typeof year === "number");
+const establishedYear = years.length ? Math.min(...years) : new Date().getFullYear();
+const latestYear = years.length ? Math.max(...years) : establishedYear;
+const volume = latestYear - establishedYear + 1;
+const issue = posts.length;
+
+const toRoman = (n: number): string => {
+    const numerals: [number, string][] = [
+        [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
+        [100, "C"], [90, "XC"], [50, "L"], [40, "XL"],
+        [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+    ];
+    let out = "";
+    for (const [value, symbol] of numerals) {
+        while (n >= value) {
+            out += symbol;
+            n -= value;
+        }
+    }
+    return out;
+};
 ---
 
 <Layout title="Blog" description="Technical blog posts and notes by Moamen Hredeen.">
     <main id="main-content" tabindex="-1">
-        <header class="papers-header">
+        <header class="masthead">
             <p class="paper-kicker">Collected writings</p>
             <h1 class="page-title">Blog</h1>
-            <p>Technical essays, explanations, and working notes.</p>
+            <p class="masthead-tagline">Technical essays, explanations, and working notes.</p>
+            <dl class="masthead-meta">
+                <div>
+                    <dt>Volume</dt>
+                    <dd>{toRoman(volume)}</dd>
+                </div>
+                <div>
+                    <dt>Issue</dt>
+                    <dd>No.&nbsp;{issue}</dd>
+                </div>
+                <div>
+                    <dt>Established</dt>
+                    <dd>{toRoman(establishedYear)}</dd>
+                </div>
+            </dl>
         </header>
 
         <ol class="paper-list">
@@ -37,19 +76,69 @@ const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "long" });
 </Layout>
 
 <style>
-    .papers-header {
-        margin-bottom: 2.5rem;
+    .masthead {
+        margin-bottom: 2rem;
+        text-align: center;
     }
 
-    .papers-header > p:last-child {
+    .masthead .paper-kicker {
+        margin-bottom: 0.5rem;
+    }
+
+    .masthead .page-title {
+        margin: 0;
+    }
+
+    .masthead-tagline {
+        margin: 0.75rem 0 1.5rem;
         color: var(--muted);
         font-style: italic;
+    }
+
+    /* Volume / issue / established line, set between thin rules like a
+       journal masthead. Kept to hairlines so it doesn't compete with the
+       site header's double rule directly above. */
+    .masthead-meta {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        margin: 0;
+        padding: 0.6rem 0;
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .masthead-meta div {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+    }
+
+    .masthead-meta dt {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .masthead-meta dd {
+        margin: 0;
+        font-size: 0.82rem;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 700px) {
+        .masthead-meta {
+            gap: 1.25rem 2rem;
+        }
     }
 
     .paper-list {
         margin: 0;
         padding: 0;
-        border-top: 1px solid var(--rule-dark);
         list-style: none;
     }
 
@@ -59,6 +148,10 @@ const dateFormatter = new Intl.DateTimeFormat("en", { dateStyle: "long" });
         gap: 1rem;
         padding: 1.5rem 0;
         border-bottom: 1px solid var(--rule);
+    }
+
+    .paper-list li:last-child {
+        border-bottom: 0;
     }
 
     .post-number {
