@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import remarkGithubAlerts from 'remark-github-alerts'
-import solidJs from '@astrojs/solid-js';
+import vue from '@astrojs/vue';
 
 import mdx from '@astrojs/mdx';
 
@@ -21,7 +21,7 @@ export default defineConfig({
       ]
     },
 
-  integrations: [solidJs(), mdx()],
+  integrations: [vue(), mdx()],
 
   vite: {
     plugins: [tailwindcss()],
