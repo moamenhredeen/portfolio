@@ -135,7 +135,7 @@ evaluate relationships, including indirect ones. As the graph grows, it can
 become harder to understand why access was granted and to evaluate decisions
 efficiently.
 
-ReBAC implementations can vary. Some use a graph-based authorization model,
+ReBAC implementations can vary. Some use a graph-based authorization model,[^zanzibar]
 while others express relationships through policies. The goal is the same: make
 access decisions using the relationship between the subject and the resource.
 
@@ -153,7 +153,7 @@ decision can depend on information about several parts of the request:
 For example, a policy could allow Alice to edit Document 42 only when Alice and
 the document belong to the same organization and the document is not locked.
 
-The most common standard associated with ABAC is **XACML**, which describes how
+The most common standard associated with ABAC is **XACML**,[^xacml] which describes how
 attribute-based policies and authorization decisions can be represented.
 
 ABAC's biggest strength is its flexibility. A policy can combine multiple
@@ -204,3 +204,12 @@ The best option is usually the simplest model, or combination of models, that
 can express the requirements clearly. More flexibility is useful, but it also
 creates more policies, data and decisions that need to be understood and
 maintained.
+
+[^zanzibar]: The best-known example is Google's *Zanzibar* (2019), a globally
+    distributed authorization system that stores relationships as tuples and
+    answers access checks by walking them. It inspired open-source systems such
+    as SpiceDB and OpenFGA.
+
+[^xacml]: XACML — the eXtensible Access Control Markup Language — is an OASIS
+    standard that defines an XML-based policy language and a request/response
+    format for attribute-based authorization decisions.

@@ -290,4 +290,62 @@ const dateTime = frontmatter.date
         font-variant: small-caps;
         font-weight: 700;
     }
+
+    /* Footnotes as a numbered "Notes" section at the foot of the article,
+       the way a printed paper collects them. */
+    .article-body :global(.footnotes) {
+        margin-top: 3.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--rule-dark);
+        color: var(--muted);
+        font-size: 0.85rem;
+    }
+
+    .article-body :global(.footnotes h2) {
+        counter-increment: none;
+        margin: 0 0 0.75rem;
+        color: var(--ink);
+        font-size: 0.8rem;
+        font-weight: 700;
+        font-variant: small-caps;
+        letter-spacing: 0.08em;
+    }
+
+    .article-body :global(.footnotes h2)::before {
+        content: none;
+    }
+
+    .article-body :global(.footnotes ol) {
+        margin: 0;
+        padding-left: 1.6rem;
+    }
+
+    .article-body :global(.footnotes li) {
+        margin: 0.35rem 0;
+        line-height: 1.55;
+    }
+
+    .article-body :global(.footnotes li)::marker {
+        color: var(--muted);
+    }
+
+    .article-body :global(.footnotes li p) {
+        margin: 0;
+    }
+
+    .article-body :global(.footnotes .data-footnote-backref) {
+        margin-left: 0.3rem;
+        padding: 0;
+        border: 0;
+        text-decoration: none;
+    }
+
+    /* Inline reference marker. */
+    .article-body :global([data-footnote-ref]) {
+        padding: 0;
+        border: 0;
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+        text-decoration: none;
+    }
 </style>

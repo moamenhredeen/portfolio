@@ -18,7 +18,7 @@ The `keyof T extends never` check might seem puzzling at first. Let's break down
 
 What Does `keyof T extends never` Actually Check?
 
-The `never` type is **TypeScript's bottom type** — a type with no possible values. When we check `keyof T extends never`, we're asking: "Does the type `T` have zero known keys?"
+The `never` type is **TypeScript's bottom type**[^bottom-type] — a type with no possible values. When we check `keyof T extends never`, we're asking: "Does the type `T` have zero known keys?"
 
 Here's how it behaves with different types:
 
@@ -104,3 +104,5 @@ The original `extends never` check was likely an attempt to create a base case f
 
 # Resources
 - [Stackoverflow - What is "extends never" used for](https://stackoverflow.com/questions/68693054/what-is-extends-never-used-for)
+
+[^bottom-type]: In type theory the bottom type (written ⊥) is the type with no values. It is a subtype of every other type, which makes it the dual of the top type — the type every value inhabits, which TypeScript spells `unknown`.

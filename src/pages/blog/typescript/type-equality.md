@@ -3,8 +3,7 @@ layout: '@layouts/PostLayout.astro'
 title: Type Equality in Typescript
 description: TypeScript's simple mutual assignability approach to type equality fails in several edge cases 
   including union distribution and special types. The robust solution uses a function signature comparison trick 
-  that leverages structural type checking for precise type identity comparison.RetryClaude can make mistakes. 
-  Please double-check responses.
+  that leverages structural type checking for precise type identity comparison.
 date: "2025-06-01"
 author: Moamen Hredeen
 tags:
@@ -127,7 +126,7 @@ type Test = IsEqual<A, B>  // false - overload order matters
 
 # The Robust Solution: Function Signature Trick
 
-The most reliable approach uses a clever function signature comparison:
+The most reliable approach uses a clever function signature comparison:[^signature-trick]
 
 ```typescript
 type IsEqual<T, U> = 
@@ -186,4 +185,8 @@ type Test8 = IsEqual<{readonly a: string}, {a: string}> // ✅ false
 
 Type equality in TypeScript requires more than simple assignability checks. The function signature trick provides the most robust solution by leveraging TypeScript's structural type comparison in a way that truly tests type identity rather than just compatibility.
 
-This pattern is used in many popular TypeScript utility libraries and testing frameworks where precise type equality matters.hat only happens when T and U are exactly the same.
+This pattern is used in many popular TypeScript utility libraries and testing frameworks where precise type equality matters.[^equality-libs]
+
+[^signature-trick]: This technique comes from a widely cited comment on the TypeScript issue tracker discussing how to compare types for equality. It works because TypeScript compares two generic function signatures as identical only when their conditional-type bodies behave the same for every possible `G`.
+
+[^equality-libs]: For example, `type-fest` ships it as `IsEqual`, and type-level testing tools such as `expect-type` and `tsd` rely on the same signature-comparison trick to assert that two types are exactly equal.

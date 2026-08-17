@@ -108,7 +108,7 @@ exception
 ## Mutability
 
 wether or not the API mutate the same object. **Mutable** APIs are usually
-homogeneous, and often reflect the classic **builder pattern**.
+homogeneous, and often reflect the classic **builder pattern**.[^builder]
 
 ```java
 new StringBuilder()
@@ -171,3 +171,5 @@ valid no-op valie to bypass teh action of the method
 
 - [Principles of Fluent API Design by David Beaumont](https://www.youtube.com/watch?v=VPu-ytfYTeU)
 - [How to Create a Fluent API in C#](https://mitesh1612.github.io/blog/2021/08/11/how-to-design-fluent-api)
+
+[^builder]: The builder pattern is one of the creational patterns from the Gang of Four's *Design Patterns* (1994); it separates the construction of a complex object from its representation so the same steps can build different results.

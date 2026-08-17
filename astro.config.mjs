@@ -22,7 +22,11 @@ export default defineConfig({
       ],
       rehypePlugins: [
           rehypeFigures,
-      ]
+      ],
+      remarkRehype: {
+          footnoteLabel: 'Notes',
+          footnoteBackLabel: 'Back to reference {1}',
+      }
     },
 
   integrations: [vue(), mdx()],
