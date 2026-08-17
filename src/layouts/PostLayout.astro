@@ -98,7 +98,56 @@ const dateTime = frontmatter.date
     .article-body {
         max-width: 43rem;
         margin: 0 auto;
-        counter-reset: section;
+        counter-reset: section subsection subsubsection;
+    }
+
+    /* Number sections like a paper: 1, 1.1, 1.1.1 (headings are demoted,
+       so a top-level section renders as h2). */
+    .article-body :global(h2) {
+        counter-increment: section;
+        counter-reset: subsection subsubsection;
+    }
+
+    .article-body :global(h3) {
+        counter-increment: subsection;
+        counter-reset: subsubsection;
+    }
+
+    .article-body :global(h4) {
+        counter-increment: subsubsection;
+    }
+
+    .article-body :global(h2)::before {
+        content: counter(section) "\2003";
+    }
+
+    .article-body :global(h3)::before {
+        content: counter(section) "." counter(subsection) "\2003";
+    }
+
+    .article-body :global(h4)::before {
+        content: counter(section) "." counter(subsection) "." counter(subsubsection) "\2003";
+    }
+
+    .article-body :global(h2)::before,
+    .article-body :global(h3)::before,
+    .article-body :global(h4)::before {
+        color: var(--muted);
+        font-weight: 400;
+        font-style: normal;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* Interactive playgrounds carry their own headings; keep them out of
+       the section numbering entirely. */
+    .article-body :global(.playground :is(h2, h3, h4)),
+    .article-body :global(.demo :is(h2, h3, h4)) {
+        counter-increment: none;
+    }
+
+    .article-body :global(.playground :is(h2, h3, h4))::before,
+    .article-body :global(.demo :is(h2, h3, h4))::before {
+        content: none;
     }
 
     .article-body :global(h1),

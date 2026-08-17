@@ -14,7 +14,7 @@ tags:
 
 Comparing types in TypeScript isn't as straightforward as it might seem. While the language provides powerful type checking, determining if two types are exactly equal requires understanding some subtle edge cases and advanced techniques.
 
-## The Naive Approach
+# The Naive Approach
 
 The most obvious way to check type equality is using mutual assignability:
 
@@ -26,7 +26,7 @@ This works by checking if `T` can be assigned to `U` and vice versa. If both dir
 
 Unfortunately, this approach has several critical flaws.
 
-## Problem 1: Union Type Distribution
+# Problem 1: Union Type Distribution
 
 Conditional types distribute over union types when the type parameter appears "naked" in the extends clause:
 
@@ -48,7 +48,7 @@ When `T = 'a' | 'b'`, TypeScript distributes the conditional type:
 
 The result is a union of `true` and `false`, which simplifies to `boolean` instead of the definitive answer we want.
 
-### Solution: Prevent Distribution
+## Solution: Prevent Distribution
 
 Wrap type parameters in tuples to prevent distribution:
 
@@ -62,7 +62,7 @@ type Test3 = IsEqual<'a', 'a' | 'b'>        // ✅ false
 
 This fixes the distribution problem, but there are still many other edge cases that make the simple approach unreliable.
 
-## Problem 2: Special Types (`any`, `never`, `unknown`)
+# Problem 2: Special Types (`any`, `never`, `unknown`)
 
 The simple extends-based approach fails with TypeScript's special types:
 
@@ -78,7 +78,7 @@ type Test3 = IsEqual<never, string>   // true ❌ (should be false)
 type Test4 = IsEqual<string, never>   // false ✅
 ```
 
-## Problem 3: Object Type Normalization
+# Problem 3: Object Type Normalization
 
 TypeScript internally normalizes intersection types, leading to inconsistent results:
 
@@ -91,7 +91,7 @@ type B = { a: 1; b: 2 }       // Object literal
 type Test = IsEqual<A, B>  // Inconsistent - depends on internal normalization timing
 ```
 
-## Problem 4: Readonly and Optional Property Differences
+# Problem 4: Readonly and Optional Property Differences
 
 ```typescript
 type IsEqual<T, U> = [T] extends [U] ? [U] extends [T] ? true : false : false
@@ -107,7 +107,7 @@ type Test2 = IsEqual<{ a?: number }, { a: number | undefined }>  // false ✅
 // { a: string } extends { readonly a: string } = false
 ```
 
-## Problem 5: Function Overload Order
+# Problem 5: Function Overload Order
 
 ```typescript
 type IsEqual<T, U> = [T] extends [U] ? [U] extends [T] ? true : false : false
@@ -125,7 +125,7 @@ type B = {
 type Test = IsEqual<A, B>  // false - overload order matters
 ```
 
-## The Robust Solution: Function Signature Trick
+# The Robust Solution: Function Signature Trick
 
 The most reliable approach uses a clever function signature comparison:
 
@@ -136,7 +136,7 @@ type IsEqual<T, U> =
     : false
 ```
 
-### How It Works
+## How It Works
 
 This technique leverages TypeScript's function type comparison rules:
 
@@ -146,7 +146,7 @@ This technique leverages TypeScript's function type comparison rules:
 
 The key insight is that two function signatures are only assignable if they produce the same results for all possible inputs. This only happens when `T` and `U` are exactly identical types.
 
-### Why This Works Better
+## Why This Works Better
 
 The function signature approach handles all the edge cases more reliably because:
 
@@ -155,7 +155,7 @@ The function signature approach handles all the edge cases more reliably because
 3. **Generic probing**: The `G` parameter acts as a "probe" that tests both types uniformly across all possible substitutions
 4. **Normalization awareness**: TypeScript normalizes types before comparing function signatures
 
-### Testing the Solution
+## Testing the Solution
 
 ```typescript
 type IsEqual<T, U> = 
@@ -182,7 +182,7 @@ type Test7 = IsEqual<{a: 1} & {b: 2}, {a: 1, b: 2}> // ✅ true
 type Test8 = IsEqual<{readonly a: string}, {a: string}> // ✅ false
 ```
 
-## Conclusion
+# Conclusion
 
 Type equality in TypeScript requires more than simple assignability checks. The function signature trick provides the most robust solution by leveraging TypeScript's structural type comparison in a way that truly tests type identity rather than just compatibility.
 
