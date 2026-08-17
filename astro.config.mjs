@@ -5,6 +5,7 @@ import remarkGithubAlerts from 'remark-github-alerts'
 import vue from '@astrojs/vue';
 
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 import remarkMath from 'remark-math';
@@ -16,6 +17,7 @@ import transformerListingCaption from './src/plugins/shiki-listing-caption.mjs';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://moamenhredeen.me',
   markdown: {
       shikiConfig: {
         theme: 'gruvbox-light-hard',
@@ -37,7 +39,7 @@ export default defineConfig({
       }
     },
 
-  integrations: [vue(), mdx()],
+  integrations: [vue(), mdx(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
