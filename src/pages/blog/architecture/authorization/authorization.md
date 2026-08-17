@@ -4,7 +4,6 @@ title: Authorization
 description: What is authorization and what are the different authorization types
 author: Moamen Hredeen
 date: "2025-01-25"
-status: WIP
 tags:
   - AuthZ
   - Authorization
@@ -182,11 +181,6 @@ For example, editing a document might require all of the following:
 An ACL could still be used to share a particular document directly with another
 user. Combining models is useful, but every additional model also makes the
 authorization system harder to reason about.
-
-<!-- DRAWING: Compare how the same question, "Can Alice edit Document 42?", is
-answered by each model: ACL uses a direct grant, RBAC follows Alice -> Editor
-role -> edit permission, ReBAC follows Alice -> Team -> Document, and ABAC
-evaluates user/resource/action/context attributes. -->
 
 # Comparison
 

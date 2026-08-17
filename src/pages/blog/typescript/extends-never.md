@@ -6,8 +6,8 @@ description: Examines why keyof T extends never in TypeScript's DeepReadonly is 
 date: "2025-06-23"
 author: Moamen Hredeen
 tags:
-  - Typescript
-  - Typesystem
+  - TypeScript
+  - TypeSystem
 ---
 
 When examining TypeScript utility types, you might encounter this implementation of `DeepReadonly`:

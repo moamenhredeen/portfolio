@@ -20,7 +20,13 @@ export default defineConfig({
   site: 'https://moamenhredeen.me',
   markdown: {
       shikiConfig: {
-        theme: 'gruvbox-light-hard',
+        // Dual themes: each token carries a light colour inline and its dark
+        // colour in a `--shiki-dark` custom property. The dark palette is
+        // activated by CSS in `global.css` (screen-only, so print stays light).
+        themes: {
+          light: 'gruvbox-light-hard',
+          dark: 'gruvbox-dark-hard',
+        },
         transformers: [transformerListingCaption()],
       },
       remarkPlugins: [

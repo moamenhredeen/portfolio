@@ -25,6 +25,77 @@
     font-synthesis: none;
 }
 
+/* Dark reading mode. All theming is screen-only so print always falls back to
+   the paper palette below. It applies on the OS `prefers-color-scheme`, unless
+   the reader has forced light; the header toggle sets `data-theme` on <html> to
+   override the OS preference in either direction (and persists the choice). The
+   two blocks carry the same values: one for the auto case, one for the toggle. */
+@media screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --paper: #16130d;
+        --paper-raised: #1e1a12;
+        --ink: #ece7da;
+        --muted: #a49c8a;
+        --rule: #3a352c;
+        --rule-dark: #6e685a;
+        --accent: #e5947a;
+        --code-bg: #1b1811;
+        --code-rule: #322d24;
+        --color-note: #7fb0d6;
+        --color-tip: #8fc07f;
+        --color-warning: #d6ac6a;
+        --color-caution: #e08a84;
+        --color-important: #b79ad1;
+        color-scheme: dark;
+    }
+
+    /* Swap Shiki's baked light token colours for their dark counterparts.
+       Specificity is tuned to beat the light-only contrast fixes further down. */
+    :root:not([data-theme="light"]) .article-body .astro-code,
+    :root:not([data-theme="light"]) .article-body .astro-code span[style] {
+        color: var(--shiki-dark) !important;
+    }
+
+    /* Line-art figures (dark strokes on transparent) need a light card to stay
+       legible against the dark page. */
+    :root:not([data-theme="light"]) .article-body figure.figure img {
+        padding: 0.85rem;
+        border-radius: 3px;
+        background: #f4f1e9;
+    }
+}
+
+@media screen {
+    :root[data-theme="dark"] {
+        --paper: #16130d;
+        --paper-raised: #1e1a12;
+        --ink: #ece7da;
+        --muted: #a49c8a;
+        --rule: #3a352c;
+        --rule-dark: #6e685a;
+        --accent: #e5947a;
+        --code-bg: #1b1811;
+        --code-rule: #322d24;
+        --color-note: #7fb0d6;
+        --color-tip: #8fc07f;
+        --color-warning: #d6ac6a;
+        --color-caution: #e08a84;
+        --color-important: #b79ad1;
+        color-scheme: dark;
+    }
+
+    :root[data-theme="dark"] .article-body .astro-code,
+    :root[data-theme="dark"] .article-body .astro-code span[style] {
+        color: var(--shiki-dark) !important;
+    }
+
+    :root[data-theme="dark"] .article-body figure.figure img {
+        padding: 0.85rem;
+        border-radius: 3px;
+        background: #f4f1e9;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -220,6 +291,48 @@ samp {
     outline-offset: 2px;
 }
 
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    margin: 0;
+    margin-block: -0.9rem;
+    padding: 0;
+    border: 0;
+    color: var(--ink);
+    background: transparent;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+}
+
+.theme-toggle svg {
+    display: block;
+}
+
+.theme-toggle circle {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+}
+
+.theme-toggle path {
+    fill: currentColor;
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 .site-footer {
     display: flex;
     justify-content: space-between;
@@ -366,7 +479,8 @@ samp {
         background: var(--paper-raised);
     }
 
-    .print-button {
+    .print-button,
+    .theme-toggle {
         display: none;
     }
 

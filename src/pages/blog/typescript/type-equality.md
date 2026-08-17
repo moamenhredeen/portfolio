@@ -7,8 +7,8 @@ description: TypeScript's simple mutual assignability approach to type equality 
 date: "2025-06-01"
 author: Moamen Hredeen
 tags:
-  - Typescript
-  - Typesystem
+  - TypeScript
+  - TypeSystem
 ---
 
 Comparing types in TypeScript isn't as straightforward as it might seem. While the language provides powerful type checking, determining if two types are exactly equal requires understanding some subtle edge cases and advanced techniques.
