@@ -1,26 +1,286 @@
 ---
 layout: '@layouts/PostLayout.astro'
 title: Timing Strategies
-description: A quick guide to throttling and debouncing—two key techniques to control function calls and improve app performance.
+description: Debouncing, throttling, and the other ways we decide when expensive work is allowed to run.
 tags:
   - Frontend
   - Patterns
-  - webdev
+  - Performance
+  - Vue
 ---
 
-import Throttle from '../../../components/vue/Throttle.vue'
+import TimingPlayground from '../../../components/vue/TimingPlayground.vue'
+import FramePlayground from '../../../components/vue/FramePlayground.vue'
+import BatchPlayground from '../../../components/vue/BatchPlayground.vue'
+import IdlePlayground from '../../../components/vue/IdlePlayground.vue'
+import RequestRace from '../../../components/vue/RequestRace.vue'
 import Wrapper from '../../../components/Wrapper.astro'
 
-# Introduction
+# The question I answered incorrectly
 
+I was once asked to implement a throttle function. I wrote a debounce function instead.
 
+The code was not completely wrong: it delayed calls, reduced work, and looked like the sort of utility the interviewer had asked for. But it guaranteed the wrong thing. I knew both techniques were connected to `setTimeout`; I did not yet have a useful mental model for the difference.
 
-# Default
+That mistake is the reason for this article.
+
+Browsers produce events much faster than our applications should necessarily react to them. A pointer can move dozens of times per second. Scrolling can trigger a stream of events. A user can type another character while a network request is still in flight. If every event starts expensive work, the page becomes wasteful, visually unstable, or both.
+
+Timing strategies sit between the event and the work:
+
+```text
+event stream → timing strategy → expensive work
+```
+
+They do not make the work itself faster. They decide **which calls are allowed to happen, and when**.
 
 <Wrapper>
-    <Throttle client:visible/>
+  <TimingPlayground client:visible />
 </Wrapper>
 
-# Throttle
+Try the burst with different intervals. The unfiltered lane calls the function twelve times. Throttle keeps reporting progress while the burst is active. Debounce produces one call only after the burst has ended. That is the central distinction.
 
-# Debounce
+# Debounce: wait for silence
+
+Debouncing says: “Run this only when no new call has arrived for a given amount of time.” Every incoming call cancels the previous timer and starts a new one.
+
+```ts
+function debounce<T extends (...args: any[]) => void>(
+  callback: T,
+  wait: number,
+) {
+  let timer: ReturnType<typeof setTimeout>
+
+  return (...args: Parameters<T>) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => callback(...args), wait)
+  }
+}
+```
+
+Imagine searching while someone types `germany`. With a 400 ms debounce, the calls for `g`, `ge`, and `ger` keep replacing one another. If the user pauses after the final letter, only the search for `germany` runs.
+
+Debounce is a good fit when intermediate values do not matter:
+
+- Search suggestions and server-side validation
+- Saving a draft after the user stops editing
+- Responding after a window resize has settled
+- Collapsing several rapid button presses into one action
+
+The trade-off is latency. A continuously active event stream can postpone a trailing debounce forever. If users need feedback during the interaction, debounce is usually the wrong guarantee.
+
+## Leading, trailing, and maximum wait
+
+The implementation above is **trailing-edge**: it runs after quiet begins. A leading-edge debounce runs immediately and then ignores calls until the quiet period. Some production implementations support both.
+
+A `maxWait` option places an upper bound on postponement. It says, “debounce normally, but never leave the callback waiting for more than this long.” At that point the behaviour begins to resemble throttling, which is a useful reminder that these utilities are policies rather than magic incantations.
+
+# Throttle: keep a steady pace
+
+Throttling says: “While calls keep arriving, run at most once per interval.” It limits frequency instead of waiting for silence.
+
+```ts
+function throttle<T extends (...args: any[]) => void>(
+  callback: T,
+  wait: number,
+) {
+  let lastCall = 0
+
+  return (...args: Parameters<T>) => {
+    const now = Date.now()
+
+    if (now - lastCall >= wait) {
+      lastCall = now
+      callback(...args)
+    }
+  }
+}
+```
+
+This small version uses the leading edge and drops calls inside the interval. A more complete throttle may also schedule a trailing call with the most recent arguments. That final call matters when the last event arrives just inside a blocked interval: without it, the UI can finish with stale state.
+
+Throttle is useful when intermediate progress matters but processing every event does not:
+
+- Updating a scroll-progress indicator
+- Sampling pointer coordinates
+- Sending periodic analytics during a long interaction
+- Limiting how often an infinite-scroll check runs
+
+If the event continues for ten seconds, a throttled callback continues to run at a controlled rate for those ten seconds. A debounced callback may not run at all until the activity stops.
+
+## The interview-sized distinction
+
+If I had to answer that interview question again, I would start with the guarantees:
+
+| Strategy | During continuous events | When events stop | Typical intent |
+| --- | --- | --- | --- |
+| Debounce | Usually nothing | One final call | Wait for the final value |
+| Throttle | Periodic calls | Maybe one trailing call | Report ongoing progress |
+
+Only then would I write the timer code.
+
+# Schedule visual work with the browser
+
+Throttle is time-based, but visual updates have a natural clock already: the browser's paint cycle. For work that changes what the user sees during scrolling, dragging, or animation, `requestAnimationFrame` is often a better scheduler.
+
+```ts
+function onAnimationFrame<T extends (...args: any[]) => void>(callback: T) {
+  let frame: number | undefined
+  let latestArgs: Parameters<T>
+
+  return (...args: Parameters<T>) => {
+    latestArgs = args
+    if (frame !== undefined) return
+
+    frame = requestAnimationFrame(() => {
+      frame = undefined
+      callback(...latestArgs)
+    })
+  }
+}
+```
+
+Calls that arrive before the next frame are coalesced, and the latest value is rendered at the right moment. Unlike `setTimeout(fn, 16)`, animation frames are synchronized with painting and are normally paused or reduced in background tabs.
+
+Use it for visual state. Do not use it as a general rate limiter for API requests—the frame rate is much too frequent, and painting is unrelated to network policy.
+
+<Wrapper>
+  <FramePlayground client:visible />
+</Wrapper>
+
+# Batch work instead of delaying it
+
+Sometimes every input matters, but processing each one separately is expensive. In that case, collect the inputs and process them together.
+
+```ts
+function batch<T>(consume: (items: T[]) => void, wait: number) {
+  let queue: T[] = []
+  let timer: ReturnType<typeof setTimeout> | undefined
+
+  return (item: T) => {
+    queue.push(item)
+    if (timer) return
+
+    timer = setTimeout(() => {
+      const items = queue
+      queue = []
+      timer = undefined
+      consume(items)
+    }, wait)
+  }
+}
+```
+
+Logging, telemetry, and bulk writes often benefit from batching. Debounce and throttle discard calls according to a policy; batching preserves their data and changes the unit of work.
+
+<Wrapper>
+  <BatchPlayground client:visible />
+</Wrapper>
+
+# Defer work until the browser is idle
+
+`requestIdleCallback` asks the browser to run low-priority work when it has spare time. It is appropriate for non-urgent tasks such as speculative preparation or analytics—not anything required for the next interaction.
+
+```ts
+requestIdleCallback(
+  deadline => {
+    while (deadline.timeRemaining() > 0 && workQueue.length > 0) {
+      process(workQueue.shift())
+    }
+  },
+  { timeout: 2_000 },
+)
+```
+
+Idle time is not guaranteed, so important work needs a timeout or another fallback. Browser support and execution conditions also differ from the universally available timer APIs.
+
+<Wrapper>
+  <IdlePlayground client:visible />
+</Wrapper>
+
+# Async work needs cancellation too
+
+Debouncing a search prevents unnecessary requests from starting, but it does not stop a request that has already started. Responses can also arrive out of order: a slow response for `ger` might overwrite the later response for `germany`.
+
+Use `AbortController` to make “latest request wins” explicit:
+
+```ts
+let controller: AbortController | undefined
+
+async function search(query: string) {
+  controller?.abort()
+  controller = new AbortController()
+
+  const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`, {
+    signal: controller.signal,
+  })
+
+  return response.json()
+}
+```
+
+Timing and cancellation solve different problems. The timing strategy controls when work starts; cancellation controls whether obsolete work may finish.
+
+<Wrapper>
+  <RequestRace client:visible />
+</Wrapper>
+
+# Choosing a strategy
+
+Do not begin with the timer. Begin with the behaviour the user needs to observe. The right strategy usually becomes obvious once that guarantee is stated clearly.
+
+## A quick decision guide
+
+**Does only the last value matter?**
+
+Use **debounce**. Wait until activity stops, then process the latest value. Think search suggestions, draft saving, or validation after typing.
+
+**Must the interface keep updating while activity continues?**
+
+Use **throttle**. Allow regular updates, but place a ceiling on their frequency. Think scroll progress, pointer sampling, or periodic analytics.
+
+**Does the work change what is drawn on screen?**
+
+Use **`requestAnimationFrame`**. Coalesce repeated events and update visual state immediately before the browser paints.
+
+**Must every item be preserved?**
+
+Use **batching**. Collect the items and process them together instead of discarding intermediate calls.
+
+**Is the work optional and not time-sensitive?**
+
+Use **idle scheduling**. Let urgent interactions and rendering happen first, and provide a fallback for browsers or pages that never become idle.
+
+**Can an earlier async result become obsolete?**
+
+Use **cancellation** or ignore stale results. Timing controls when work starts; cancellation controls whether outdated work may finish.
+
+## Comparison at a glance
+
+| Requirement | Strategy | What happens to repeated calls? | When does work run? |
+| --- | --- | --- | --- |
+| Use the final value | Debounce | Earlier calls are replaced | After a quiet period |
+| Show ongoing progress | Throttle | Calls inside the interval are limited | At a controlled frequency |
+| Update visual state | Animation frame | Calls before the next paint are merged | Before the next browser paint |
+| Preserve every item | Batch | Values are collected | Once per group |
+| Run optional work | Idle scheduling | Work waits in a queue | When the browser has spare time |
+| Prevent stale results | Cancellation | Obsolete work is stopped or ignored | As soon as it becomes obsolete |
+
+> A useful test: describe what should happen during a continuous ten-second stream of events. Should the work run periodically, once at the end, once per frame, or eventually in groups?
+
+## Strategies often work together
+
+These tools solve different parts of a problem, so combining them is normal:
+
+- A search field can **debounce** input and **abort** the previous request.
+- A drag interaction can use **animation frames** for rendering and **throttle** analytics separately.
+- An event collector can **batch** records, then send the batch during **idle time**.
+- A throttled callback can keep the interface responsive while a final debounced callback saves the settled state.
+
+Avoid stacking strategies without a reason. Each additional timer adds latency and makes ordering harder to understand. For every layer, be able to name the guarantee it provides.
+
+# What I was missing
+
+My original mistake was treating debounce and throttle as two variations of timer code to memorize. Their implementations do look similar, which makes that approach tempting.
+
+The durable distinction is semantic: **debounce groups activity around silence; throttle divides activity into intervals**. Once that is clear, the code becomes the easy part—and an interview question becomes a small design conversation instead of a memory test.
