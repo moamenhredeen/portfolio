@@ -26,7 +26,7 @@ the time, location or organization.
 Authorization is different from authentication. Authentication determines who
 the user is, while authorization determines what that user is allowed to do.
 
-![](_attachments/authorization-intro.excalidraw.svg)
+![An authorization decision combines the subject, action, resource, and context to allow or deny access](_attachments/authorization-intro.excalidraw.svg)
 
 
 There are multiple ways to represent and evaluate access. The most common ones

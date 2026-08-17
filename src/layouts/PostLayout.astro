@@ -98,7 +98,7 @@ const dateTime = frontmatter.date
     .article-body {
         max-width: 43rem;
         margin: 0 auto;
-        counter-reset: section subsection subsubsection;
+        counter-reset: section subsection subsubsection figure;
     }
 
     /* Number sections like a paper: 1, 1.1, 1.1.1 (headings are demoted,
@@ -246,6 +246,30 @@ const dateTime = frontmatter.date
     .article-body :global(img) {
         display: block;
         margin: 2rem auto;
+    }
+
+    .article-body :global(figure.figure) {
+        counter-increment: figure;
+        margin: 2.5rem 0;
+        text-align: center;
+    }
+
+    .article-body :global(figure.figure img) {
+        margin: 0 auto 0.75rem;
+    }
+
+    .article-body :global(figure.figure figcaption) {
+        margin: 0 auto;
+        max-width: 34rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .article-body :global(figure.figure figcaption)::before {
+        content: "Figure " counter(figure) ". ";
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
     }
 
     .article-body :global(hr) {

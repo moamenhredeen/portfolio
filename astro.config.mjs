@@ -8,6 +8,7 @@ import mdx from '@astrojs/mdx';
 
 import tailwindcss from '@tailwindcss/vite';
 import remarkDemoteHeadings from './src/plugins/remark-demote-headings.mjs';
+import rehypeFigures from './src/plugins/rehype-figures.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,6 +19,9 @@ export default defineConfig({
       remarkPlugins: [
           remarkGithubAlerts,
           remarkDemoteHeadings,
+      ],
+      rehypePlugins: [
+          rehypeFigures,
       ]
     },
 
