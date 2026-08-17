@@ -21,7 +21,13 @@ The most obvious way to check type equality is using mutual assignability:
 type IsEqual<T, U> = T extends U ? U extends T ? true : false : false
 ```
 
-This works by checking if `T` can be assigned to `U` and vice versa. If both directions work, the types should be equal, right?
+This works by checking if `T` can be assigned to `U` and vice versa. Writing $A <: B$ for "$A$ is assignable to $B$", the check is really asking:
+
+$$
+T \equiv U \;\stackrel{?}{\iff}\; T <: U \;\land\; U <: T
+$$
+
+If both directions work, the types should be equal, right?
 
 Unfortunately, this approach has several critical flaws.
 

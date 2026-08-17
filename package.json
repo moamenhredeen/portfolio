@@ -13,7 +13,10 @@
     "@astrojs/vue": "^7.0.2",
     "@tailwindcss/vite": "^4.1.10",
     "astro": "^7.2.2",
+    "katex": "^0.18.4",
+    "rehype-katex": "^7.0.1",
     "remark-github-alerts": "^0.1.1",
+    "remark-math": "^6.0.0",
     "tailwindcss": "^4.1.10",
     "vue": "^3.5.41"
   }

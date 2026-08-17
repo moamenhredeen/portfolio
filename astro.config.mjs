@@ -7,6 +7,8 @@ import vue from '@astrojs/vue';
 import mdx from '@astrojs/mdx';
 
 import tailwindcss from '@tailwindcss/vite';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import remarkDemoteHeadings from './src/plugins/remark-demote-headings.mjs';
 import rehypeFigures from './src/plugins/rehype-figures.mjs';
 
@@ -19,9 +21,11 @@ export default defineConfig({
       remarkPlugins: [
           remarkGithubAlerts,
           remarkDemoteHeadings,
+          remarkMath,
       ],
       rehypePlugins: [
           rehypeFigures,
+          rehypeKatex,
       ],
       remarkRehype: {
           footnoteLabel: 'Notes',
