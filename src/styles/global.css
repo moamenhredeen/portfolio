@@ -103,6 +103,9 @@
 html {
     background: var(--paper);
     scrollbar-gutter: stable;
+    /* Keep hyphenation conservative: only break words of 6+ chars, and never
+       leave fewer than 3 chars before or 3 after the break. */
+    hyphenate-limit-chars: 6 3 3;
 }
 
 body {
