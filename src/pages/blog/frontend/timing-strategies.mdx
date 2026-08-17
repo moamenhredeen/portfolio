@@ -2,6 +2,8 @@
 layout: '@layouts/PostLayout.astro'
 title: Timing Strategies
 description: Debouncing, throttling, and the other ways we decide when expensive work is allowed to run.
+date: "2025-06-23"
+author: Moamen Hredeen
 tags:
   - Frontend
   - Patterns
@@ -26,7 +28,7 @@ Browsers produce events much faster than our applications should necessarily rea
 
 Timing strategies sit between the event and the work:
 
-```text
+```text caption="Where a timing strategy sits in the pipeline"
 event stream → timing strategy → expensive work
 ```
 
@@ -42,7 +44,7 @@ Try the burst with different intervals. The unfiltered lane calls the function t
 
 Debouncing says: “Run this only when no new call has arrived for a given amount of time.” Every incoming call cancels the previous timer and starts a new one.
 
-```ts
+```ts caption="The debounce utility: every call restarts the timer"
 function debounce<T extends (...args: any[]) => void>(
   callback: T,
   wait: number,
@@ -77,7 +79,7 @@ A `maxWait` option places an upper bound on postponement. It says, “debounce n
 
 Throttling says: “While calls keep arriving, run at most once per interval.” It limits frequency instead of waiting for silence.
 
-```ts
+```ts caption="The throttle utility: run at most once per interval"
 function throttle<T extends (...args: any[]) => void>(
   callback: T,
   wait: number,
@@ -121,7 +123,7 @@ Only then would I write the timer code.
 
 Throttle is time-based, but visual updates have a natural clock already: the browser's paint cycle. For work that changes what the user sees during scrolling, dragging, or animation, `requestAnimationFrame` is often a better scheduler.
 
-```ts
+```ts caption="Coalescing calls into a single animation frame"
 function onAnimationFrame<T extends (...args: any[]) => void>(callback: T) {
   let frame: number | undefined
   let latestArgs: Parameters<T>
@@ -150,7 +152,7 @@ Use it for visual state. Do not use it as a general rate limiter for API request
 
 Sometimes every input matters, but processing each one separately is expensive. In that case, collect the inputs and process them together.
 
-```ts
+```ts caption="Batching items to process them together"
 function batch<T>(consume: (items: T[]) => void, wait: number) {
   let queue: T[] = []
   let timer: ReturnType<typeof setTimeout> | undefined
@@ -179,7 +181,7 @@ Logging, telemetry, and bulk writes often benefit from batching. Debounce and th
 
 `requestIdleCallback` asks the browser to run low-priority work when it has spare time. It is appropriate for non-urgent tasks such as speculative preparation or analytics—not anything required for the next interaction.
 
-```ts
+```ts caption="Draining a work queue during idle time"
 requestIdleCallback(
   deadline => {
     while (deadline.timeRemaining() > 0 && workQueue.length > 0) {
@@ -202,7 +204,7 @@ Debouncing a search prevents unnecessary requests from starting, but it does not
 
 Use `AbortController` to make “latest request wins” explicit:
 
-```ts
+```ts caption="Cancelling stale requests so the latest one wins"
 let controller: AbortController | undefined
 
 async function search(query: string) {

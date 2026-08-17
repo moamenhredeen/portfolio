@@ -98,7 +98,7 @@ const dateTime = frontmatter.date
     .article-body {
         max-width: 43rem;
         margin: 0 auto;
-        counter-reset: section subsection subsubsection figure;
+        counter-reset: section subsection subsubsection figure listing;
     }
 
     /* Number sections like a paper: 1, 1.1, 1.1.1 (headings are demoted,
@@ -278,6 +278,29 @@ const dateTime = frontmatter.date
 
     .article-body :global(figure.figure figcaption)::before {
         content: "Figure " counter(figure) ". ";
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* Captioned code blocks become numbered listings. */
+    .article-body :global(figure.listing) {
+        counter-increment: listing;
+        margin: 1.5rem 0;
+    }
+
+    .article-body :global(figure.listing pre) {
+        margin: 0;
+    }
+
+    .article-body :global(figure.listing figcaption) {
+        margin-top: 0.5rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    .article-body :global(figure.listing figcaption)::before {
+        content: "Listing " counter(listing) ". ";
         font-weight: 700;
         font-variant-numeric: tabular-nums;
     }

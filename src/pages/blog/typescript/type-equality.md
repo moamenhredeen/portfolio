@@ -17,7 +17,7 @@ Comparing types in TypeScript isn't as straightforward as it might seem. While t
 
 The most obvious way to check type equality is using mutual assignability:
 
-```typescript
+```typescript caption="The naive mutual-assignability check"
 type IsEqual<T, U> = T extends U ? U extends T ? true : false : false
 ```
 
@@ -35,7 +35,7 @@ Unfortunately, this approach has several critical flaws.
 
 Conditional types distribute over union types when the type parameter appears "naked" in the extends clause:
 
-```typescript
+```typescript caption="Union distribution collapses the answer to boolean"
 type IsEqual<T, U> = T extends U ? U extends T ? true : false : false
 
 type Test1 = IsEqual<'a' | 'b', 'a' | 'b'>  // Expected: true, Got: boolean
@@ -45,7 +45,7 @@ type Test3 = IsEqual<'a', 'a' | 'b'>        // Expected: false, Got: boolean
 
 When `T = 'a' | 'b'`, TypeScript distributes the conditional type:
 
-```typescript
+```typescript caption="How the conditional distributes over the union"
 // This becomes:
 ('a' extends U ? U extends 'a' ? true : false : false) | 
 ('b' extends U ? U extends 'b' ? true : false : false)
@@ -57,7 +57,7 @@ The result is a union of `true` and `false`, which simplifies to `boolean` inste
 
 Wrap type parameters in tuples to prevent distribution:
 
-```typescript
+```typescript caption="Wrapping in tuples prevents distribution"
 type IsEqual<T, U> = [T] extends [U] ? [U] extends [T] ? true : false : false
 
 type Test1 = IsEqual<'a' | 'b', 'a' | 'b'>  // ✅ true
@@ -71,7 +71,7 @@ This fixes the distribution problem, but there are still many other edge cases t
 
 The simple extends-based approach fails with TypeScript's special types:
 
-```typescript
+```typescript caption="any and never still slip past the check"
 type IsEqual<T, U> = [T] extends [U] ? [U] extends [T] ? true : false : false
 
 // 'any' is both assignable to everything AND everything is assignable to it
@@ -87,7 +87,7 @@ type Test4 = IsEqual<string, never>   // false ✅
 
 TypeScript internally normalizes intersection types, leading to inconsistent results:
 
-```typescript
+```typescript caption="Intersections compare inconsistently with object literals"
 type IsEqual<T, U> = [T] extends [U] ? [U] extends [T] ? true : false : false
 
 type A = { a: 1 } & { b: 2 }  // Intersection
@@ -98,7 +98,7 @@ type Test = IsEqual<A, B>  // Inconsistent - depends on internal normalization t
 
 # Problem 4: Readonly and Optional Property Differences
 
-```typescript
+```typescript caption="Readonly and optional property differences"
 type IsEqual<T, U> = [T] extends [U] ? [U] extends [T] ? true : false : false
 
 // Readonly differences
@@ -114,7 +114,7 @@ type Test2 = IsEqual<{ a?: number }, { a: number | undefined }>  // false ✅
 
 # Problem 5: Function Overload Order
 
-```typescript
+```typescript caption="Overload order changes the result"
 type IsEqual<T, U> = [T] extends [U] ? [U] extends [T] ? true : false : false
 
 type A = {
@@ -134,7 +134,7 @@ type Test = IsEqual<A, B>  // false - overload order matters
 
 The most reliable approach uses a clever function signature comparison:[^signature-trick]
 
-```typescript
+```typescript caption="The function-signature equality check"
 type IsEqual<T, U> = 
   (<G>() => G extends T ? 1 : 2) extends (<G>() => G extends U ? 1 : 2) 
     ? true 
@@ -162,7 +162,7 @@ The function signature approach handles all the edge cases more reliably because
 
 ## Testing the Solution
 
-```typescript
+```typescript caption="The signature check across every earlier case"
 type IsEqual<T, U> = 
   (<G>() => G extends T ? 1 : 2) extends (<G>() => G extends U ? 1 : 2) 
     ? true 

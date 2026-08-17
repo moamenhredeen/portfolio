@@ -1,7 +1,9 @@
 ---
 layout: '@layouts/PostLayout.astro'
-title: Fluent API Desing
+title: Fluent API Design
 description: Good APIs guide their users through a well-lit path, resulting in clearer code, fewer mistakes and better maintainability
+date: "2025-06-23"
+author: Moamen Hredeen
 tags:
   - API
   - SystemDesign
@@ -24,20 +26,20 @@ fewer mistakes and better maintainability
 
 > A **Cascading** API is designed to **allow** operations to be expressed via an
 > unbroken sequence of chained method calls, which can be split over multiple
-> statements. A **Fluent** API is a casscading API designed to **always** be
+> statements. A **Fluent** API is a cascading API designed to **always** be
 > expressed in a single statement
 >
 > -- <cite>David Beaumont</cite>
 
 # Why ?
 
-why do care about expressing something in a single statement ? what are the
-**benefits** using Fluent APIs ?
+why do we care about expressing something in a single statement ? what are the
+**benefits** of using Fluent APIs ?
 
 - Fluent APIs are domain specific languages, which gives the code semantic
-  meaning, make it easier to takle complexity of a domain
-- Declerative: fluent API describe what to do and not how to do it, which hides
-  most of the implementations details and makes the code self explanitory
+  meaning, making it easier to tackle the complexity of a domain
+- Declarative: a fluent API describes what to do and not how to do it, which hides
+  most of the implementation details and makes the code self explanatory
 
 > A well designed fluent API makes domain-specific operations more
 > understandable & maintainable.
@@ -48,13 +50,13 @@ why do care about expressing something in a single statement ? what are the
 
 ## Type Uniformity
 
-wether or not to return the same type at each point of the chain
+whether or not to return the same type at each point of the chain
 
-### Homogenous APIs
+### Homogeneous APIs
 
 uses a single type, which is useful for order-independent parameters
 
-```java
+```java caption="A homogeneous API: call order does not matter"
 var lineSplitter =  Splitter.on(',')
     .trimResults()
     .limit(4)
@@ -65,12 +67,12 @@ var lineSplitter =  Splitter.on(',')
     .trimResults()
 ```
 
-### Heterogenous APIs
+### Heterogeneous APIs
 
-uses different return type. they guide the user through series of distinct
-steps. thy can express more complex operations and reuse common sub-APIs
+uses different return types. They guide the user through a series of distinct
+steps. They can express more complex operations and reuse common sub-APIs
 
-```java
+```java caption="A heterogeneous API guides the user through typed steps"
 assertThat(multiMap)            // -> MultimapSubject
     .valuesForKey(testKey)      // -> IterableSubject
     .contains(testValues)       // -> Orderd
@@ -79,14 +81,14 @@ assertThat(multiMap)            // -> MultimapSubject
 
 ## Fallibility
 
-Fallible APIs need to let caller know what happens when an operation fails.
+Fallible APIs need to let the caller know what happens when an operation fails.
 There may be multiple methods for different cases.
 
 Example for a Fallible API is the Guava `ImmutableMap` builder, which has a
 `build` method, that can throw a runtime exception if you insert the same key
 multiple times.
 
-```java
+```java caption="Guava's ImmutableMap builder, which can throw on duplicate keys"
 ImmutableMap.builder()
     .putAll(firstMap)
     .putAll(secondMap)
@@ -107,10 +109,10 @@ exception
 
 ## Mutability
 
-wether or not the API mutate the same object. **Mutable** APIs are usually
+whether or not the API mutates the same object. **Mutable** APIs are usually
 homogeneous, and often reflect the classic **builder pattern**.[^builder]
 
-```java
+```java caption="A mutable builder: every call mutates the same object"
 new StringBuilder()
     .append(key)
     .append("=")
@@ -121,7 +123,7 @@ new StringBuilder()
 **Immutable** APIs are harder to misuse, but allocate intermediate instances,
 which can be costly.
 
-```java
+```java caption="An immutable API allocates a new instance on each call"
 for var line : lines {
     doSomethingWith(Splitter
         .on(',')
@@ -134,7 +136,7 @@ for var line : lines {
 > Tip: when using **Immutable** APIs, caching intermediate results, that is used
 > repeatedly is effective, and allows semantic naming
 
-```java
+```java caption="Caching an immutable intermediate for reuse"
 var CSV_SPLITTER =  Splitter
         .on(',')
         .limit(4)
@@ -147,21 +149,21 @@ for var line : lines {
 
 ## Optional Parameters
 
-valid no-op valie to bypass teh action of the method
+a valid no-op value to bypass the action of the method
 
-## comparison
+## Comparison
 
 |              | Fluency       | Type Uniformity | Fallibility | Reusability | Mutability    |
 | ------------ | ------------- | --------------- | ----------- | ----------- | ------------- |
 | ImmutableMap | Cascading     | Homogeneous     | Fallible    | Reusable    | Mutable       |
 | Streams      | Cascading     | Heterogeneous   | Infallible  | One-Shot    | It Depends... |
-| Splitter     | Item1.3       | Homogeneous     | Infallible  | Reusable    | Immutable     |
+| Splitter     | Cascading     | Homogeneous     | Infallible  | Reusable    | Immutable     |
 | Flogger      | It Depends... | Homogeneous     | Infallible  | One-Shot    | Mutable       |
 | Truth        | Fluent        | Heterogeneous   | Infallible  | One-Shot    | Immutable     |
 
 ## Tips & Tricks
 
-- think hard about methdo naming
+- think hard about method naming
 - consider parameter scope and method ordering carefully
 - put required parameters in required methods
 - let the problem domain inform choices like return type, mutability etc.

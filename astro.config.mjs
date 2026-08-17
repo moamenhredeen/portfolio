@@ -11,12 +11,14 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkDemoteHeadings from './src/plugins/remark-demote-headings.mjs';
 import rehypeFigures from './src/plugins/rehype-figures.mjs';
+import transformerListingCaption from './src/plugins/shiki-listing-caption.mjs';
 
 // https://astro.build/config
 export default defineConfig({
   markdown: {
       shikiConfig: {
         theme: 'gruvbox-light-hard',
+        transformers: [transformerListingCaption()],
       },
       remarkPlugins: [
           remarkGithubAlerts,

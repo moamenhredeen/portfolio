@@ -2,7 +2,9 @@
 layout: '@layouts/PostLayout.astro'
 title: Extends never
 description: Examines why keyof T extends never in TypeScript's DeepReadonly is problematic—it fails on union types. 
-  Shows that mapped types handle primitives automatically, making the conditional check unnecessary and error-prone..
+  Shows that mapped types handle primitives automatically, making the conditional check unnecessary and error-prone.
+date: "2025-06-23"
+author: Moamen Hredeen
 tags:
   - Typescript
   - Typesystem
@@ -10,7 +12,7 @@ tags:
 
 When examining TypeScript utility types, you might encounter this implementation of `DeepReadonly`:
 
-```ts
+```ts caption="The DeepReadonly with the questionable keyof check"
 type DeepReadonly<T> = keyof T extends never ? T : { readonly [k in keyof T]: DeepReadonly<T[k]> };
 ```
 
@@ -22,7 +24,7 @@ The `never` type is **TypeScript's bottom type**[^bottom-type] — a type with n
 
 Here's how it behaves with different types:
 
-```ts
+```ts caption="How keyof T extends never behaves across types"
 type HasNoKeys<T> = keyof T extends never ? true : false;
 
 type Test1 = HasNoKeys<{ a: string }>           // false - has key "a"
@@ -41,7 +43,7 @@ Why This Breaks DeepReadonly ?
 
 This behavior causes `DeepReadonly` to fail on union types:
 
-```ts
+```ts caption="The check silently drops readonly on a union"
 type DeepReadonly<T> = keyof T extends never ? T : { readonly [k in keyof T]: DeepReadonly<T[k]> };
 
 type BrokenResult = DeepReadonly<{ a: string } | { b: string }>;
@@ -59,7 +61,7 @@ Since the union has no common keys, `keyof T extends never` returns `true`, so w
 
 Mapped types already handle primitives correctly without explicit checks:
 
-```ts
+```ts caption="DeepReadonly without the redundant check"
 type DeepReadonly<T> = { readonly [K in keyof T]: DeepReadonly<T[K]> };
 ```
 
@@ -69,7 +71,7 @@ Here's why this works:
 2. **Unions distribute automatically**: Mapped types process each union member separately
 3. **No edge cases**: Works correctly for all input types
 
-```ts
+```ts caption="Mapped types preserve primitives and distribute over unions on their own"
 type TestMapped<T> = { [K in keyof T]: "transformed" };
 
 type Result1 = TestMapped<{ a: string }>;        // { a: "transformed" }
@@ -82,7 +84,7 @@ type Result3 = TestMapped<{ a: string } | { b: string }>;
 
 If you want to explicitly distinguish between objects and primitives, use `extends object`:
 
-```ts
+```ts caption="Distinguishing objects from primitives with extends object"
 type DeepReadonly<T> = T extends object 
     ? { readonly [K in keyof T]: DeepReadonly<T[K]> } 
     : T;
