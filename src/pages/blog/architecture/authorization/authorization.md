@@ -37,6 +37,8 @@ using different information.
 
 ## ACLs
 
+Table: An access control list, one row per user–resource–permission grant.
+
 | user | resource | permission |
 |-|-|-|
 | Alice | File 1 | read |
@@ -187,6 +189,8 @@ role -> edit permission, ReBAC follows Alice -> Team -> Document, and ABAC
 evaluates user/resource/action/context attributes. -->
 
 # Comparison
+
+Table: The four authorization models side by side — what each decision rests on, where it fits, and its main difficulty.
 
 | Model | Decision is based on | Works well for | Main difficulty |
 | --- | --- | --- | --- |

@@ -153,6 +153,8 @@ a valid no-op value to bypass the action of the method
 
 ## Comparison
 
+Table: Five well-known builder-style APIs rated across the design dimensions discussed above.
+
 |              | Fluency       | Type Uniformity | Fallibility | Reusability | Mutability    |
 | ------------ | ------------- | --------------- | ----------- | ----------- | ------------- |
 | ImmutableMap | Cascading     | Homogeneous     | Fallible    | Reusable    | Mutable       |

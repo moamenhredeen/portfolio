@@ -98,7 +98,7 @@ const dateTime = frontmatter.date
     .article-body {
         max-width: 43rem;
         margin: 0 auto;
-        counter-reset: section subsection subsubsection figure listing;
+        counter-reset: section subsection subsubsection figure listing table;
     }
 
     /* Number sections like a paper: 1, 1.1, 1.1.1 (headings are demoted,
@@ -251,6 +251,30 @@ const dateTime = frontmatter.date
         border-top: 1px solid var(--rule-dark);
         border-bottom-color: var(--rule-dark);
         font-variant: small-caps;
+    }
+
+    /* Captioned tables become numbered, with the caption above the table
+       the way a journal sets them. */
+    .article-body :global(figure.table) {
+        counter-increment: table;
+        margin: 1.75rem 0;
+    }
+
+    .article-body :global(figure.table table) {
+        margin: 0;
+    }
+
+    .article-body :global(figure.table figcaption) {
+        margin-bottom: 0.5rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    .article-body :global(figure.table figcaption)::before {
+        content: "Table " counter(table) ". ";
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
     }
 
     .article-body :global(img) {
