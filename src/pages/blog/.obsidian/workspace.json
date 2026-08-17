@@ -25,32 +25,16 @@
             "id": "4e8029e77a968d26",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "architecture/authorization/authorization.md",
-                "mode": "source",
-                "source": false
+                "file": "architecture/authorization/_attachments/authorization-intro.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "authorization"
-            }
-          },
-          {
-            "id": "da270a93368a4ee5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "architecture/authorization/authorization.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "authorization"
+              "icon": "excalidraw-icon",
+              "title": "authorization-intro.excalidraw"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -213,13 +197,13 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "da270a93368a4ee5",
+  "active": "4e8029e77a968d26",
   "lastOpenFiles": [
     "architecture/authorization/_attachments/authorization-intro.excalidraw.svg",
     "architecture/authorization/_attachments/authorization-intro.excalidraw.md",
     "architecture/authorization/authorization.md",
-    "architecture/authorization/_attachments/rbac.excalidraw.svg",
     "architecture/authorization/_attachments/rbac.excalidraw.md",
+    "architecture/authorization/_attachments/rbac.excalidraw.svg",
     "architecture/fluent-api-design.md",
     "aoc/2023.md",
     "_drawings/test_drawing.excalidraw.md",
