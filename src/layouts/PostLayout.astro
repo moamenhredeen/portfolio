@@ -30,8 +30,8 @@ const dateTime = frontmatter.date
                     <span>{frontmatter.author ?? "Moamen Hredeen"}</span>
                     {date && <time datetime={dateTime}>{date}</time>}
                 </div>
-                <section class="post-summary" aria-labelledby="summary-title">
-                    <h2 id="summary-title">Summary</h2>
+                <section class="post-summary" aria-labelledby="abstract-title">
+                    <h2 id="abstract-title">Abstract</h2>
                     <p>{frontmatter.description}</p>
                 </section>
                 <p class="keywords">
@@ -178,6 +178,16 @@ const dateTime = frontmatter.date
     .article-body :global(p) {
         margin: 0 0 1rem;
         line-height: 1.72;
+    }
+
+    /* Drop cap on the opening paragraph, when the article starts with prose
+       rather than a heading. */
+    .article-body > :global(p:first-child)::first-letter {
+        float: left;
+        margin: 0.02em 0.08em 0 0;
+        color: var(--accent);
+        font-size: 3.4em;
+        line-height: 0.72;
     }
 
     .article-body :global(ul),
