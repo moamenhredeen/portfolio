@@ -18,7 +18,7 @@
     --color-important: #65467d;
     --color-light: var(--code-bg);
     --text-title: 2rem;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: "Latin Modern Roman", Georgia, "Times New Roman", Times, serif;
     color: var(--ink);
     background: var(--paper);
     color-scheme: light;
