@@ -16,7 +16,7 @@ When examining TypeScript utility types, you might encounter this implementation
 type DeepReadonly<T> = keyof T extends never ? T : { readonly [k in keyof T]: DeepReadonly<T[k]> };
 ```
 
-The `keyof T extends never` check might seem puzzling at first. Let's break down what it does and why it's problematic.
+The `keyof T extends never` check might seem puzzling at first [@so-extends-never]. Let's break down what it does and why it's problematic.
 
 What Does `keyof T extends never` Actually Check?
 
@@ -104,7 +104,8 @@ This works because:
 
 The original `extends never` check was likely an attempt to create a base case for recursion, but TypeScript's type system handles the recursion termination automatically through mapped types.
 
-# Resources
-- [Stackoverflow - What is "extends never" used for](https://stackoverflow.com/questions/68693054/what-is-extends-never-used-for)
+# References
+
+[^ref]
 
 [^bottom-type]: In type theory the bottom type (written ⊥) is the type with no values. It is a subtype of every other type, which makes it the dual of the top type — the type every value inhabits, which TypeScript spells `unknown`.

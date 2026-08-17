@@ -13,6 +13,8 @@ import rehypeKatex from 'rehype-katex';
 import remarkDemoteHeadings from './src/plugins/remark-demote-headings.mjs';
 import rehypeFigures from './src/plugins/rehype-figures.mjs';
 import rehypeTableCaptions from './src/plugins/rehype-table-captions.mjs';
+import rehypeCitation from 'rehype-citation';
+import rehypeLinkifyBib from './src/plugins/rehype-linkify-bib.mjs';
 import transformerListingCaption from './src/plugins/shiki-listing-caption.mjs';
 
 // https://astro.build/config
@@ -38,6 +40,15 @@ export default defineConfig({
           rehypeFigures,
           rehypeTableCaptions,
           rehypeKatex,
+          [rehypeCitation, {
+              // Shared BibTeX database; only cited keys are rendered.
+              bibliography: 'references.bib',
+              // Numeric, LaTeX-like citations ([1], [2]) listed in citation order.
+              csl: 'vancouver',
+              // Hyperlink each [n] marker to its bibliography entry.
+              linkCitations: true,
+          }],
+          rehypeLinkifyBib,
       ],
       remarkRehype: {
           footnoteLabel: 'Notes',

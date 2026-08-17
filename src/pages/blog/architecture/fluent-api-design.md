@@ -29,7 +29,7 @@ fewer mistakes and better maintainability
 > statements. A **Fluent** API is a cascading API designed to **always** be
 > expressed in a single statement
 >
-> -- <cite>David Beaumont</cite>
+> -- <cite>David Beaumont</cite> [@beaumont-fluent-api]
 
 # Why ?
 
@@ -171,9 +171,10 @@ Table: Five well-known builder-style APIs rated across the design dimensions dis
 - let the problem domain inform choices like return type, mutability etc.
 - be consistent
 
-# Resources
+For a hands-on walkthrough in another language, see also a C# implementation [@mitesh-fluent-api].
 
-- [Principles of Fluent API Design by David Beaumont](https://www.youtube.com/watch?v=VPu-ytfYTeU)
-- [How to Create a Fluent API in C#](https://mitesh1612.github.io/blog/2021/08/11/how-to-design-fluent-api)
+# References
+
+[^ref]
 
 [^builder]: The builder pattern is one of the creational patterns from the Gang of Four's *Design Patterns* (1994); it separates the construction of a complex object from its representation so the same steps can build different results.
