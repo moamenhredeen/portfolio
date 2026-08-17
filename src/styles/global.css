@@ -231,6 +231,11 @@ samp {
     font-size: 0.75rem;
 }
 
+/* Print-only running header; hidden on screen. */
+.print-running-header {
+    display: none;
+}
+
 .page-title {
     margin: 0 0 1.5rem;
     font-size: clamp(2.25rem, 7vw, 4.25rem);
@@ -315,11 +320,36 @@ samp {
         max-width: none;
         min-height: 297mm;
         margin: 0;
-        padding: 16mm 18mm 24mm;
+        padding: 22mm 18mm 24mm;
         background: var(--paper-raised);
         box-shadow: none;
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
+    }
+
+    .print-running-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        position: fixed;
+        top: 0;
+        right: 18mm;
+        left: 18mm;
+        padding: 8mm 0 2mm;
+        background: var(--paper-raised);
+        color: var(--muted);
+        font-size: 0.68rem;
+        font-variant: small-caps;
+        letter-spacing: 0.06em;
+    }
+
+    .print-running-header::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-bottom: 1px solid var(--rule);
     }
 
     .site-header {

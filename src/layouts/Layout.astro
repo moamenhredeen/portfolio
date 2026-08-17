@@ -32,6 +32,10 @@ const isAbout = pathname === '/about' || pathname.startsWith('/about/');
     <body>
         <a class="skip-link" href="#main-content">Skip to main content</a>
         <div class="paper-page">
+            <div class="print-running-header" aria-hidden="true">
+                <span>{title ?? 'Moamen Hredeen'}</span>
+                <span>{title ? 'Moamen Hredeen' : 'Software development blog'}</span>
+            </div>
             <header class="site-header">
                 <div>
                     <p class="paper-kicker">A personal software development blog</p>
