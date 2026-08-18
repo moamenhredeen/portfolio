@@ -1,1 +1,8 @@
-{}
+{
+  "interfaceFontFamily": "Iosevka",
+  "textFontFamily": "Iosevka",
+  "monospaceFontFamily": "Iosevka",
+  "baseFontSize": 16,
+  "showViewHeader": true,
+  "showRibbon": false
+}
