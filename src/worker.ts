@@ -7,9 +7,15 @@
 // Moderation is hold-for-approval: POSTs are stored with approved = 0 and never
 // returned by GET until approved = 1 (see the approve command in tasks.md).
 
+// Cloudflare rate-limiting binding (declared under [[unsafe.bindings]]).
+interface RateLimiter {
+  limit(options: { key: string }): Promise<{ success: boolean }>;
+}
+
 interface Env {
   DB: D1Database;
   ASSETS: Fetcher;
+  COMMENT_LIMITER: RateLimiter;
 }
 
 const MAX_AUTHOR = 80;
@@ -42,6 +48,14 @@ async function listComments(env: Env, slug: string): Promise<Response> {
 }
 
 async function createComment(request: Request, env: Env): Promise<Response> {
+  // Edge rate limit per client IP before doing any work. Caps a flood of
+  // submissions from one source (see limit/period in wrangler.toml).
+  const ip = request.headers.get("cf-connecting-ip") ?? "local";
+  const { success } = await env.COMMENT_LIMITER.limit({ key: ip });
+  if (!success) {
+    return json({ error: "You're posting too fast. Please wait a moment." }, 429);
+  }
+
   let payload: Record<string, unknown>;
   try {
     payload = await request.json();
