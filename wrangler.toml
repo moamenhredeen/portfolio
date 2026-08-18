@@ -1,11 +1,25 @@
 name = "portfolio"
 compatibility_date = "2025-11-26"
 
+# Worker script that backs the comments API (/api/comments). Cloudflare only
+# runs it for requests that DON'T match a static file in ./dist, so every page
+# and asset is still served statically — the Worker only ever sees /api/*.
+main = "src/worker.ts"
+
 # Keep the *.workers.dev URL available as a mirror/fallback.
 workers_dev = true
 
 [assets]
 directory = "./dist"
+# Exposed to the Worker as `env.ASSETS` so it can fall through to the static
+# site for any non-API path.
+binding = "ASSETS"
+
+# D1 (SQLite) database holding the comments, bound as `env.DB`.
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-comments"
+database_id = "f9848e78-9253-444f-a71c-0c3ffb5e17d0"
 
 [[routes]]
 pattern = "moamenhredeen.me"

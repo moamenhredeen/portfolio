@@ -1,6 +1,7 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
 import Layout from "./Layout.astro";
+import Comments from "@components/vue/Comments.vue";
 
 type Props = MarkdownLayoutProps<{
     title: string;
@@ -41,6 +42,7 @@ const dateTime = frontmatter.date
             <div class="article-body">
                 <slot />
             </div>
+            <Comments client:visible slug={Astro.url.pathname} />
         </article>
     </main>
 </Layout>
