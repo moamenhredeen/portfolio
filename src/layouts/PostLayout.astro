@@ -21,7 +21,12 @@ const dateTime = frontmatter.date
     : undefined;
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
+<Layout
+    title={frontmatter.title}
+    description={frontmatter.description}
+    datePublished={dateTime}
+    author={frontmatter.author ?? "Moamen Hredeen"}
+>
     <main id="main-content" tabindex="-1">
         <article class="paper-article">
             <header class="article-header">

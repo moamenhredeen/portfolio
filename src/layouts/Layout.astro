@@ -7,11 +7,16 @@ import 'katex/dist/katex.min.css'
 interface Props {
     title?: string;
     description?: string;
+    // Article metadata, passed by PostLayout for structured data.
+    datePublished?: string;
+    author?: string;
 }
 
 const {
     title,
     description = 'Technical blog posts and notes by Moamen Hredeen.',
+    datePublished,
+    author = 'Moamen Hredeen',
 } = Astro.props;
 const documentTitle = title ? `${title} — Moamen Hredeen` : 'Moamen Hredeen';
 const pathname = Astro.url.pathname;
@@ -21,9 +26,44 @@ const isAbout = pathname === '/about' || pathname.startsWith('/about/');
 // Absolute URL for canonical + Open Graph. Astro.site is set in the config;
 // fall back to the request origin during dev.
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
-const ogType = pathname.startsWith('/blog/') && pathname !== '/blog' && pathname !== '/blog/'
-    ? 'article'
-    : 'website';
+const isArticle = pathname.startsWith('/blog/') && pathname !== '/blog' && pathname !== '/blog/';
+const ogType = isArticle ? 'article' : 'website';
+
+// Schema.org structured data (JSON-LD). A BlogPosting on article pages,
+// otherwise the WebSite/Person for the site itself. Helps search engines
+// attach author, dates, and site identity to the page.
+const siteUrl = (Astro.site ?? new URL(Astro.url.origin)).href.replace(/\/$/, '');
+const person = {
+    '@type': 'Person',
+    name: 'Moamen Hredeen',
+    url: siteUrl,
+};
+const jsonLd = isArticle
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: title,
+        description,
+        url: canonicalURL,
+        mainEntityOfPage: canonicalURL,
+        inLanguage: 'en',
+        ...(datePublished ? { datePublished, dateModified: datePublished } : {}),
+        author: { '@type': 'Person', name: author, url: siteUrl },
+        publisher: person,
+    }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Moamen Hredeen',
+        description,
+        url: siteUrl,
+        inLanguage: 'en',
+        author: person,
+    };
+
+// Cloudflare Web Analytics: only emit the beacon in production builds when a
+// token is provided (set PUBLIC_CF_BEACON_TOKEN — see .env / build env).
+const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
 
 <!doctype html>
@@ -65,6 +105,19 @@ const ogType = pathname.startsWith('/blog/') && pathname !== '/blog' && pathname
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={documentTitle} />
         <meta name="twitter:description" content={description} />
+
+        <!-- Structured data -->
+        <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+        <!-- Cloudflare Web Analytics (production only, when a token is set) -->
+        {import.meta.env.PROD && cfBeaconToken && (
+            <script
+                is:inline
+                defer
+                src="https://static.cloudflareinsights.com/beacon.min.js"
+                data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+            />
+        )}
     </head>
     <body>
         <a class="skip-link" href="#main-content">Skip to main content</a>
