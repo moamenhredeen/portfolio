@@ -12,6 +12,7 @@ tags:
 ---
 
 import SolarDayPlayground from '../../../components/vue/SolarDayPlayground.vue'
+import LongitudeTimePlayground from '../../../components/vue/LongitudeTimePlayground.vue'
 import Wrapper from '../../../components/Wrapper.astro'
 
 Time looks simple. A clock shows the time, a calendar shows the date, and a timestamp appears to pin down a moment. Then we try to represent those values in software and discover that they mean very different things.
@@ -48,14 +49,37 @@ Now we have the first piece of the model. As Earth turns, noon reaches different
 
 ## Latitude, longitude, and solar time
 
-{/*
-Define latitude and longitude separately. Derive the idealized relationship:
-360 degrees / 24 hours = 15 degrees per hour. Explain local solar noon and
-make clear that this is an approximation, not a civil-time-zone rule.
+We describe a position on Earth with two coordinates: **latitude** and **longitude**. They may appear together on a map, but they answer different questions.
 
-Interactive: drag an observer east or west and display longitude, approximate
-solar offset, and local solar time.
-*/}
+Latitude tells us how far north or south a place is. The equator is 0°, the North Pole is 90° north, and the South Pole is 90° south. Lines of equal latitude run parallel to the equator.
+
+Longitude describes the east–west position. Its lines, called **meridians**, run from one pole to the other. We measure them east or west from a chosen 0° meridian. Unlike the equator, that starting line is not determined by the shape of the Earth; people had to agree on where to put it. We will return to that choice when we reach Greenwich.
+
+Longitude is the coordinate that connects location to solar time. Earth completes approximately 360° of rotation in one 24-hour solar day:
+
+$$
+\frac{360^\circ}{24\ \text{hours}} = 15^\circ\ \text{per hour}
+$$
+
+So a difference of 15° longitude corresponds to about one hour of solar time. One degree corresponds to about four minutes.
+
+Imagine two observers separated by 15° of longitude. The observer farther east rotates into the Sun-facing position first. When the Sun reaches its highest point there, the western observer still has roughly another hour before local solar noon.
+
+In an idealized model, the relationship looks simple:
+
+| Longitude | Approximate solar-time difference |
+| --- | ---: |
+| 30° west | 2 hours earlier |
+| 15° west | 1 hour earlier |
+| 0° | reference time |
+| 15° east | 1 hour later |
+| 30° east | 2 hours later |
+
+This is **local mean solar time**. It tells us what a uniform clock based on the Sun would show at a particular longitude. It does not tell us the legal time printed on a train ticket or displayed by a phone. Civil clocks follow time zones, and their boundaries rarely form tidy 15° bands.
+
+<Wrapper>
+  <LongitudeTimePlayground client:visible />
+</Wrapper>
 
 ## Latitude, seasons, and the length of a day
 
