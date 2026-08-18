@@ -60,10 +60,6 @@ const jsonLd = isArticle
         inLanguage: 'en',
         author: person,
     };
-
-// Cloudflare Web Analytics: only emit the beacon in production builds when a
-// token is provided (set PUBLIC_CF_BEACON_TOKEN — see .env / build env).
-const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
 
 <!doctype html>
@@ -109,13 +105,13 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         <!-- Structured data -->
         <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-        <!-- Cloudflare Web Analytics (production only, when a token is set) -->
-        {import.meta.env.PROD && cfBeaconToken && (
+        <!-- Cloudflare Web Analytics (production builds only, to skip local dev traffic) -->
+        {import.meta.env.PROD && (
             <script
                 is:inline
-                defer
+                type="module"
                 src="https://static.cloudflareinsights.com/beacon.min.js"
-                data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+                data-cf-beacon='{"token": "cde4743ebfa644e1941836fb34cda235"}'
             />
         )}
     </head>
