@@ -1,6 +1,9 @@
 name = "portfolio"
 compatibility_date = "2025-11-26"
 
+# Keep the *.workers.dev URL available as a mirror/fallback.
+workers_dev = true
+
 [assets]
 directory = "./dist"
 
