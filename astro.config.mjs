@@ -12,6 +12,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkDemoteHeadings from './src/plugins/remark-demote-headings.mjs';
 import rehypeFigures from './src/plugins/rehype-figures.mjs';
+import rehypeLeadIn from './src/plugins/rehype-lead-in.mjs';
 import rehypeTableCaptions from './src/plugins/rehype-table-captions.mjs';
 import rehypeCitation from 'rehype-citation';
 import rehypeLinkifyBib from './src/plugins/rehype-linkify-bib.mjs';
@@ -37,6 +38,7 @@ export default defineConfig({
           remarkMath,
       ],
       rehypePlugins: [
+          rehypeLeadIn,
           rehypeFigures,
           rehypeTableCaptions,
           rehypeKatex,

@@ -87,6 +87,7 @@ const dateTime = frontmatter.date
         margin: 0;
         font-size: 0.96rem;
         line-height: 1.55;
+        font-variant-numeric: oldstyle-nums proportional-nums;
     }
 
     .keywords {
@@ -99,6 +100,11 @@ const dateTime = frontmatter.date
         max-width: 43rem;
         margin: 0 auto;
         counter-reset: section subsection subsubsection figure listing table;
+        /* Oldstyle (text) figures in running prose, so digits sit on the
+           baseline with ascenders/descenders like lowercase letters. Tabular
+           lining is restored below for tables and for the numbered counters
+           (sections, figures, listings, tables). */
+        font-variant-numeric: oldstyle-nums proportional-nums;
     }
 
     /* Number sections like a paper: 1, 1.1, 1.1.1 (headings are demoted,
@@ -189,8 +195,16 @@ const dateTime = frontmatter.date
         float: left;
         margin: 0.02em 0.08em 0 0;
         color: var(--accent);
+        font-family: "Latin Modern Roman";
         font-size: 3.4em;
         line-height: 0.72;
+    }
+
+    /* Small-caps lead-in: the first few words of the opening paragraph, set in
+       the true caps face (see rehype-lead-in.mjs). Pairs with the drop cap. */
+    .article-body :global(.lead-in) {
+        font-family: "Latin Modern Caps";
+        letter-spacing: 0.02em;
     }
 
     .article-body :global(ul),
@@ -241,6 +255,8 @@ const dateTime = frontmatter.date
         margin: 1.75rem 0;
         border-collapse: collapse;
         font-size: 0.9rem;
+        /* Tabular data reads better with lining figures on a fixed advance. */
+        font-variant-numeric: lining-nums tabular-nums;
     }
 
     .article-body :global(th),
