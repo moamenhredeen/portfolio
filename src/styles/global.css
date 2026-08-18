@@ -484,7 +484,7 @@ samp {
         background: var(--paper-raised);
         color: var(--muted);
         font-size: 0.68rem;
-        font-variant: small-caps;
+        font-family: "Latin Modern Caps";
         letter-spacing: 0.06em;
     }
 

@@ -29,3 +29,14 @@
     font-style: italic;
     font-weight: 700;
 }
+
+/* True small-caps face (LMRomanCaps10) — lowercase glyphs are drawn as small
+   capitals, so `font-family: "Latin Modern Caps"` gives real, weight-matched
+   caps instead of the browser's synthesized `font-variant: small-caps`. */
+@font-face {
+    font-family: "Latin Modern Caps";
+    src: url("/fonts/LatinModern/LM-caps.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+}
